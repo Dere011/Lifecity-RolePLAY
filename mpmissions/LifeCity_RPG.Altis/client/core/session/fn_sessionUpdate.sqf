@@ -9,7 +9,7 @@
 */
 private["_packet"];
 
-_packet 	= [player, playerSide, life_cash, life_atmcash, getPlayerUID player];
+_packet 	= [player, playerSide, lc_c, lc_ac, getPlayerUID player];
 
 switch (playerSide) do
 {
@@ -23,7 +23,7 @@ switch (playerSide) do
 			};
 		} foreach life_licenses;
 		_packet set[count _packet,_array];
-		_gear = cop_gear;
+		_gear = lc_cg;
 		_packet set[count _packet,_gear];
 	};
 	
@@ -38,8 +38,8 @@ switch (playerSide) do
 		} foreach life_licenses;
 		[] call life_fnc_civFetchGear;
 		_packet set[count _packet,_array];
-		_packet set[count _packet, life_is_arrested];
-		_packet set[count _packet, civ_gear];
+		_packet set[count _packet, lc_a];
+		_packet set[count _packet, lc_cvg];
 	};
 };
 

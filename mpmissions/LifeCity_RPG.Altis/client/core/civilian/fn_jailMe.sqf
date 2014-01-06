@@ -52,7 +52,7 @@ switch (true) do
 {
 	case (_bail) :
 	{
-		life_is_arrested = false;
+		lc_a = false;
 		life_bail_paid = false;
 		hint "You have paid your bail and are now free.";
 		serv_wanted_remove = [player];
@@ -63,7 +63,7 @@ switch (true) do
 	
 	case (_esc) :
 	{
-		life_is_arrested = false;
+		lc_a = false;
 		hint "You have escaped from jail, you still retain your previous crimes and now have a count of Escapping jail.";
 		[[0,format["%1 has escaped from jail!",name player]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		serv_killed = [player,"901"];
@@ -72,7 +72,7 @@ switch (true) do
 	
 	case (alive player && !_esc && !_bail) :
 	{
-		life_is_arrested = false;
+		lc_a = false;
 		hint "You have served your time in jail and have been released.";
 		serv_wanted_remove = [player];
 		publicVariableServer "serv_wanted_remove";

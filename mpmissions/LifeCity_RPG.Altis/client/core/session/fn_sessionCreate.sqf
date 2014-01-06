@@ -9,20 +9,20 @@
 */
 private["_packet"];
 
-_packet = [player,playerSide,life_cash,life_atmcash,getPlayerUID player];
+_packet = [player,playerSide,lc_c,lc_ac,getPlayerUID player];
 switch (playerSide) do
 {
 	case west:
 	{
 		[] call life_fnc_copDefault;
-		_gear = cop_gear;
+		_gear = lc_cg;
 		_packet set[count _packet, _gear];
 	};
 	
 	case civilian:
 	{
 		[] call life_fnc_civFetchGear;
-		_packet set[count _packet, life_is_arrested];
+		_packet set[count _packet, lc_a];
 	};
 };
 

@@ -37,7 +37,7 @@ _carry = _Dialog displayCtrl carry_weight;
 _foodtext ctrlSettext format["%1 / 100", round(life_hunger)];
 _watertext ctrlSetText format["%1 / 100", round(life_thirst)];
 _carry ctrlSetText format["Weight: %1 / %2", life_carryWeight, life_maxWeight];
-_moneytext ctrlSetText format["%1", life_cash];
+_moneytext ctrlSetText format["%1", lc_c];
 
 _iIndex = _ivalue lbadd "1"; _ivalue lbSetData [(lbSize _ivalue)-1, "1"];
 _iIndex = _ivalue lbadd "2"; _ivalue lbSetData [(lbSize _ivalue)-1, "2"];

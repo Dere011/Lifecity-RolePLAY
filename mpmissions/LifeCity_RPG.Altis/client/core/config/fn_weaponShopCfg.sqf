@@ -59,7 +59,7 @@ switch(_shop) do
 		switch(true) do
 		{
 			case (playerSide != west): {"You are not a cop!"};
-			case (life_coplevel < 2): {"You are not at a patrol officer rank!"};
+			case (lc_cl < 2): {"You are not at a patrol officer rank!"};
 			default
 			{
 				["Altis Patrol Officer Shop",
@@ -93,7 +93,7 @@ switch(_shop) do
 		switch(true) do
 		{
 			case (playerSide != west): {"You are not a cop!"};
-			case (life_coplevel < 3): {"You are not at a sergeant rank!"};
+			case (lc_cl < 3): {"You are not at a sergeant rank!"};
 			default
 			{
 				["Altis Sergeant Officer Shop",
@@ -176,7 +176,7 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			case (life_donator == 0): {"You are not a donator!"};
+			case (lc_d == 0): {"You are not a donator!"};
 			default
 			{
 				["STS Donator Shop",

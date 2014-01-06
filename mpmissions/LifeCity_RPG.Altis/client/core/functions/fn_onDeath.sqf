@@ -50,10 +50,10 @@ if(side _source != west && alive _source) then
 
 if(side _source == west && !life_use_atm) then
 {
-	if(life_cash != 0) then
+	if(lc_c != 0) then
 	{
-		[format["$%1 from the Federal Reserve robbery was returned from the robber being killed.",[life_cash] call life_fnc_numberText],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
-		life_cash = 0;
+		[format["$%1 from the Federal Reserve robbery was returned from the robber being killed.",[lc_c] call life_fnc_numberText],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
+		lc_c = 0;
 	};
 };
 

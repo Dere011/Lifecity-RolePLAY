@@ -55,14 +55,14 @@ switch (life_veh_shop) do
 	case "donator_1":
 	{
 		if(playerSide == west) exitWith {_kill = "Vous n'etes pas un civil."};
-		if(life_donator == 0) exitWith {_kill = "Vous n'etes pas un donateur!"};
+		if(lc_d == 0) exitWith {_kill = "Vous n'etes pas un donateur!"};
 		ctrlSetText[2301,"Service Truck Shop"];
 	};
 	
 	case "donator_2":
 	{
 		if(playerSide == west) exitWith {_kill = "Vous n'etes pas un civil."};
-		if(life_donator == 0) exitWith {_kill = "Vous n'etes pas un donateur!"};
+		if(lc_d == 0) exitWith {_kill = "Vous n'etes pas un donateur!"};
 		ctrlSetText[2301,"Service Truck Shop"];
 	};
 	
@@ -123,7 +123,7 @@ switch (life_veh_shop) do
 	case "fed_car":
 	{
 		if(playerSide == civilian) exitWith {_kill =  "Vous n'etes pas un flic."};
-		if(life_adminlevel < 1) exitWith {_kill = "Vous n'etes pas un agent federal!"};
+		if(lc_al < 1) exitWith {_kill = "Vous n'etes pas un agent federal!"};
 		ctrlSetText[2301,"Secret Service Car Shop"];
 		
 	};
@@ -161,7 +161,7 @@ switch (life_veh_shop) do
 	case "fed_air":
 	{
 		if(playerSide == civilian) exitWith {_kill =  "Vous n'etes pas un flic."};
-		if(life_adminlevel < 1) exitWith {_kill = "Vous n'etes pas un agent federal!"};
+		if(lc_al < 1) exitWith {_kill = "Vous n'etes pas un agent federal!"};
 		ctrlSetText[2301,"Secret Service Air Shop"];
 	};
 	
@@ -209,14 +209,14 @@ switch (life_veh_shop) do
 	
 	case "donator_heli":
 	{
-		if(life_donator < 1) exitWith {_kill = "Vous n'etes pas un donateur."};
+		if(lc_d < 1) exitWith {_kill = "Vous n'etes pas un donateur."};
 		if(playerSide == west) exitWith {_kill = "Vous n'etes pas un civil."};
 		ctrlSetText[2301,"Donator Air Shop"];
 	};
 	
 	case "donator_car":
 	{
-		if(life_donator < 1) exitWith {_kill = "Vous n'etes pas un donateur."};
+		if(lc_d < 1) exitWith {_kill = "Vous n'etes pas un donateur."};
 		if(playerSide == west) exitWith {_kill = "Vous n'etes pas un civil."};
 		ctrlSetText[2301,"Donator Car Shop"];
 	};

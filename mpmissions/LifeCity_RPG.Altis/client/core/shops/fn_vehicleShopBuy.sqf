@@ -230,7 +230,7 @@ _price = lbValue[2302,(lbCurSel 2302)];
 
 if(_price < 0) exitWith {};
 _price = _price * 1.5;
-if(life_cash < _price) 										exitWith {hint "Vous n'avez pas assez d'argent."};
+if(lc_c < _price) 										exitWith {hint "Vous n'avez pas assez d'argent."};
 if(count(nearestObjects[_sp,["Car","Ship","Air"], 20]) > 0) exitWith {hint "Il ya est un véhicule sur le point de spawn."};
 
 _sv = false;
@@ -259,7 +259,7 @@ if(_sv) then {
 _vehicle setVariable["vehicle_info_owners",[[getPlayerUID player,name player]],true];
 
 life_vehicles set[count life_vehicles,_vehicle];
-life_cash 	= life_cash - _price;
+lc_c 	= lc_c - _price;
 
 if(playerSide == west) then {
 	if(_veh == "C_Offroad_01_F") then {

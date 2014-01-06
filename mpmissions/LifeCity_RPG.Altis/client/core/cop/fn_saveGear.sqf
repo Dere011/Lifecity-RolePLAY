@@ -51,4 +51,4 @@ if("Laserdesignator" in assignedItems player) then
 
 player selectWeapon _curWep;
 
-cop_gear = [_primary,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems];
+lc_cg = [_primary,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems];

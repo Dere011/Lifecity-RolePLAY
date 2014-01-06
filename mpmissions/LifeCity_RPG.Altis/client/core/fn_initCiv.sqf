@@ -7,7 +7,7 @@
 */
 private["_spawnPos"];
 
-if(life_blacklisted) exitWith {
+if(lc_b) exitWith {
 	endMission "Loser";
 };
 
@@ -19,8 +19,8 @@ civ_spawn_5 = nearestObjects[getMarkerPos  "civ_spawn_5", ["Land_i_House_Big_01_
 
 waitUntil {!(isNull (findDisplay 46))};
 
-if(life_is_arrested) then {
-	life_is_arrested 	= false;
+if(lc_a) then {
+	lc_a 	= false;
 	[player,true] spawn life_fnc_jail;
 }else{
 	show_spawn_menu		= true;

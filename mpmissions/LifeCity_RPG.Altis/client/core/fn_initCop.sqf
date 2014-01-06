@@ -7,16 +7,16 @@
 */
 waitUntil {!(isNull (findDisplay 46))};
 
-if(life_blacklisted) exitWith {
+if(lc_b) exitWith {
 	endMission "Loser";
 };
 
-if(life_coplevel <= 0) exitWith { endMission "Loser"; };
+if(lc_cl <= 0) exitWith { endMission "Loser"; };
 
 switch (true) do {
 	case (str(player) in ["Admin_1","cop_hint"]):
 	{
-		if(life_adminlevel != 666) exitWith {
+		if(lc_al != 666) exitWith {
 			endMission "Loser"; 
 		};
 		loub_admin_mode = true;
@@ -24,28 +24,28 @@ switch (true) do {
 
 	case (str(player) in ["cop_chef"]):
 	{
-		if(life_coplevel != 7) exitWith {
+		if(lc_cl != 7) exitWith {
 			endMission "Loser"; 
 		};
 	};
 };
 
-if(life_coplevel == 2) then {
+if(lc_cl == 2) then {
 	player setRank "PRIVATE";
 };
-if(life_coplevel == 3) then {
+if(lc_cl == 3) then {
 	player setRank "CORPORAL";
 };
-if(life_coplevel == 4) then {
+if(lc_cl == 4) then {
 	player setRank "SERGEANT";
 };
-if(life_coplevel == 5) then {
+if(lc_cl == 5) then {
 	player setRank "LIEUTENANT";
 };
-if(life_coplevel == 6) then {
+if(lc_cl == 6) then {
 	player setRank "CAPTAIN";
 };
-if(life_coplevel == 7) then {
+if(lc_cl == 7) then {
 	player setRank "COLONEL";
 };
 

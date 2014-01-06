@@ -61,7 +61,7 @@ switch(true) do
 			sleep 480;
 			life_use_atm = true;
 		};
-		life_cash = life_cash + _funds;
+		lc_c = lc_c + _funds;
 		[[_vault,1,_funds],"STS_fnc_robberyState",false,false] spawn life_fnc_MP;
 	};
 };

@@ -198,7 +198,7 @@ switch (_shop) do
 		["C_Hatchback_01_sport_F",80000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_MRAP_01_F",30000]];
@@ -213,7 +213,7 @@ switch (_shop) do
 		["C_Hatchback_01_sport_F",80000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_MRAP_01_F",30000]];
@@ -228,7 +228,7 @@ switch (_shop) do
 		["C_Hatchback_01_sport_F",80000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_MRAP_01_F",30000]];
@@ -243,7 +243,7 @@ switch (_shop) do
 		["C_Hatchback_01_sport_F",80000]];
 		_return set[count _return,
 		["C_SUV_01_F",20000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_MRAP_01_F",30000]];
@@ -304,7 +304,7 @@ switch (_shop) do
 	{
 		_return set[count _return,
 		["B_Heli_Light_01_F",75000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_Heli_Transport_01_F",200000]];
@@ -315,7 +315,7 @@ switch (_shop) do
 	{
 		_return set[count _return,
 		["B_Heli_Light_01_F",75000]];
-		if(life_coplevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_return set[count _return,
 			["B_Heli_Transport_01_F",200000]];
@@ -326,7 +326,7 @@ switch (_shop) do
 	
 	case "cop_air_101":
 	{
-		if(life_coplevel > 4) then {
+		if(lc_cl > 4) then {
 			_return =
 			[
 				

@@ -30,9 +30,9 @@ if(playerSide == west) then {
 	[] spawn life_fnc_loadGear;
 };
 
-if(life_is_arrested) then {
+if(lc_a) then {
 	hint "Vous avez essaye de vous suicider en prison, vous serez emprisonne a nouveau avec un temps plus long.";
-	life_is_arrested = false;
+	lc_a = false;
 	[_unit,true] spawn life_fnc_jail;
 }else{
 	titleText["","BLACK FADED"];

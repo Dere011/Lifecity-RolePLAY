@@ -6,7 +6,7 @@
 	Used for loading cop saved gear loadout.
 */
 private["_loadout","_primary","_launcher","_handgun","_magazines","_uniform","_vest","_backpack","_items","_primitems","_secitems","_handgunitems","_uitems","_vitems","_bitems","_handle"];
-_loadout = cop_gear;
+_loadout = lc_cg;
 
 if(loub_admin_mode) exitWith {[] call life_fnc_copDefault;};
 if(isNil "_loadout") exitWith {[] call life_fnc_copDefault;}; //Slot data doesn't exist

@@ -27,6 +27,6 @@ if(!isNil {_val}) then
 	player playmove "AinvPknlMstpSlayWrflDnon";
 	titleText[format["You have picked up $%1",[_val] call life_fnc_numberText],"PLAIN"];
 	player say3D "MoneyPickup";
-	life_cash = life_cash + _val;
+	lc_c = lc_c + _val;
 	life_action_delay = time;
 };

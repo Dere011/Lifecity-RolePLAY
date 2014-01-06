@@ -10,7 +10,7 @@ _unit = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 hint format["%1", _unit];
 if(isNull _unit) exitWith {}; //Dafuq?
 if(_unit != player) exitWith {}; //Dafuq?
-if(life_is_arrested) exitWith {}; //Dafuq i'm already arrested
+if(lc_a) exitWith {}; //Dafuq i'm already arrested
 _bad = [_this,1,false,[false]] call BIS_fnc_param;
 player setVariable["restrained",false,true];
 player setVariable["Escorting",false,true];
@@ -41,7 +41,7 @@ if(life_inv_cokep > 0) then {[false,"cocainep",life_inv_cokep] call life_fnc_han
 if(life_inv_turtle > 0) then {[false,"turtle",life_inv_turtle] call life_fnc_handleInv;};
 if(life_inv_cannabis > 0) then {[false,"cannabis",life_inv_cannabis] call life_fnc_handleInv;};
 if(life_inv_marijuana > 0) then {[false,"marijuana",life_inv_marijuana] call life_fnc_handleInv;};
-life_is_arrested = true;
+lc_a = true;
 
 removeAllWeapons player;
 {player removeMagazine _x} foreach (magazines player);

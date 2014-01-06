@@ -22,24 +22,24 @@ switch(playerSide) do
 	};
 };
 
-if(life_adminlevel < 1) then
+if(lc_al < 1) then
 {
 	ctrlShow[2021,false];
 };
 
-if(life_adminlevel != 666) then
+if(lc_al != 666) then
 {
 	ctrlShow[2020,false];
 };
 
 [] call life_fnc_p_updateMenu;
 
-if(life_adminlevel < 1) then
+if(lc_al < 1) then
 {
 	ctrlShow[2021,false];
 };
 
-if(life_adminlevel != 666) then
+if(lc_al != 666) then
 {
 	ctrlShow[2020,false];
 };

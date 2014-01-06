@@ -15,10 +15,10 @@ if(_funds == -1) exitWith {};
 if(!life_use_atm) exitWith {};
 sleep 45;
 
-if(_funds > life_atmcash) then
+if(_funds > lc_ac) then
 {
 	hint "Due to the robbery on the Federal Reserve you have lost a percentage of your money but you have went bankrupt.\n\nNext time buy some banking insurance on your next visit to a ATM to better protect your assets!";
-	life_atmcash = 0;
+	lc_ac = 0;
 }
 	else
 {
@@ -30,6 +30,6 @@ if(_funds > life_atmcash) then
 		else
 	{
 		hint format["Due to the recent robbery on the Federal Reserve you have lost $%1 from your bank account, next time buy some banking insurance!\n\nYou can buy banking insurance from a ATM!",[_funds] call life_fnc_numberText];
-		life_atmcash = life_atmcash - _funds;
+		lc_ac = lc_ac - _funds;
 	};
 };

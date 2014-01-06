@@ -30,6 +30,6 @@ if((_vehicle isKindOf "Car") || (_vehicle isKindOf "Air") || (_vehicle isKindOf 
 		waitUntil {!life_impound_inuse};
 		hint format["You have impounded a %1\n\nYou have received $%2 for cleaning up the streets!",_type,_price];
 		
-		life_atmcash = life_atmcash + _price;
+		lc_ac = lc_ac + _price;
 	};
 };

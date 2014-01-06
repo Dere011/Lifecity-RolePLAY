@@ -20,4 +20,4 @@ _unit 	= owner _unit;
 _query 	= format["UPDATE vehicles SET alive='0' WHERE pid='%1' AND id='%2'", _pid, _vid];
 _sql 	= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
 
-[[[_sp,_type],{life_atmcash = life_atmcash + (_this select 0); hint format["Vous avez vendu votre vehicule pour $%1",[(_this select 0)] call life_fnc_numberText];}], "BIS_fnc_call", _unit, false] spawn life_fnc_MP;
+[[[_sp,_type],{lc_ac = lc_ac + (_this select 0); hint format["Vous avez vendu votre vehicule pour $%1",[(_this select 0)] call life_fnc_numberText];}], "BIS_fnc_call", _unit, false] spawn life_fnc_MP;

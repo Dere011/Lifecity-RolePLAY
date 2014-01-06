@@ -17,7 +17,7 @@ _units = [];
 
 ctrlSetText[2404,"Connexion au central en cours..."];
 
-if(life_adminlevel < 1 AND life_coplevel < 2) then {
+if(lc_al < 1 AND lc_cl < 2) then {
 	ctrlShow[2405,false];
 };
 

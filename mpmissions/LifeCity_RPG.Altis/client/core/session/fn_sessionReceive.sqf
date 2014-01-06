@@ -17,15 +17,15 @@ if(count _session == 0) 										exitWith {[] spawn life_fnc_sessionCreate;};
 if(_session select 0 == 0) 										exitWith {[] spawn life_fnc_sessionCreate;};
 if(parseNumber(getPlayerUID player) != (_session select 0)) 	exitWith {cutText["ERROR","BLACK FADED"];0 cutFadeOut 9999999;}; 
 
-life_cash 					= (_session select 2);
-life_atmcash 				= (_session select 3);
-life_coplevel 				= (_session select 4);
-life_blacklisted 			= (_session select 7);
-cop_gear 					= (_session select 8);
-life_adminlevel 			= (_session select 6);
-life_donator				= (_session select 11);
-civ_gear 					= (_session select 12);
-life_is_arrested 			= (_session select 10);
+lc_c 					= (_session select 2);
+lc_ac 					= (_session select 3);
+lc_cl 					= (_session select 4);
+lc_b 					= (_session select 7);
+lc_cg 					= (_session select 8);
+lc_al 					= (_session select 6);
+lc_d					= (_session select 11);
+lc_cvg 					= (_session select 12);
+lc_a 					= (_session select 10);
 
 switch (playerSide) do {
 	case west:

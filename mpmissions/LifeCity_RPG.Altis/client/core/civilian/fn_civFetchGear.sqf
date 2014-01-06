@@ -42,4 +42,4 @@ if(backpack player != "") then
 _ret set[count _ret,_uItems];
 _ret set[count _ret,_bItems];
 
-civ_gear = _ret;
+lc_cvg = _ret;

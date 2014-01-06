@@ -63,13 +63,13 @@ life_hit_explosive 			= false;
 life_siren_active 			= false;
 life_bank_fail 				= false;
 life_use_atm				= true;
-life_is_arrested 			= false;
+lc_a 			= false;
 life_delivery_in_progress 	= false;
 life_action_in_use 			= false;
 life_thirst 				= 100;
 life_hunger 				= 100;
 life_paycheck_period 		= 5;
-life_cash 					= 0;
+lc_c 					= 0;
 life_impound_car 			= 350;
 life_impound_boat 			= 250;
 life_impound_air 			= 850;
@@ -82,12 +82,12 @@ switch (playerSide) do
 {
 	case west: 
 	{
-		life_atmcash 		= 7500;
+		lc_ac 		= 7500;
 		life_paycheck 		= 7500;
 	};
 	case civilian: 
 	{
-		life_atmcash 		= 7500;
+		lc_ac 		= 7500;
 		life_paycheck 		= 1500;
 	};
 };

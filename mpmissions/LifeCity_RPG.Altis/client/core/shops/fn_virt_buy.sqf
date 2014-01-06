@@ -15,13 +15,13 @@ _diff = [_type,parseNumber(_amount),life_carryWeight,life_maxWeight] call life_f
 _amount = parseNumber(_amount);
 if(_diff <= 0) exitWith {hint "You don't have enough space for that amount!"};
 _amount = _diff;
-if((_price * _amount) > life_cash) exitWith {hint "You don't have that much money!"};
+if((_price * _amount) > lc_c) exitWith {hint "You don't have that much money!"};
 
 _name = [([_type,0] call life_fnc_varHandle)] call life_fnc_varToStr;
 
 if(([true,_type,_amount] call life_fnc_handleInv)) then
 {
 	hint format["You bought %1 %2 for $%3",_amount,_name,[(_price * _amount)] call life_fnc_numberText];
-	life_cash = life_cash - (_price * _amount);
+	lc_c = lc_c - (_price * _amount);
 	[] call life_fnc_virt_update;
 };

@@ -104,9 +104,9 @@ _unit = _this select 0;
 			};
 		};
 		
-		case "life_cash":
+		case "lc_c":
 		{
-			if(life_cash > 0) then
+			if(lc_c > 0) then
 			{
 				_pos = _unit modelToWorld[0,3,0];
 				_pos = [_pos select 0, _pos select 1, 0];
@@ -133,4 +133,4 @@ _unit = _this select 0;
 			};
 		};
 	};
-} foreach (life_inv_items + ["life_cash"]);
+} foreach (life_inv_items + ["lc_c"]);

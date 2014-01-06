@@ -34,7 +34,7 @@ compileFinal "
 	if(isNull _ret) exitWith {};
 	if(isNil ""_ret"") exitWith {};
 	
-	[[life_atmcash,life_cash,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
+	[[lc_ac,lc_a,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
 ";
 publicVariable "fnc_player_query";
 
@@ -62,10 +62,10 @@ compileFinal "
 	if(_val > 999999) exitWith {hint ""You can't deposit more then $999,999"";};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > life_cash) exitWith {hint ""You don't have that much on you!""};
+	if(_val > lc_a) exitWith {hint ""You don't have that much on you!""};
 	
-	life_cash = life_cash - _val;
-	life_atmcash = life_atmcash + _val;
+	lc_a = lc_a - _val;
+	lc_ac = lc_ac + _val;
 	hint format[""You have deposited $%1 into your bank account"",[_val] call life_fnc_numberText];
 	[] call life_fnc_atmMenu;
 	[1,false] call life_fnc_sessionHandle;
@@ -78,10 +78,10 @@ compileFinal "
 	if(_val > 999999) exitWith {hint ""You can't withdraw more then $999,999"";};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > life_atmcash) exitWith {hint ""You don't have that much in your bank account!""};
+	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
 	
-	life_cash = life_cash + _val;
-	life_atmcash = life_atmcash - _val;
+	lc_a = lc_a + _val;
+	lc_ac = lc_ac - _val;
 	hint format [""You have withdrawn $%1 from your bank account"",[_val] call life_fnc_numberText];
 	[] call life_fnc_atmMenu;
 	[1,false] call life_fnc_sessionHandle;
@@ -99,11 +99,11 @@ compileFinal "
 	if(_val > 999999) exitWith {hint ""You can't transfer more then $999,999"";};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > life_atmcash) exitWith {hint ""You don't have that much in your bank account!""};
+	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
 	_tax = [_val] call life_fnc_taxRate;
-	if((_val + _tax) > life_atmcash) exitWith {hint format[""You do not have enough money in your bank account, to transfer $%1 you will need $%2 as a tax fee."",_val,_tax]};
+	if((_val + _tax) > lc_ac) exitWith {hint format[""You do not have enough money in your bank account, to transfer $%1 you will need $%2 as a tax fee."",_val,_tax]};
 	
-	life_atmcash = life_atmcash - (_val + _tax);
+	lc_ac = lc_ac - (_val + _tax);
 	
 	bank_addfunds = _tax;
 	publicVariableServer ""bank_addfunds"";
@@ -125,7 +125,7 @@ compileFinal "
 	_from = _this select 1;
 	if(!([str(_val)] call fnc_isnumber)) exitWith {};
 	if(_from == """") exitWith {};
-	life_atmcash = life_atmcash + _val;
+	lc_ac = lc_ac + _val;
 	hint format[""%1 has wire transferred $%2 to you."",_from,[_val] call life_fnc_numberText];
 	
 ";
@@ -248,7 +248,7 @@ compileFinal "
 
 fnc_cell_adminmsg =
 compileFinal "
-	if(life_adminlevel < 1) exitWith {hint ""You are not an admin!"";};
+	if(lc_al < 1) exitWith {hint ""You are not an admin!"";};
 	private[""_msg"",""_to""];
 	_msg = ctrlText 3003;
 	_to = call compile format[""%1"",(lbData[3004,(lbCurSel 3004)])];
@@ -262,7 +262,7 @@ compileFinal "
 
 fnc_cell_adminmsgall =
 compileFinal "
-	if(life_adminlevel < 1) exitWith {hint ""You are not an admin!"";};
+	if(lc_al < 1) exitWith {hint ""You are not an admin!"";};
 	private[""_msg"",""_from""];
 	_msg = ctrlText 3003;
 	if(_msg == """") exitWith {hint ""You must enter a message to send!"";};
@@ -285,7 +285,7 @@ compileFinal "
 	_from = _this select 1;
 	_type = _this select 2;
 	if(_from == """") exitWith {};
-	if(isNil ""life_adminlevel"") then {life_adminlevel = 0;};
+	if(isNil ""lc_al"") then {lc_al = 0;};
 	switch (_type) do
 	{
 		case 0 :
@@ -311,7 +311,7 @@ compileFinal "
 		
 		case 2 :
 		{
-			if(life_adminlevel < 1) exitWith {};
+			if(lc_al < 1) exitWith {};
 			private[""_message""];
 			_message = format[""???ADMIN REQUEST FROM %1: %2"",_from,_msg];
 			hint parseText format [""<t color='#ffcefe'><t size='2'><t align='center'>Admin Request<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Admins<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
@@ -329,7 +329,7 @@ compileFinal "
 			
 			[""AdminMessage"",[""You Have Received A Message From An Admin!""]] call bis_fnc_showNotification;
 			systemChat _message;
-			if(life_adminlevel > 0) then {systemChat _admin;};
+			if(lc_al > 0) then {systemChat _admin;};
 		};
 		
 		case 4 :
@@ -341,7 +341,7 @@ compileFinal "
 			
 			[""AdminMessage"",[""You Have Received A Message From An Admin!""]] call bis_fnc_showNotification;
 			systemChat _message;
-			if(life_adminlevel > 0) then {systemChat _admin;};
+			if(lc_al > 0) then {systemChat _admin;};
 		};
 	};
 ";

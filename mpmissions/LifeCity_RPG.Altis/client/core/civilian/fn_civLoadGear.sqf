@@ -6,7 +6,7 @@
 	Loads saved civilian gear, this is limited for a reason and that's balance.
 */
 private["_itemArray","_uniform","_backpack","_goggles","_headgear","_itemArray","_uItems","_bItems","_handle"];
-_itemArray = civ_gear;
+_itemArray = lc_cvg;
 waitUntil {!(isNull (findDisplay 46))};
 if(count _itemArray == 0) exitWith 
 {
