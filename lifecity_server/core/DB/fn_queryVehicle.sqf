@@ -11,17 +11,14 @@ _pid 			= [_this,1,"",[""]] call BIS_fnc_param;
 
 if(_vid == -1 OR _pid == "") 	exitWith {[]};
 
-_ret 		= [];
-_query 		= format["SELECT * FROM vehicles WHERE id='%1' AND pid='%2'",_vid,_pid];
-_result 	= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
-_result 	= call compile format["%1", _result];
+_ret 			= [];
+_query 			= format["SELECT * FROM vehicles WHERE id='%1' AND pid='%2'",_vid,_pid];
+_result 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
+_result 		= call compile format["%1", _result];
 
-if(isNil {((_result select 0) select 0)}) then
-{
+if(isNil {((_result select 0) select 0)}) then {
 	_ret 	= [];
-}
-	else
-{
+}else{
 	_ret 	= ((_result select 0) select 0);
 };
 

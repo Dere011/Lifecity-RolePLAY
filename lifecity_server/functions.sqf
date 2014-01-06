@@ -1,29 +1,3 @@
-life_fnc_shutmedown = 
-compileFinal "
-	if(isServer) exitWith {};
-	if(!isServer) exitWith {};
-    with uiNamespace do
-    {
-        BIS_fnc_shutmedown =
-        {
-            _d = 99;
-            while {_d > 0} do
-            {
-                ctrlactivate ((findDisplay _d) displayCtrl 2);
-                _d = _d - 1;
-            };
-            
-            ctrlactivate ((finddisplay 1) displayctrl 102);
-            (finddisplay 3) closedisplay 2;
-            ctrlactivate ((finddisplay 0) displayctrl 106);
-        };
-    };
-    
-    [] spawn (uiNamespace getVariable ""BIS_fnc_shutmedown"");
-    sleep 0.3;
-    endMission ""loser"";
-";
-
 life_fnc_sidechat =
 compileFinal "
 	if(life_sidechat) then {life_sidechat = false;} else {life_sidechat = true;};
@@ -95,27 +69,6 @@ compileFinal "
 	[[life_atmcash,life_cash,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
 ";
 publicVariable "fnc_player_query";
-
-/*
-fnc_player_query =
-compileFinal "
-	private[""_req"",""_packet"",""_ret""];
-	_ret = _this select 0;
-	_req = _this select 1;
-	_req = call compile format[""%1"", _req];
-	if(isNull _req) exitWith {admin_query_info = [];(owner _ret) publicVariableClient ""admin_query_info""; sleep 0.5; admin_query_info = nil};
-	[[],""admin_is_querying"",_req,false] spawn life_fnc_MP;
-	waitUntil {!isNil {serv_query_info}};
-	admin_query_info = [(owner _req)];
-	admin_query_info set[count admin_query_info,(serv_query_info select 0)];
-	admin_query_info set[count admin_query_info,(serv_query_info select 1)];
-	admin_query_info set[count admin_query_info,_req];
-	(owner _ret) publicVariableClient ""admin_query_info"";
-	sleep 0.5;
-	admin_query_info = nil;
-	serv_query_info = nil;
-";
-*/
 
 fnc_clearVehicle =
 compileFinal "

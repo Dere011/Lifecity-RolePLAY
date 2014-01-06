@@ -14,7 +14,8 @@ _uid 		= _dbInfo select 0;
 _plate 		= _dbInfo select 1;
 _query 		= format["UPDATE vehicles SET alive='0' WHERE pid='%1' AND plate='%2'", _uid, _plate];
 _sql 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
-_fire 		= "Fire" createVehicle (position _vehicle);
+_fire 		= "test_EmptyObjectForFireBig" createVehicle (position _vehicle);
+[[1,"[CanBUS] Un de vos vehicules est detruit."], "life_fnc_broadcast", _uid, false] spawn life_fnc_MP;
 
 sleep (30);
 

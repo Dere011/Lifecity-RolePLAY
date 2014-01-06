@@ -26,14 +26,8 @@ if(_impound) then {
 		deleteVehicle _vehicle;
 	}else{
 		_query 				= format["UPDATE vehicles SET active='0' WHERE pid='%1' AND plate='%2'",_uid,_plate];
-		_result 			= nil;
-		while {isNil("_result")} do {
-			_result 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
-			if (_result == "") then {
-				_result 	= nil;
-			};
-			sleep 0.5;
-		};
+		_result 			= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
+
 		deleteVehicle _vehicle;
 		life_impound_inuse 	= false;
 		(owner _unit) publicVariableClient "life_impound_inuse";
@@ -52,18 +46,13 @@ if(_impound) then {
 		(owner _unit) publicVariableClient "life_garage_store";
 	};
 
-	_query 				= format["UPDATE vehicles SET active='0' WHERE pid='%1' AND plate='%2'",_uid,_plate];
-	_result 			= nil;
-	while {isNil("_result")} do {
-		_result 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
-		if (_result == "") then {
-			_result 	= nil;
-		};
-		sleep 0.5;
-	};
+	_query 					= format["UPDATE vehicles SET active='0' WHERE pid='%1' AND plate='%2'",_uid,_plate];
+	_result 				= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
+	
 	deleteVehicle _vehicle;
-	life_garage_store 	= false;
+	life_garage_store 		= false;
 	(owner _unit) publicVariableClient "life_garage_store";
-	[[1,"The vehicle has been stored in your garage."],"life_fnc_broadcast",(owner _unit),false] spawn life_fnc_MP;
+	
+	[[1,"Le vehicule est maintenance dans votre garage."], "life_fnc_broadcast", (owner _unit),false] spawn life_fnc_MP;
 	//@TODO: Send sound
 };

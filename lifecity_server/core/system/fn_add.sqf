@@ -15,7 +15,6 @@ _side 		= [_this,1,civilian,[sideUnknown]] call BIS_fnc_param;
 _money 		= [_this,2,0,[0]] call BIS_fnc_param;
 _bank 		= [_this,3,2500,[0]] call BIS_fnc_param;
 _uid 		= [_this,4,"",[""]] call BIS_fnc_param;
-
 _money 		= [_money] call DB_fnc_numberSafe;
 _bank 		= [_bank] call DB_fnc_numberSafe;
 
