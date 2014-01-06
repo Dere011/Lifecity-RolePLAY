@@ -6,38 +6,6 @@ compileFinal "
 ";
 
 publicVariable "life_fnc_sidechat";
-publicVariable "life_fnc_shutmedown";
-
-fnc_log_ac =
-compileFinal "
-	private[""_unit""];
-	_unit = _this select 1;
-	_unit = owner _unit;
-	diag_log format[""%1"",_this select 0];
-	sleep 0.2;
-	
-	switch(typeName life_fnc_MP_packet) do
-	{
-		case ""ARRAY"":
-		{
-			if(count life_fnc_MP_packet == 0) then
-			{
-				youarebad = true;
-				_unit publicVariableClient ""youarebad"";
-			}
-				else
-			{
-				[[],""life_fnc_shutmedown"",_unit,false] spawn life_fnc_MP;
-			};
-		};
-		
-		default
-		{
-			youarebad = true;
-			_unit publicVariableClient ""youarebad"";
-		};
-	};
-";
 
 fnc_index =
 compileFinal "

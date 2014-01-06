@@ -7,23 +7,21 @@
 	The purpose of this menu is it is now called a 'Garage' where vehicles are stored (persistent ones).
 */
 private["_vehicles","_control"];
+
 disableSerialization;
-_vehicles = [_this,0,[],[[]]] call BIS_fnc_param;
+
+_vehicles 	= [_this,0,[],[[]]] call BIS_fnc_param;
 
 waitUntil {!isNull (findDisplay 2800)};
 
-if(typeName _vehicles == "STRING") then {
-	ctrlSetText[2802, _vehicles];
-};
-
 if(count _vehicles == 0) exitWith {
-	ctrlSetText[2802,"Erreur / Aucun vehicule"];
+	titleText ["Aucun vehicule dans votre garage.\nMerci d'attendre 10 secondes entre chaque ouverture de garage.", "PLAIN DOWN"];
+	ctrlSetText[2802,"Aucun vehicule"];
 };
 
 ctrlSetText[2802,"Connexion OK"];
 _control = ((findDisplay 2800) displayCtrl 2801);
 lbClear _control;
-
 {
 	_displayName = getText(configFile >> "CfgVehicles" >> (_x select 2) >> "displayName");
 	_picture = getText(configFile >> "CfgVehicles" >> (_x select 2) >> "picture");

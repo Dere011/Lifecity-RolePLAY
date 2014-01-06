@@ -85,8 +85,8 @@ class Mission
 	randomSeed=2004553;
 	class Intel
 	{
-		briefingName="LifeCity v1.1 ALPHA";
-		overviewText="LifeCity v1.1 ALPHA by Dere011 - Based on Altis Life RPG developed by TAW_Tonic";
+		briefingName="LifeCity RolePlay v1.5 ALPHA";
+		overviewText="LifeCity RolePlay v1.5 ALPHA by Dere011 - Based on Altis Life RPG developed by TAW_Tonic";
 		resistanceWest=0;
 		startWeather=0;
 		startWind=0;

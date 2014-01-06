@@ -5,7 +5,6 @@
 	Description:
 	Cop Initialization file.
 */
-player addRating 9999999;
 waitUntil {!(isNull (findDisplay 46))};
 
 if(life_blacklisted) exitWith {
@@ -14,8 +13,7 @@ if(life_blacklisted) exitWith {
 
 if(life_coplevel <= 0) exitWith { endMission "Loser"; };
 
-switch (true) do
-{
+switch (true) do {
 	case (str(player) in ["Admin_1","cop_hint"]):
 	{
 		if(life_adminlevel != 666) exitWith {

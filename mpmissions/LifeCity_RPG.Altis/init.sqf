@@ -29,8 +29,6 @@ if(isNull player) then {
 
 enableSaving [false, false];
 
-life_versionInfo 		= "LifeCity RPG";
-
 if(X_Client) then {
 	waitUntil {player == player};
 	cutText["Bienvenue sur LifeCity ALPHA (Altis)\n\nChargement de votre session de jeu, merci de patienter.", "BLACK", 0, false];
@@ -43,8 +41,6 @@ if(X_Client) then {
 [] execVM "common\KRON_Strings.sqf";
 
 if(X_Client) then {
-	cutText["Initialisation de l'anti-cheat (LCAC V1.1)\n\nCHEAT/BUG USING/EXPLOIT = BAN PERMANENT", "BLACK", 0, false];
-	sleep 1;
 	cutText["Fin du chargement de votre session.\n\nBon jeu sur LifeCity!", "BLACK", 0, false];
 	sleep 1;
 	if(loub_admin_mode) then {

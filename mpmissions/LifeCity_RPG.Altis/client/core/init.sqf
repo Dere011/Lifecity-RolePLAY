@@ -39,11 +39,8 @@ player setVariable["transporting",false,true];
 
 waitUntil {!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call life_fnc_keyHandler"];
-//player addRating 99999999;
 
-//life_sidechat = true;
-//[[player,life_sidechat,playerSide], "STS_fnc_managesc", false, false] spawn life_fnc_MP;
-
+[] call life_fnc_addRating;
 [] call life_fnc_hudSetup;
 [] call life_fnc_playerTags;
 [] call life_fnc_settingsInit;

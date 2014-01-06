@@ -9,17 +9,14 @@ private["_cop"];
 _cop = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
 if(isNull _cop) exitWith {};
 
-//Monitor excessive restrainment
 [] spawn
 {
 	private["_time"];
 	while {true} do
 	{
 		_time = time;
-		waitUntil {(time - _time) > (10 * 60)};
-			
-		if(player getVariable "restrained" && !(player getVariable "Escorting") && !(player getVariable "transporting")) exitWith
-		{
+		waitUntil {(time - _time) > (10 * 60)};	
+		if(player getVariable "restrained" && !(player getVariable "Escorting") && !(player getVariable "transporting")) exitWith {
 			disableUserInput false;
 			player setVariable["restrained",false,true];
 			titleText ["You have been released automatically for excessive restrainment time","PLAIN"];
@@ -28,10 +25,9 @@ if(isNull _cop) exitWith {};
 	};
 };
 
-titleText[format["You have been restrained by %1",name _cop],"PLAIN"];
+titleText[format["Vous avez ete menotte par %1" ,name _cop], "PLAIN"];
 				
-while {player getVariable "restrained"} do
-{
+while {player getVariable "restrained"} do {
 	player playMove "AmovPercMstpSnonWnonDnon_Ease";
 	waitUntil {animationState player != "AmovPercMstpSnonWnonDnon_Ease" || !(player getvariable "restrained")};
 			
@@ -41,5 +37,6 @@ while {player getVariable "restrained"} do
 };
 		
 if(alive player) then {
-	titleText["You have been released, press V to get out of restrainment.","PLAIN"];
+	player playMove "AMOVPERCMSTPSNONWNONDNON_EASEOUT";
+	//titleText["You have been released, press V to get out of restrainment.","PLAIN"];
 };

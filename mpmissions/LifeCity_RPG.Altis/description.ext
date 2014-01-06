@@ -1,17 +1,20 @@
 author 				= "Dere011";
 onLoadName 			= "LifeCity RolePlay";
-onLoadMission 		= "";
+onLoadMission 		= "Based on Altis Life by TAW_Tonic";
 joinUnassigned 		= 1;
 respawn 			= BASE;
 respawndelay 		= 10;
 disabledAI 			= true;
 disableChannels[]	= {0,1,2};
+debriefing 			= 0;
+showMap 			= 1;
+enableDebugConsole 	= 1;
 
 class Header
 {
-	gameType = RPG;
-	minPlayers = 1;
-	maxPlayers = 92;
+	gameType 	= RPG;
+	minPlayers 	= 0;
+	maxPlayers 	= 300;
 };
 
 #include "client\dialog\common.hpp"

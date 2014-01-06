@@ -179,10 +179,10 @@ player createDiarySubject ["controls","Contrôles"];
 			"Site/Forum",
 				"
 				http://www.communaute-hrf.fr/<br/>
-				 vous trouverez ici.<br/><br/>
-				-bugs reports<br/>
+				Vous trouverez ici.<br/><br/>
+				-Bugs reports<br/>
 				-Suggestions / Idées<br/>
-				-Pleintes / reclamtions<br/>
+				-Plaintes / Réclamations<br/>
 			     "
 		]
 	];
@@ -198,8 +198,6 @@ player createDiarySubject ["controls","Contrôles"];
 		]
 	];*/
 		
-	
-// Police Section
 	player createDiaryRecord ["policerules",
 		[
 			"Teamspeak",
@@ -439,11 +437,6 @@ player createDiarySubject ["controls","Contrôles"];
 				"
 		]
 	];
-
-
-	
-// Controls Section
-
 	player createDiaryRecord ["controls",
 		[
 			"",

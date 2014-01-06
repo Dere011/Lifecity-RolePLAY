@@ -53,6 +53,6 @@ if(_impound) then {
 	life_garage_store 		= false;
 	(owner _unit) publicVariableClient "life_garage_store";
 	
-	[[1,"Le vehicule est maintenance dans votre garage."], "life_fnc_broadcast", (owner _unit),false] spawn life_fnc_MP;
+	[[1,"Le vehicule est maintenant dans votre garage."], "life_fnc_broadcast", (owner _unit),false] spawn life_fnc_MP;
 	//@TODO: Send sound
 };

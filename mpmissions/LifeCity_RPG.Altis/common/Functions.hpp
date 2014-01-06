@@ -159,6 +159,7 @@ class Life_Client_Core
 		class pulloutVeh {};
 		class MP{};
 		class MPexec{};
+		class addRating{};
 	};
 	
 	class Civilian
