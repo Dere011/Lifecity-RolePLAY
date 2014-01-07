@@ -15,8 +15,12 @@ _dbName 		= ["Player_", _pid] 							call PDB_databaseNameCompiler;
 _check 			= (_dbName) 									call iniDB_exists;
 __last_fechVeh	= [_dbName, _pid, "last_fetch_veh", "NUMBER"] 	call iniDB_read;
 
-if(__last_fechVeh > time-10) 									exitWith {[]};
-[_dbName, _pid, "last_fetch_veh", time] 						call iniDB_write;
+if(__last_fechVeh > time+100) then { 
+	//RESTART
+}else{
+	if(__last_fechVeh > time-10) 									exitWith {[]};
+};
+[_dbName, _pid, "last_fetch_veh", time] 							call iniDB_write; 
 
 _side = switch(_side) do {
 	case west: 			{"cop"};

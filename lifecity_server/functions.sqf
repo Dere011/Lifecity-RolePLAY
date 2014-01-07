@@ -7,6 +7,15 @@ compileFinal "
 
 publicVariable "life_fnc_sidechat";
 
+lc_atm_s =
+compileFinal "
+	this enableSimulation false; 
+	this allowDamage false; 
+	this addAction[""<t color='#ADFF2F'>Guichet Automatique Bancaire (ATM)</t>"", life_fnc_atmMenu]; 
+";
+
+publicVariable "lc_atm_s";
+
 fnc_index =
 compileFinal "
 	private[""_find"",""_limit"",""_select"",""_array"",""_return""];
@@ -64,7 +73,7 @@ compileFinal "
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
 	if(_val > lc_a) exitWith {hint ""You don't have that much on you!""};
 	
-	lc_a = lc_a - _val;
+	lc_c = lc_c - _val;
 	lc_ac = lc_ac + _val;
 	hint format[""You have deposited $%1 into your bank account"",[_val] call life_fnc_numberText];
 	[] call life_fnc_atmMenu;
@@ -80,7 +89,7 @@ compileFinal "
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
 	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
 	
-	lc_a = lc_a + _val;
+	lc_c = lc_c + _val;
 	lc_ac = lc_ac - _val;
 	hint format [""You have withdrawn $%1 from your bank account"",[_val] call life_fnc_numberText];
 	[] call life_fnc_atmMenu;

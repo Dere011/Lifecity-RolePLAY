@@ -24,7 +24,7 @@ _inv = _veh_data select 0;
 if(_ctrl == "money") then
 {
 	_index = [_ctrl,_inv] call fnc_index;
-	if(lc_a < _num) exitWith {hint "You don't have that much cash on you to store in the vehicle!"};
+	if(lc_c < _num) exitWith {hint "You don't have that much cash on you to store in the vehicle!"};
 	if(_index == -1) then
 	{
 		_inv set[count _inv,[_ctrl,_num]];
@@ -35,7 +35,7 @@ if(_ctrl == "money") then
 		_inv set[_index,[_ctrl,_val + _num]];
 	};
 	
-	lc_a = lc_a - _num;
+	lc_c = lc_c - _num;
 	life_trunk_vehicle setVariable["Trunk",[_inv,(_veh_data select 1) + _itemWeight],true];
 	[life_trunk_vehicle] call life_fnc_vehInventory;
 }

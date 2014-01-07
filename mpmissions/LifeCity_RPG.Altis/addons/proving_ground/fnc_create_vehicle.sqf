@@ -91,7 +91,7 @@ case 2: {
 case 3: {
 		_dir = getdir player;
 		_pos = getPos player;
-		_pos = [(_pos select 0)+20*sin(_dir),(_pos select 1)+20*cos(_dir),0];
+		_pos = [(_pos select 0)+10*sin(_dir),(_pos select 1)+10*cos(_dir),0];
 		_veh_type = GET_SELECTED_DATA(balca_VC_vehlist_IDC);
 		_veh = createVehicle [_veh_type, _pos, [], 0, "CAN_COLLIDE"];
 		_veh spawn vehicleRepair;

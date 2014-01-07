@@ -41,7 +41,7 @@ if(lc_a) then {
 	waitUntil{isNull (findDisplay 38500)};
 };
 
-[_unit] call life_fnc_setRating;
+//[_unit] call life_fnc_setRating;
 [[_unit,life_sidechat,playerSide],"STS_fnc_managesc",false,false] spawn life_fnc_MP;
 [] call life_fnc_hudUpdate;
 
@@ -49,6 +49,15 @@ cutText ["","BLACK IN"];
 
 if(playerSide == civilian) then {
 	[] call life_fnc_civFetchGear;
+};
+
+switch (playerSide) do {
+	case west: {
+		player addRating 99999999;
+	};
+	case civilian: {
+		player addRating -20000;
+	};
 };
 
 [1,true] call life_fnc_sessionHandle;

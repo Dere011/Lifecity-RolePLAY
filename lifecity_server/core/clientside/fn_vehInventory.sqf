@@ -37,7 +37,7 @@ if(count _data == 0) then {_veh setVariable["Trunk",[[],0],true]; _data = [];} e
 	}
 		else
 	{
-		if(lc_a > 0) then
+		if(lc_c > 0) then
 		{
 			_pInv lbAdd format["$%1",[lc_a] call life_fnc_numberText];
 			_pInv lbSetData [(lbSize _pInv)-1,"money"];

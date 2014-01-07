@@ -9,7 +9,7 @@ switch (playerSide) do {
 		player addRating 99999999;
 	};
 	case civilian: {
-		player addRating -2000;
+		player addRating -20000;
 	};
 };
  

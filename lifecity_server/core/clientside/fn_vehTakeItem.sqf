@@ -40,7 +40,7 @@ if(_ctrl == "money") then
 		_data set[_index,[_ctrl,(_value - _num)]];
 	};
 	
-	lc_a = lc_a + _num;
+	lc_c = lc_c + _num;
 	life_trunk_vehicle setVariable["Trunk",[_data,(_old select 1) - _weight],true];
 	[life_trunk_vehicle] call life_fnc_vehInventory;
 }

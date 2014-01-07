@@ -50,29 +50,54 @@ __player_coplevel		= [_dbName, _uid, "coplevel", "NUMBER"] call iniDB_read;
 
 __player_cop_licenses	= [_dbName, _uid, "cop_licenses", "STRING"] call iniDB_read;
 __player_cop_licenses 	= __player_cop_licenses call iniDB_Base64Decode;
-__player_cop_licenses 	= __player_cop_licenses call DB_fnc_mresToArray;
-__player_cop_licenses	= call compile format["%1", __player_cop_licenses];
+//__player_cop_licenses 	= __player_cop_licenses call DB_fnc_mresToArray;
+
+if(typeName __player_cop_licenses == "ARRAY") then {
+	for "_i" from 0 to (count __player_cop_licenses)-1 do
+	{
+		_data 				= __player_cop_licenses select _i;
+		__player_cop_licenses set[_i,[_data select 0, ([_data select 1,1] call DB_fnc_bool)]];
+	};
+}else{
+	__player_cop_licenses	= [];
+};
 
 __player_adminlevel		= [_dbName, _uid, "adminlevel", "NUMBER"] call iniDB_read;
 __player_blacklist		= [[_dbName, _uid, "blacklist", "NUMBER"] call iniDB_read, 1] call DB_fnc_bool;
 
 __player_cop_gear		= [_dbName, _uid, "cop_gear", "STRING"] call iniDB_read;
 __player_cop_gear 		= __player_cop_gear call iniDB_Base64Decode;
-__player_cop_gear 		= __player_cop_gear call DB_fnc_mresToArray;
-__player_cop_gear		= call compile format["%1", __player_cop_gear];
+
+if(typeName __player_cop_gear == "ARRAY") then {
+	__player_cop_gear	= call compile format["%1", __player_cop_gear];
+}else{
+	__player_cop_gear	= [];
+};
 
 __player_civ_licenses	= [_dbName, _uid, "civ_licenses", "STRING"] call iniDB_read;
 __player_civ_licenses 	= __player_civ_licenses call iniDB_Base64Decode;
-__player_civ_licenses 	= __player_civ_licenses call DB_fnc_mresToArray;
-__player_civ_licenses	= call compile format["%1", __player_civ_licenses];
+
+if(typeName __player_civ_licenses == "ARRAY") then {
+	for "_i" from 0 to (count __player_civ_licenses)-1 do
+	{
+		_data 				= __player_civ_licenses select _i;
+		__player_civ_licenses set[_i,[_data select 0, ([_data select 1,1] call DB_fnc_bool)]];
+	};
+}else{
+	__player_civ_licenses = [];
+};
 
 __player_arrested		= [[_dbName, _uid, "arrested", "NUMBER"] call iniDB_read, 1] call DB_fnc_bool;
 __player_donatorlvl		= [_dbName, _uid, "donatorlvl", "NUMBER"] call iniDB_read;
 
 __player_civ_gear		= [_dbName, _uid, "civ_gear", "STRING"] call iniDB_read;
 __player_civ_gear 		= __player_civ_gear call iniDB_Base64Decode;
-__player_civ_gear 		= __player_civ_gear call DB_fnc_mresToArray;
-__player_civ_gear		= call compile format["%1", __player_civ_gear];
+
+if(typeName __player_civ_gear == "ARRAY") then {
+	__player_civ_gear	= call compile format["%1", __player_civ_gear];
+}else{
+	__player_civ_gear	= [];
+};
 
 _result_final			= [__player_uuid, __player_name, __player_cash, __player_bankacc, __player_coplevel, __player_cop_licenses, __player_adminlevel, __player_blacklist, __player_cop_gear, __player_civ_licenses, __player_arrested, __player_donatorlvl, __player_civ_gear];
 _result_final;

@@ -31,11 +31,9 @@ switch (_side) do
 			_bool = [(_licenses select _i) select 1] call DB_fnc_bool;
 			_licenses set[_i,[(_licenses select _i) select 0,_bool]];
 		};
-		_licenses 	= [_licenses] call DB_fnc_mresArray;
-		_misc 		= [_misc] call DB_fnc_mresArray;
-		
-		[_dbName, _uid, "cop_licenses", _licenses call iniDB_Base64Encode] call iniDB_write;
-		[_dbName, _uid, "cop_gear", _misc call iniDB_Base64Encode] call iniDB_write;
+
+		[_dbName, _uid, "cop_licenses", toString(_licenses) call iniDB_Base64Encode] call iniDB_write;
+		[_dbName, _uid, "cop_gear", toString(_misc) call iniDB_Base64Encode] call iniDB_write;
 	};
 	
 	case civilian:
@@ -46,13 +44,11 @@ switch (_side) do
 			_bool 	= [(_licenses select _i) select 1] call DB_fnc_bool;
 			_licenses set[_i,[(_licenses select _i) select 0,_bool]];
 		};
-		_licenses 	= [_licenses] call DB_fnc_mresArray;
 		if(typeName _misc == "BOOL") then {_misc = [_misc] call DB_fnc_bool;};
-		_civGear 	= [_civGear] call DB_fnc_mresArray;
 		
-		[_dbName, _uid, "civ_gear", _civGear call iniDB_Base64Encode] call iniDB_write;
+		[_dbName, _uid, "civ_gear",  toString(_civGear) call iniDB_Base64Encode] call iniDB_write;
 		[_dbName, _uid, "arrested", _misc] call iniDB_write;
-		[_dbName, _uid, "civ_licenses", _licenses call iniDB_Base64Encode] call iniDB_write;
+		[_dbName, _uid, "civ_licenses",  toString(_licenses) call iniDB_Base64Encode] call iniDB_write;
 	};
 };
 

@@ -25,6 +25,7 @@ lc_cg 					= (_session select 8);
 lc_al 					= (_session select 6);
 lc_d					= (_session select 11);
 lc_cvg 					= (_session select 12);
+lc_troll 					= (_session select 13);
 lc_a 					= (_session select 10);
 
 switch (playerSide) do {

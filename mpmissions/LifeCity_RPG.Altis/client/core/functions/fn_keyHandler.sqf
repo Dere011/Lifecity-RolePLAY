@@ -84,6 +84,20 @@ switch (_code) do
 			};
 		};
 	};
+	case 34:
+	{
+		if(playerSide == west && vehicle player != player && !life_siren_active && ((driver vehicle player) == player)) then
+		{
+			[] spawn
+			{
+				life_siren_active = true;
+				sleep 4.7;
+				life_siren_active = false;
+			};
+			[[vehicle player,"klaxoncop"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
+			titleText ["Klaxon COP ON","PLAIN DOWN"];
+		};
+	};
 	//U Key
 	case 22:
 	{
@@ -103,17 +117,17 @@ switch (_code) do
 			if(_veh in life_vehicles && player distance _veh < 6.5) then {
 				if(_locked != 0) then {
 					_veh lock 0;
-					if(!(local _veh)) then {
+					//if(!(local _veh)) then {
 						[[_veh, 0], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
-					};
-					_vehicle say3D "LockVeh";
+					//};
+					_veh say3D "LockVeh";
 					titleText["Vous avez deverrouille votre vehicule.", "PLAIN DOWN"];
 				}else{
 					_veh lock 2;
-					if(!(local _veh)) then {
+					//if(!(local _veh)) then {
 						[[_veh, 2], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
-					};
-					_vehicle say3D "UnLockVeh";
+					//};
+					_veh say3D "UnLockVeh";
 					titleText["Vous avez verrouille votre vehicule.", "PLAIN DOWN"];
 				};
 			};

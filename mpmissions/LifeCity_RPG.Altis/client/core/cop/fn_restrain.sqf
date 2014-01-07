@@ -37,6 +37,5 @@ while {player getVariable "restrained"} do {
 };
 		
 if(alive player) then {
-	player playMove "AMOVPERCMSTPSNONWNONDNON_EASEOUT";
-	//titleText["You have been released, press V to get out of restrainment.","PLAIN"];
+	titleText["You have been released, press V to get out of restrainment.","PLAIN"];
 };

@@ -14,17 +14,17 @@ life_animals_spawned = false;
 life_animals_array = [];
 
 //Selling Prices
-life_sell_salema = 45;//20
-life_sell_ornate = 40;//15
-life_sell_mackerel = 175;//45
-life_sell_tuna = 700; //150
-life_sell_mullet = 250; //15
-life_sell_catShark = 300;//100
-life_sell_rabbit = 65;//50
-life_sell_apple = 50;//20
-life_sell_oil = 4500;//200
-life_sell_heroin = 3500;//560
-life_sell_marijuana = 3000;//450
+life_sell_salema = 60;//20
+life_sell_ornate = 50;//15
+life_sell_mackerel = 195;//45
+life_sell_tuna = 730; //150
+life_sell_mullet = 270; //15
+life_sell_catShark = 330;//100
+life_sell_rabbit = 75;//50
+life_sell_apple = 55;//20
+life_sell_oil = 1800;//200
+life_sell_heroin = 2980;//560
+life_sell_marijuana = 2000;//450
 life_sell_turtle = 2000;//2000
 life_sell_fishing = 3;//3
 life_sell_water = 5;//5
@@ -74,16 +74,16 @@ sell_array = [
 ["redgull",200],
 ["peach",55],
 ["cocaine",3000],
-["cocainep",6000],
+["cocainep",4050],
 ["diamond",750],
-["diamondc",3000],
+["diamondc",1900],
 ["iron_r",3200],
-["copper_r",1500],
-["salt_r",1300],
-["glass",2500],
+["copper_r",1200],
+["salt_r",2300],
+["glass",2000],
 ["fuelF",500],
 ["spikeStrip",1200],
-["cement",1950]
+["cement",2050]
 ];
 
 buy_array = [
