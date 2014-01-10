@@ -32,13 +32,10 @@ switch(_state) do
 		_vault setVariable["fed_locked",false,true];
 		_vault setVariable["fed_rob_ip",false,true];
 	
-		if(_funds > life_federal_funds) then
-		{
-			life_federal_funds = 0;
-		}
-			else
-		{
-			life_federal_funds = life_federal_funds - _funds;
+		if(_funds > lc_federal_funds) then {
+			lc_federal_funds = 0;
+		}else{
+			lc_federal_funds = lc_federal_funds - _funds;
 		};
 		
 		_funds = round(_funds / (count playableUnits) * 3);

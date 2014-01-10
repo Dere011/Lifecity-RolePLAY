@@ -1,21 +1,17 @@
 /*
 	File: fn_federalUpdate.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Uhhh, adds to it?
 */
 private["_funds"];
-while {true} do
-{
+
+while {true} do {
 	sleep (15 * 60);
-	_funds = ((count playableUnits) * 1000) / 2;
-	if(!isNil "_funds") then
-	{
-		if(life_federal_funds < 1) then 
-		{
-			life_federal_funds = 1000;
+	_funds 						= round((count playableUnits) * random(5000));
+	if(!isNil "_funds") then {
+		if(lc_federal_funds <= 0) then {
+			lc_federal_funds 	= 0;
 		};
-		life_federal_funds = life_federal_funds + _funds;
+		lc_federal_funds 		= lc_federal_funds + _funds;
 	};
 };

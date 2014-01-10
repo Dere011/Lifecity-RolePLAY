@@ -27,13 +27,13 @@ class CfgFunctions
 			class formatArray {};
 			class mresArray {};
 			class mresToArray {};
+			class mresArrayLC {};
 			class insertVehicle {};
 			class queryVehicle {};
 			class queryVehicles {};
 			class bool{};
 		};
 	};
-	
 	class Life_System
 	{
 		tag = "life";
@@ -60,7 +60,14 @@ class CfgFunctions
 			class vehTakeItem {};
 			class vehInventory {};
 			class fedSuccess {};
-		};	
+		};
+		class Admin_Sys
+		{
+			file = "lifecity_server\core\admin";
+			class kickPlayer {};
+			class banPlayer {};
+			class jailPlayer {};
+		};
 	};
 	
 	class STS_System
@@ -77,7 +84,6 @@ class CfgFunctions
 			class timeStamp {};
 			class huntingZone {};
 			class getID {};
-			class kickPlayer {};
 			class vehicleCreate {};
 			class vehicleDead {};
 			class spawnVehicle {};

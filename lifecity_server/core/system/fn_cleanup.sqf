@@ -1,16 +1,14 @@
 /*
 	File: fn_cleanup.sqf
-	Author: Bryan "Tonic" Boardwine
+	Author:
 	
 	Description:
-	Server-side cleanup script on vehicles using Arma2Net DateTime function.
-	Sort of a lame way but whatever.
 */
-
 while {true} do
 {
 	private["_veh","_units"];
-	sleep (35 * 60);
+	sleep (15 * 60);
+	
 	{
 		_veh = _x;
 		_vehicleClass = getText(configFile >> "CfgVehicles" >> (typeOf _veh) >> "vehicleClass");
@@ -46,7 +44,6 @@ while {true} do
 		};
 	} foreach vehicles;
 	
-	sleep (3 * 60);
 	{
 		if((typeOf _x) in ["Land_BottlePlastic_V1_F","Land_TacticalBacon_F","Land_Can_V3_F","Land_CanisterFuel_F", "Land_Can_V3_F","Land_Money_F","Land_Suitcase_F"]) then
 		{
@@ -57,8 +54,14 @@ while {true} do
 		};
 	} foreach (allMissionObjects "Thing");
 	
-	sleep (2 * 60);
 	{
 		deleteVehicle _x;
 	} foreach (allMissionObjects "GroundWeaponHolder");
+	
+	{
+		if (count units _x == 0) then
+		{
+			deleteGroup _x;
+		};
+	} forEach allGroups;
 };

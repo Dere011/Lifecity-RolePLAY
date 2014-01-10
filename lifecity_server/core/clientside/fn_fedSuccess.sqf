@@ -17,19 +17,19 @@ sleep 45;
 
 if(_funds > lc_ac) then
 {
-	hint "Due to the robbery on the Federal Reserve you have lost a percentage of your money but you have went bankrupt.\n\nNext time buy some banking insurance on your next visit to a ATM to better protect your assets!";
+	hint "En raison de ce vol sur la Reserve federale, vous avez perdu un pourcentage de votre argent, mais vous n'avez pas fait faillite. La prochaine fois acheter une assurance bancaire lors de votre prochaine visite à un guichet automatique pour mieux proteger vos biens!";
 	lc_ac = 0;
 }
 	else
 {
-	if(life_has_insurance) then
+	if(lc_has_insurance) then
 	{
-		hint "The recent robbery on the Federal reserve has hit civilians where it hurts the most but thankfully you have banking insurance so you didn't lose a penny!\n\nHowever you have lost your banking insurance! Be sure to visit a ATM to renew your plan!";
-		life_has_insurance = false;
+		hint "Le vol recent de la reserve federale a frappe les comptes des civils, mais heureusement, vous avez l'assurance de la banque de sorte que vous n'avez rien perdu.!\n\nToutefois vous avez perdu votre assurance bancaire! Soyez sûr de visiter un guichet pour renouveler votre plan d'assurance!";
+		lc_has_insurance = false;
 	}
 		else
 	{
-		hint format["Due to the recent robbery on the Federal Reserve you have lost $%1 from your bank account, next time buy some banking insurance!\n\nYou can buy banking insurance from a ATM!",[_funds] call life_fnc_numberText];
-		lc_ac = lc_ac - _funds;
+		hint format["En raison de la recente vol sur la Reserve federale, vous avez perdu $1% a partir de votre compte bancaire, la prochaine fois acheter une assurance bancaire!\n\nVous pouvez acheter une assurance bancaire dans un guichet!",[_funds] call life_fnc_numberText];
+		lc_ac 			= lc_ac - _funds;
 	};
 };

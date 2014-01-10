@@ -21,7 +21,7 @@
 */
 
 with missionnamespace do {
-	private ["_params","_functionName","_target","_isPersistent","_isCall","_ownerID"];
+	private ["_params","_functionName","_target","_isPersistent","_isCall"];
 
 	_params 		= 	[_this,0,[]] call bis_fnc_param;
 	_functionName 	=	[_this,1,"",[""]] call bis_fnc_param;

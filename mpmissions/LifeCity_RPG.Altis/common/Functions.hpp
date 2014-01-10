@@ -18,6 +18,8 @@ class Life_Client_Core
 		class adminid {};
 		class admingetID {};
 		class adminKick {};
+		class adminBan {};
+		class adminJail{};
 		class adminMenu {};
 		class adminQuery {};
 	};

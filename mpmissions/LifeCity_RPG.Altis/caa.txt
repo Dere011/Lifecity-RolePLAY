@@ -1,0 +1,7 @@
+vehicleName lockDriver true;
+vehicleName lockCargo true;
+vehicleName lockTurret [[0,0], true];
+_jeepOne lock true
+soldierOne leaveVehicle jeepOne
+
+[[player],"fnc_player_query",_info,false] spawn life_fnc_MP;

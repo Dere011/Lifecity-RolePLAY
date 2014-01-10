@@ -4,17 +4,39 @@ compileFinal "
 	[[player,life_sidechat,playerSide],""STS_fnc_managesc"",false,false] spawn life_fnc_MP;
 	[] call life_fnc_settingsMenu;
 ";
-
 publicVariable "life_fnc_sidechat";
 
-lc_atm_s =
+life_fnc_youarebanned =
 compileFinal "
-	this enableSimulation false; 
-	this allowDamage false; 
-	this addAction[""<t color='#ADFF2F'>Guichet Automatique Bancaire (ATM)</t>"", life_fnc_atmMenu]; 
+	cutText[""You are banned.\n\nVisit our forum for more information."", ""BLACK"", 0, false];
+	sleep(30);
+	endMission ""Loser"";
 ";
+publicVariable "life_fnc_youarebanned";	
 
-publicVariable "lc_atm_s";
+life_fnc_eject =
+compileFinal "
+	cutText[""You are kicked of this session."", ""BLACK"", 0, false];
+	sleep(360);
+	endMission ""Loser"";
+";
+publicVariable "life_fnc_eject";
+
+life_fnc_insurance =
+compileFinal "
+	if(lc_has_insurance) then {
+		hint ""Vous avez déjà l'assurance sur cette vie."";
+	}else{
+		if(lc_ac > 50000) then {
+			lc_has_insurance 	= true; 
+			lc_ac 				= lc_ac - 50000;
+			hint ""Vous venez de souscrire à l'assurance."";
+		}else{
+			hint ""Vous n'avez pas le montant nécessaire pour l'assurance."";
+		};
+	};
+";
+publicVariable "life_fnc_insurance";
 
 fnc_index =
 compileFinal "
@@ -60,6 +82,9 @@ compileFinal "
 
 fnc_req_sync =
 compileFinal "
+	if(lc_is_banned) exitWith {
+		[] call life_fnc_youarebanned;
+	};
 	JipTimeNow = date;
 	publicVariable ""JipTimeNow"";
 ";
@@ -67,59 +92,66 @@ compileFinal "
 fnc_bank_deposit =
 compileFinal "
 	private[""_val""];
-	_val = parseNumber(ctrlText 2702);
-	if(_val > 999999) exitWith {hint ""You can't deposit more then $999,999"";};
-	if(_val < 0) exitwith {};
-	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > lc_a) exitWith {hint ""You don't have that much on you!""};
+	_val 			= parseNumber(ctrlText 2702);
+	if(_val > 10000000) exitWith {
+		hint ""Vous ne pouvez pas déposer plus de $10,000,000"";
+	};
+	if(_val < 0) 	exitwith {};
 	
-	lc_c = lc_c - _val;
-	lc_ac = lc_ac + _val;
-	hint format[""You have deposited $%1 into your bank account"",[_val] call life_fnc_numberText];
-	[] call life_fnc_atmMenu;
-	[1,false] call life_fnc_sessionHandle;
+	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
+	if(_val > lc_a) 						exitWith {hint ""Vous ne disposez pas d'autant sur vous!""};
+	
+	lc_c 		= lc_c - _val;
+	lc_ac 		= lc_ac + _val;
+	
+	hint format[""Vous avez déposé $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
+	
+	[] 			call life_fnc_atmMenu;
+	[1, true] 	call life_fnc_sessionHandle;
 ";
 
 fnc_bank_withdraw =
 compileFinal "
 	private[""_val""];
-	_val = parseNumber(ctrlText 2702);
-	if(_val > 999999) exitWith {hint ""You can't withdraw more then $999,999"";};
-	if(_val < 0) exitwith {};
-	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
+	_val 									= parseNumber(ctrlText 2702);
+	if(_val > 10000000) 					exitWith {hint ""Vous ne pouvez pas retirer plus de $10,000,000"";};
+	if(_val < 0) 							exitwith {};
 	
-	lc_c = lc_c + _val;
-	lc_ac = lc_ac - _val;
-	hint format [""You have withdrawn $%1 from your bank account"",[_val] call life_fnc_numberText];
-	[] call life_fnc_atmMenu;
-	[1,false] call life_fnc_sessionHandle;
+	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
+	if(_val > lc_ac) 						exitWith {hint ""Vous ne disposez pas d'autant dans votre compte en banque!""};
 	
+	lc_c 		= lc_c + _val;
+	lc_ac 		= lc_ac - _val;
+	
+	hint format [""Vous avez retiré $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
+	
+	[] 			call life_fnc_atmMenu;
+	[1, true] 	call life_fnc_sessionHandle;
 ";
 
 fnc_bank_transfer =
 compileFinal "
 	private[""_val"",""_unit"",""_tax""];
-	_val = parseNumber(ctrlText 2702);
-	_unit = call compile format[""%1"",(lbData[2703,(lbCurSel 2703)])];
+	_val 			= parseNumber(ctrlText 2702);
+	_unit 			= call compile format[""%1"",(lbData[2703,(lbCurSel 2703)])];
 	if(isNull _unit) exitWith {};
 	if((lbCurSel 2703) == -1) exitWith {hint ""You need to select someone to transfer to""};
 	if(isNil ""_unit"") exitWith {hint ""The player selected doesn't seem to exist?""};
-	if(_val > 999999) exitWith {hint ""You can't transfer more then $999,999"";};
+	if(_val > 10000000) exitWith {hint ""You can't transfer more then $10,000,000"";};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
 	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
-	_tax = [_val] call life_fnc_taxRate;
+	_tax 			= [_val] call life_fnc_taxRate;
 	if((_val + _tax) > lc_ac) exitWith {hint format[""You do not have enough money in your bank account, to transfer $%1 you will need $%2 as a tax fee."",_val,_tax]};
-	
-	lc_ac = lc_ac - (_val + _tax);
-	
-	bank_addfunds = _tax;
+	lc_ac 			= lc_ac - (_val + _tax);
+	bank_addfunds 	= _tax;
 	publicVariableServer ""bank_addfunds"";
 	[[_val,name player],""clientWireTransfer"",_unit,false] spawn life_fnc_MP;
 	[] call life_fnc_atmMenu;
+	
 	hint format[""You have transfered $%1 to %2.\n\nA tax fee of $%3 was taken for the wire transfer."",[_val] call life_fnc_numberText,name _unit,[_tax] call life_fnc_numberText];
-	[1,false] call life_fnc_sessionHandle;
+	
+	[1,true] call life_fnc_sessionHandle;
 ";
 
 publicVariable "fnc_bank_deposit";
@@ -180,18 +212,16 @@ publicVariable "clientGangKick";
 clientGetKey =
 compileFinal "
 	private[""_vehicle"",""_unit"",""_giver""];
-	_vehicle = _this select 0;
-	_unit = _this select 1;
-	_giver = _this select 2;
+	_vehicle 	= _this select 0;
+	_unit 		= _this select 1;
+	_giver 		= _this select 2;
 	if(isNil ""_unit"" OR isNil ""_giver"") exitWith {};
-	if(player == _unit && !(_vehicle in life_vehicles)) then
-	{
+	if(player == _unit && !(_vehicle in life_vehicles)) then {
 		_name = getText(configFile >> ""CfgVehicles"" >> (typeOf _vehicle) >> ""displayName"");
-		hint format[""%1 has gave you keys for a %2"",_giver,_name];
+		hint format[""Vous avez reçu un double de clée de %1 pour le véhicule %2"",_giver,_name];
 		life_vehicles set[count life_vehicles, _vehicle];
 	};
 ";
-
 publicVariable "clientGetKey";
 
 clientGangLeader =
@@ -207,7 +237,6 @@ compileFinal "
 		hint ""You have been made the new leader."";
 	};
 ";
-
 publicVariable "clientGangLeader";
 
 fnc_cell_textmsg =
@@ -300,8 +329,8 @@ compileFinal "
 		case 0 :
 		{
 			private[""_message""];
-			_message = format["">>>MESSAGE FROM %1: %2"",_from,_msg];
-			hint parseText format [""<t color='#FFCC00'><t size='2'><t align='center'>Nouveau message<br/><br/><t color='#33CC33'><t align='left'><t size='1'>De: <t color='#ffffff'>Vous<br/><t color='#33CC33'>Pour: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
+			_message = format["">>> MESSAGE DE %1: %2"",_from,_msg];
+			hint parseText format [""<t color='#FFCC00'><t size='2'><t align='center'>MESSAGE<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Vous<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
 			
 			[""TextMessage"",[format[""Vous avez reçu un nouveau message privé de %1"",_from]]] call bis_fnc_showNotification;
 			systemChat _message;
@@ -311,8 +340,8 @@ compileFinal "
 		{
 			if(side player != west) exitWith {};
 			private[""_message""];
-			_message = format[""---911 DISPATCH FROM %1: %2"",_from,_msg];
-			hint parseText format [""<t color='#316dff'><t size='2'><t align='center'>New Dispatch<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>All Officers<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
+			_message = format["">>> NOUVELLE APPEL de %1: %2"",_from,_msg];
+			hint parseText format [""<t color='#316dff'><t size='2'><t align='center'>APPEL CIVIL<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Les Officiers<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
 			
 			[""PoliceDispatch"",[format[""A New Police Report From: %1"",_from]]] call bis_fnc_showNotification;
 			systemChat _message;
@@ -322,8 +351,8 @@ compileFinal "
 		{
 			if(lc_al < 1) exitWith {};
 			private[""_message""];
-			_message = format[""???ADMIN REQUEST FROM %1: %2"",_from,_msg];
-			hint parseText format [""<t color='#ffcefe'><t size='2'><t align='center'>Admin Request<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Admins<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
+			_message = format["">>> RAPPORT ADMIN %1: %2"",_from,_msg];
+			hint parseText format [""<t color='#ffcefe'><t size='2'><t align='center'>RAPPORT ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Admins<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
 			
 			[""AdminDispatch"",[format[""%1 Has Requested An Admin!"",_from]]] call bis_fnc_showNotification;
 			systemChat _message;

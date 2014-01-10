@@ -34,8 +34,9 @@ if(AntiCheat) then {
 };
 [] spawn STS_fnc_cleanup;
 
-life_fnc_wantedAdd 		= compileFinal PreprocessFileLineNumbers "lifecity_server\wanted_add.sqf";
-life_fnc_wantedRemove 	= compileFinal PreprocessFileLineNumbers "lifecity_server\wanted_remove.sqf";
+life_fnc_wantedAdd 		= compileFinal PreprocessFileLineNumbers "lifecity_server\core\wantedsys\wanted_add.sqf";
+life_fnc_wantedRemove 	= compileFinal PreprocessFileLineNumbers "lifecity_server\core\wantedsys\wanted_remove.sqf";
+
 life_gang_list 			= [];
 publicVariable "life_gang_list";
 life_wanted_list 		= [];
@@ -59,10 +60,6 @@ if (isDedicated) then {
 		_logic setVariable["BIS_fnc_MP_queue",[],true];
 	};
 };
-
-fnc_serv_kick 			= {endMission "loser";};
-
-publicVariable "fnc_serv_kick";
 
 publicVariable "STS_fnc_addVehicle2Chain";
 publicVariable "life_fnc_fedSuccess";
