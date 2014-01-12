@@ -21,7 +21,6 @@ switch (playerSide) do
 	
 	case civilian:
 	{
-		[] call life_fnc_civFetchGear;
 		_packet set[count _packet, lc_a];
 	};
 };

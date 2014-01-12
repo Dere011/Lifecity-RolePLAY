@@ -1,30 +1,26 @@
 /*
 	File: fn_atmMenu.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Opens and manages the bank menu.
 */
 private["_display","_text","_units","_type"];
 
-if(!life_use_atm) exitWith
-{
+if(!life_use_atm) exitWith {
 	hint "Because you robbed the bank you can't use the ATM for 5 minutes.";
 };
 
-if(!dialog) then
-{
+if(!dialog) then {
 	if(!(createDialog "Life_atm_management")) exitWith {};
 };
 
 disableSerialization;
 
-_display = findDisplay 2700;
-_text = _display displayCtrl 2701;
-_units = _display displayCtrl 2703;
+_display	= findDisplay 2700;
+_text 		= _display displayCtrl 2701;
+_units 		= _display displayCtrl 2703;
 
 lbClear _units;
-_text ctrlSetStructuredText parseText format["<img size='1.7' image='client\icons\bank.paa'/> $%1<br/><img size='1.6' image='client\icons\money.paa'/> $%2",[lc_ac] call life_fnc_numberText,[lc_c] call life_fnc_numberText];
+_text ctrlSetStructuredText parseText format["<img size='1.7' image='client\icons\bank.paa'/> $%1<br/><img size='1.6' image='client\icons\money.paa'/> $%2", [lc_ac] call life_fnc_numberText,[lc_c] call life_fnc_numberText];
 
 {
 	if(alive _x && _x != player) then

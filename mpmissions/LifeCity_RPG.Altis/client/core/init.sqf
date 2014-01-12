@@ -11,7 +11,6 @@ waitUntil {scriptDone _handle};
 
 _handle = [] spawn life_fnc_setupActions;
 waitUntil {scriptDone _handle};
-
 waitUntil {(!isNil {clientGangLeader})};
 
 [] call life_fnc_sessionSetup;
@@ -40,16 +39,8 @@ player setVariable["transporting",false,true];
 waitUntil {!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call life_fnc_keyHandler"];
 
-switch (playerSide) do {
-	case west: {
-		player addRating 99999999;
-	};
-	case civilian: {
-		player addRating -20000;
-	};
-};
+player addRating 99999999;
 
-//[] call life_fnc_addRating;
 [] call life_fnc_hudSetup;
 [] call life_fnc_playerTags;
 [] call life_fnc_settingsInit;

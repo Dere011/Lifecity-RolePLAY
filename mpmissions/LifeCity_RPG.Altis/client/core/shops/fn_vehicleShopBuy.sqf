@@ -11,24 +11,16 @@ _double 	= false;
 
 switch(life_veh_shop) do
 {
-	case "civ_car_1":
-	{
-		_sp = getMarkerPos "civ_car_kavala_01";
-		_dir = markerDir "civ_car_kavala_01";
-		if(count(nearestObjects[_sp,["Car","Ship","Air"],2]) > 0) then 
-		{
-			_sp = getMarkerPos "civ_car_kavala_02";
-			_dir = markerDir "civ_car_kavala_02";
+	case "civ_car_1": {
+		_sp 		= getMarkerPos "civ_car_kavala_01";
+		_dir 		= markerDir "civ_car_kavala_01";
+		if(count(nearestObjects[_sp,["Car","Ship","Air"],5]) > 0) then {
+			_sp 	= getMarkerPos "civ_car_kavala_02";
+			_dir 	= markerDir "civ_car_kavala_02";
 		};
-		if(count(nearestObjects[_sp,["Car","Ship","Air"],2]) > 0) then 
-		{
-			_sp = getMarkerPos "civ_car_kavala_03";
-			_dir = markerDir "civ_car_kavala_03";
-		};
-		if(count(nearestObjects[_sp,["Car","Ship","Air"],2]) > 0) then 
-		{
-			_sp = getMarkerPos "civ_car_kavala_04";
-			_dir = markerDir "civ_car_kavala_04";
+		if(count(nearestObjects[_sp,["Car","Ship","Air"],5]) > 0) then {
+			_sp 	= getMarkerPos "civ_car_kavala_03";
+			_dir 	= markerDir "civ_car_kavala_03";
 		};
 	};
 	
@@ -234,27 +226,24 @@ _index = lbCurSel 2302;
 _veh = lbData[2302,_index];
 
 if(!([_veh] call life_fnc_vehShopLicenses)) 				exitWith {hint "Vous n'avez pas la licence requise!"};
-
-_color = lbValue[2303,(lbCurSel 2303)];
-_price = lbValue[2302,(lbCurSel 2302)];
-
+_color 			= lbValue[2303,(lbCurSel 2303)];
+_price 			= lbValue[2302,(lbCurSel 2302)];
 if(_price < 0) exitWith {};
-_price = _price * 1.5;
-if(lc_c < _price) 										exitWith {hint "Vous n'avez pas assez d'argent."};
-if(count(nearestObjects[_sp,["Car","Ship","Air"], 20]) > 0) exitWith {hint "Il ya est un véhicule sur le point de spawn."};
+_price 			= _price;
+if(lc_c < _price) 											exitWith {hint "Vous n'avez pas assez d'argent."};
+if(count(nearestObjects[_sp,["Car","Ship","Air"], 5]) > 0) 	exitWith {hint "Il ya est un véhicule sur le point de spawn."};
 
-_sv = false;
-
-if(_veh == "serv_truck") then
-{
-	_name = "Service Truck";
-	_veh = "C_Offroad_01_F";
-	_sv = true;
+_sv 			= false;
+if(_veh == "serv_truck") then {
+	_name 		= "Service Truck";
+	_veh 		= "C_Offroad_01_F";
+	_sv 		= true;
 }else{
 	_name = getText(configFile >> "CfgVehicles" >> _veh >> "displayName");
 };
 
-hint format["Vous avez achete un %1 pour $%2",_name,[_price] call life_fnc_numberText];
+hint format["Vous avez loue un %1 pour $%2",_name,[_price] call life_fnc_numberText];
+
 _vehicle = _veh createVehicle _sp;
 _vehicle setPos _sp;
 _vehicle setDir _dir;
@@ -269,7 +258,7 @@ if(_sv) then {
 _vehicle setVariable["vehicle_info_owners",[[getPlayerUID player,name player]],true];
 
 life_vehicles set[count life_vehicles,_vehicle];
-lc_c 	= lc_c - _price;
+lc_c 		= lc_c - _price;
 
 if(playerSide == west) then {
 	if(_veh == "C_Offroad_01_F") then {
@@ -284,4 +273,4 @@ if((life_veh_shop == "civ_air_1" OR life_veh_shop == "civ_air_2") && (typeOf _ve
 	[_vehicle,"civ_littlebird",true] call life_fnc_vehicleAnimate;
 };
 
-[1,false] call life_fnc_sessionHandle;
+[1, true] call life_fnc_sessionHandle;

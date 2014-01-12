@@ -9,7 +9,7 @@ _licenses 		= [_this,5,[],[[]]] call BIS_fnc_param;
 _gear 			= [_this,6,[],[[]]] call BIS_fnc_param;
 _unit 			= [_this,7,Objnull,[Objnull]] call BIS_fnc_param;
 _assurance 		= [_this,8,false,[false]] call BIS_fnc_param;
-_arested 		= [_this,8,false,[false]] call BIS_fnc_param;
+_arested 		= [_this,9,false,[false]] call BIS_fnc_param;
 _time			= time;
 _dbName 		= ["Player_", _uid] call PDB_databaseNameCompiler;
 _check 			= (_dbName) call iniDB_exists;
@@ -48,8 +48,7 @@ switch (_side) do {
 		}else{
 			_licenses	= [];
 		};
-		if(typeName _misc == "BOOL") then {_misc = [_misc] call DB_fnc_bool;};
-		
+
 		[_dbName, _uid, "civ_gear", _gear] call iniDB_write;
 		[_dbName, _uid, "civ_licenses", _licenses] call iniDB_write;
 		[_dbName, _uid, "arrested", _arested] call iniDB_write;
@@ -62,5 +61,12 @@ switch (_side) do {
 [_dbName, _uid, "bankacc", _bank] call iniDB_write;
 [_dbName, _uid, "update_uuid", _uuid] call iniDB_write;
 [_dbName, _uid, "has_insurance", _assurance] call iniDB_write;
+[_dbName, _uid, "serv_uuid", serv_uuid] call iniDB_write;
+
+//if((alive _unit)) then {
+//	[_dbName, _uid, "location", (location _unit)] call iniDB_write;
+//}else{
+//	[_dbName, _uid, "location", []] call iniDB_write;
+//};
 
 [[0, format["[SYNC DATA] La synchronisation est OK (%1).", _uuid]], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;

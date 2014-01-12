@@ -5,10 +5,9 @@
 	Description:
 	This is a gateway to the SQF->MySQL Query function.
 */
-private["_uid","_unit","_side","_ret","_ownerID"];
+private["_uid","_unit","_ret","_ownerID"];
 _unit 				= [_this,0, ObjNull, [Objnull]] call BIS_fnc_param;
-_side 				= [_this,1, civilian, [sideUnknown]] call BIS_fnc_param;
-_uid 				= [_this,2, "",      [""]] 		call BIS_fnc_param;
+_uid 				= [_this,1, "",      [""]] 		call BIS_fnc_param;
 
 if(isNull _unit OR _uid == "") exitWith {
 	if(!isNull _unit) then {
@@ -18,7 +17,7 @@ if(isNull _unit OR _uid == "") exitWith {
 };
 
 _ownerID 	= owner _unit;
-_ret 		= [_uid,_side] call DB_fnc_query;
+_ret 		= [_uid,_unit] call DB_fnc_query;
 
 waitUntil {typeName _ret == "ARRAY" OR typeName _ret == "STRING" OR isNil "_ret"};
 

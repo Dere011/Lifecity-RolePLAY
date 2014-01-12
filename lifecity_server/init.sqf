@@ -13,13 +13,13 @@ life_radio_west_2 		= radioChannelCreate [[0, 0.95, 1, 0.8], "Radio D'urgence", 
 server_query_running 	= false;
 life_DB_queue 			= [];
 serv_sv_use 			= [];
-serv_uuid				= false;
-AntiCheat				= false;
+serv_uuid				= round(random(1000000));
+AntiCheat				= true;
 
 fed_bank setVariable["fed_rob_ip",false,true];
 fed_bank setVariable["fed_locked",false,true];
 
-//_sql 					= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", "CALL resetLifeVehicles();"];
+_sql 					= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", "CALL resetLifeVehicles();"];
 
 publicVariable "life_fnc_vehStoreItem";
 publicVariable "life_fnc_vehTakeItem";
@@ -30,7 +30,7 @@ publicVariable "life_fnc_vehInventory";
 [] execVM "lifecity_server\eventhandlers.sqf";
 
 if(AntiCheat) then {
-	[] execVM "lifecity_server\anticheat_server.sqf";
+
 };
 [] spawn STS_fnc_cleanup;
 

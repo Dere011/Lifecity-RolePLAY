@@ -25,9 +25,10 @@ life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
 life_respawn_timer = 10;
-life_has_insurance = false;
 //Uniform price (0),Hat Price (1),Glasses Price (2),Vest Price (3),Backpack Price (4)
 life_clothing_purchase = [-1,-1,-1,-1,-1];
+
+
 /*
 *****************************
 ****** Weight Variables *****
@@ -37,11 +38,6 @@ life_maxWeight = 64; //Identifies the max carrying weight (gets adjusted through
 life_maxWeightT = 64; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
-/*
-*****************************
-****** Food Variables *******
-*****************************
-*/
 life_eat_Salema = 40;
 life_eat_Ornate = 20;
 life_eat_Mackerel = 20;
@@ -53,23 +49,22 @@ life_eat_Apple = 5;
 life_eat_turtlesoup = 62;
 life_eat_donuts = 30;
 
-/*
-*****************************
-****** Life Variables *******
-*****************************
-*/
+lc_c 						= 0;
+lc_a 						= false;
+lc_has_insurance			= false;
+lc_is_banned				= false;
+lc_is_updated				= false;
+
 life_net_dropped 			= false;
 life_hit_explosive 			= false;
 life_siren_active 			= false;
 life_bank_fail 				= false;
 life_use_atm				= true;
-lc_a 			= false;
 life_delivery_in_progress 	= false;
 life_action_in_use 			= false;
 life_thirst 				= 100;
 life_hunger 				= 100;
 life_paycheck_period 		= 5;
-lc_c 					= 0;
 life_impound_car 			= 350;
 life_impound_boat 			= 250;
 life_impound_air 			= 850;

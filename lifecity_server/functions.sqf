@@ -6,6 +6,17 @@ compileFinal "
 ";
 publicVariable "life_fnc_sidechat";
 
+life_fnc_playSound =
+compileFinal "
+	private[""_source""];
+	_source 		= [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
+	_soundname 		= [_this,1,"""",[""""]] call BIS_fnc_param;
+	if(isNull _source) exitWith {};
+	if(isNil ""_soundname"")  exitWith {};
+	_source say3D _soundname;
+";
+publicVariable "life_fnc_playSound";
+
 life_fnc_youarebanned =
 compileFinal "
 	cutText[""You are banned.\n\nVisit our forum for more information."", ""BLACK"", 0, false];
@@ -21,6 +32,14 @@ compileFinal "
 	endMission ""Loser"";
 ";
 publicVariable "life_fnc_eject";
+
+life_fnc_setVehicules =
+compileFinal "
+	private[""_array""];
+	_array 			= _this select 0;
+	life_vehicles 	= _array;
+";
+publicVariable "life_fnc_setVehicules";
 
 life_fnc_insurance =
 compileFinal "
@@ -65,7 +84,7 @@ compileFinal "
 	if(isNull _ret) exitWith {};
 	if(isNil ""_ret"") exitWith {};
 	
-	[[lc_ac,lc_a,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
+	[[lc_ac,lc_c,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
 ";
 publicVariable "fnc_player_query";
 
@@ -93,13 +112,13 @@ fnc_bank_deposit =
 compileFinal "
 	private[""_val""];
 	_val 			= parseNumber(ctrlText 2702);
-	if(_val > 10000000) exitWith {
-		hint ""Vous ne pouvez pas déposer plus de $10,000,000"";
+	if(_val > 999999) exitWith {
+		hint ""Vous ne pouvez pas déposer plus de $999,999"";
 	};
 	if(_val < 0) 	exitwith {};
 	
 	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
-	if(_val > lc_a) 						exitWith {hint ""Vous ne disposez pas d'autant sur vous!""};
+	if(_val > lc_c) 						exitWith {hint ""Vous ne disposez pas d'autant sur vous!""};
 	
 	lc_c 		= lc_c - _val;
 	lc_ac 		= lc_ac + _val;
@@ -114,7 +133,9 @@ fnc_bank_withdraw =
 compileFinal "
 	private[""_val""];
 	_val 									= parseNumber(ctrlText 2702);
-	if(_val > 10000000) 					exitWith {hint ""Vous ne pouvez pas retirer plus de $10,000,000"";};
+	if(_val > 999999) 						exitWith {
+		hint ""Vous ne pouvez pas déposer plus de $999,999"";
+	};
 	if(_val < 0) 							exitwith {};
 	
 	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
@@ -137,7 +158,9 @@ compileFinal "
 	if(isNull _unit) exitWith {};
 	if((lbCurSel 2703) == -1) exitWith {hint ""You need to select someone to transfer to""};
 	if(isNil ""_unit"") exitWith {hint ""The player selected doesn't seem to exist?""};
-	if(_val > 10000000) exitWith {hint ""You can't transfer more then $10,000,000"";};
+	if(_val > 999999) exitWith {
+		hint ""Vous ne pouvez pas déposer plus de $999,999"";
+	};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
 	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
@@ -384,3 +407,8 @@ compileFinal "
 	};
 ";
 publicVariable "clientMessage";
+
+life_fnc_loadGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_loadGear.sqf";
+life_fnc_saveGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_saveGear.sqf";
+publicVariable "life_fnc_loadGear";	
+publicVariable "life_fnc_saveGear";	

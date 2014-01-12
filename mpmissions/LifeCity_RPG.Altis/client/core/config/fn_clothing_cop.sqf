@@ -7,15 +7,10 @@
 */
 private["_filter","_ret"];
 _filter = [_this,0,0,[0]] call BIS_fnc_param;
-//Classname, Custom Display name (use nil for Cfg->DisplayName, price
-
-//Shop Title Name
 ctrlSetText[3103,"Altis Police Department Shop"];
-
-_ret = [];
+_ret 	= [];
 switch (_filter) do
 {
-	//Uniforms
 	case 0:
 	{
 		_ret set[count _ret,["U_Rangemaster","Cop Uniform",25]];
@@ -23,13 +18,11 @@ switch (_filter) do
 		{
 			_ret set[count _ret,["U_B_CombatUniform_mcam_tshirt",nil,350]];
 		};
-		if(life_copLevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_ret set[count _ret,["U_B_CombatUniform_mcam_worn",nil,550]];
 		};
 	};
-	
-	//Hats
 	case 1:
 	{
 		if(lc_cl > 1) then
@@ -38,13 +31,11 @@ switch (_filter) do
 			_ret set[count _ret,["H_Booniehat_mcamo",nil,120]];
 		};
 		
-		if(life_copLevel > 2) then
+		if(lc_cl > 2) then
 		{
 			_ret set[count _ret,["H_MilCap_mcamo",nil,100]];
 		};
 	};
-	
-	//Glasses
 	case 2:
 	{
 		_ret = 
@@ -60,8 +51,6 @@ switch (_filter) do
 			["G_Combat",nil,55]
 		];
 	};
-	
-	//Vest
 	case 3:
 	{
 		_ret set[count _ret,["V_Rangemaster_belt",nil,800]];
@@ -70,8 +59,6 @@ switch (_filter) do
 			_ret set[count _ret,["V_PlateCarrier2_rgr",nil,1500]];
 		};
 	};
-	
-	//Backpacks
 	case 4:
 	{
 		_ret =

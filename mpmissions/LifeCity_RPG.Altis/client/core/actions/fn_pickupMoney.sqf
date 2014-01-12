@@ -10,7 +10,7 @@ private["_obj","_val"];
 _obj = cursorTarget;
 _val = (_obj getVariable "item") select 1;
 if(isNil {_val}) exitWith {};
-if(isNull _obj || player distance _obj > 3) exitWith {};
+if(isNull _obj || player distance _obj > 5) exitWith {};
 
 if(!isNil {_val}) then
 {
@@ -26,7 +26,6 @@ if(!isNil {_val}) then
 	
 	player playmove "AinvPknlMstpSlayWrflDnon";
 	titleText[format["You have picked up $%1",[_val] call life_fnc_numberText],"PLAIN"];
-	player say3D "MoneyPickup";
 	lc_c = lc_c + _val;
 	life_action_delay = time;
 };

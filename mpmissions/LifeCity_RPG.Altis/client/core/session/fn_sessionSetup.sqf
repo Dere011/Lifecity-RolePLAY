@@ -11,4 +11,4 @@
 */
 waitUntil {!isNull player && player == player};
 
-[[player, playerSide, getPlayerUID player], "STS_fnc_query", false, false] spawn life_fnc_MP;
+[[player, getPlayerUID player], "STS_fnc_query", false, false] spawn life_fnc_MP;

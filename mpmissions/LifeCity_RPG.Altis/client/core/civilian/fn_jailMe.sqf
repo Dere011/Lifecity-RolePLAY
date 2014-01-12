@@ -26,7 +26,7 @@ while {true} do
 	if((round(_time - time)) > 0) then
 	{
 		_countDown = if(round (_time - time) > 60) then {format["%1 minute(s)",round(round(_time - time) / 60)]} else {format["%1 second(s)",round(_time - time)]};
-		hintSilent format["Time Remaining:\n %1\n\nCan pay bail: %3\nBail Price: $%2",_countDown,[life_bail_amount] call life_fnc_numberText,if(isNil "life_canpay_bail") then {"Yes"} else {"No"}];
+		hint format["Time Remaining:\n %1\n\nCan pay bail: %3\nBail Price: $%2",_countDown,[life_bail_amount] call life_fnc_numberText,if(isNil "life_canpay_bail") then {"Yes"} else {"No"}];
 	};
 	
 	if(player distance (getMarkerPos "jail_marker") > 60) exitWith
@@ -40,39 +40,34 @@ while {true} do
 	};
 	
 	if((round(_time - time)) < 1) exitWith {hint ""};
-	if(!alive player && ((round(_time - time)) > 0)) exitWith
-	{
 	
+	if(!alive player && ((round(_time - time)) > 0)) exitWith {
 	};
 	sleep 1;
 };
 
 
-switch (true) do
-{
-	case (_bail) :
-	{
-		lc_a = false;
-		life_bail_paid = false;
+switch (true) do {
+	case (_bail) : {
+		lc_a 				= false;
+		life_bail_paid 		= false;
 		hint "You have paid your bail and are now free.";
-		serv_wanted_remove = [player];
+		serv_wanted_remove 	= [player];
 		publicVariableServer "serv_wanted_remove";
 		player setPos (getMarkerPos "jail_release");
-		[1,false] call life_fnc_sessionHandle;
+		[1, false] call life_fnc_sessionHandle;
 	};
 	
-	case (_esc) :
-	{
-		lc_a = false;
+	case (_esc) : {
+		lc_a 				= false;
 		hint "You have escaped from jail, you still retain your previous crimes and now have a count of Escapping jail.";
 		[[0,format["%1 has escaped from jail!",name player]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		serv_killed = [player,"901"];
 		publicVariableServer "serv_killed";
 	};
 	
-	case (alive player && !_esc && !_bail) :
-	{
-		lc_a = false;
+	case (alive player && !_esc && !_bail) : {
+		lc_a 				= false;
 		hint "You have served your time in jail and have been released.";
 		serv_wanted_remove = [player];
 		publicVariableServer "serv_wanted_remove";

@@ -82,6 +82,7 @@ class Life_Client_Core
 		class varHandle {};
 		class varToStr {};
 		class copDefault {};
+		class civDefault {};
 		class impoundPrice {};
 		class itemWeight {};
 		class taxRate {};
@@ -140,9 +141,7 @@ class Life_Client_Core
 		class handleInv {};
 		class hudSetup {};
 		class hudUpdate {};
-		class fetchGear{};
 		class tazeSound {};
-		class playSound {};
 		class animSync {};
 		class simDisable {};
 		class keyHandler {};
@@ -161,7 +160,6 @@ class Life_Client_Core
 		class pulloutVeh {};
 		class MP{};
 		class MPexec{};
-		class addRating{};
 	};
 	
 	class Civilian
@@ -170,8 +168,6 @@ class Life_Client_Core
 		class jailMe {};
 		class jail {};
 		class tazed {};
-		class civFetchGear {};
-		class civLoadGear {};
 		class robReserve {};
 	};
 	
@@ -189,8 +185,6 @@ class Life_Client_Core
 		file = "client\core\cop";
 		class copMarkers {};
 		class copLights {};
-		class loadGear {};
-		class saveGear {};
 		class vehInvSearch {};
 		class copSearch {};
 		class bountyReceive {};

@@ -9,12 +9,17 @@ disableChannels[]	= {0,1,2};
 debriefing 			= 0;
 showMap 			= 1;
 enableDebugConsole 	= 1;
+loadScreen 			= "Loading.jpg";
+overviewText 		= "Bienvenue dans la simulation Atlisienne.";
+overviewTextLocked 	= "Bienvenue dans la simulation Atlisienne .";
+overviewPicture 	= "Loading.jpg";
+enableItemsDropping = 0;
 
 class Header
 {
 	gameType 	= RPG;
-	minPlayers 	= 0;
-	maxPlayers 	= 300;
+	minPlayers 	= 1;
+	maxPlayers 	= 91;
 };
 
 #include "client\dialog\common.hpp"
@@ -67,19 +72,31 @@ class CfgSounds
   class SirenPolice
   {
     name = "SirenPolice";
-    sound[] = {"client\sounds\siren.ogg", 2.0, 1};
+    sound[] = {"client\sounds\siren.ogg", 1.5, 1};
     titles[] = {};
   };
   class Tazersound
   {
     name = "Tazersound";
-    sound[] = {"client\sounds\tazer.ogg", 3.0, 1};
+    sound[] = {"client\sounds\tazer.ogg", 1.0, 1};
     titles[] = {};
   };
   class klaxoncop
   {
     name = "klaxoncop";
-    sound[] = {"client\sounds\klaxoncop.ogg", 3.0, 1};
+    sound[] = {"client\sounds\klaxoncop.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class Menote
+  {
+    name = "Menote";
+    sound[] = {"client\sounds\menote.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class AlarmVeh
+  {
+    name = "AlarmVeh";
+    sound[] = {"client\sounds\alarm_citizen_loop1.ogg", 1.0, 1};
     titles[] = {};
   };
 };

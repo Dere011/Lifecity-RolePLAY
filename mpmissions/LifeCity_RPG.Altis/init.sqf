@@ -32,7 +32,7 @@ enableSaving [false, false];
 if(X_Client) then {
 	waitUntil {player == player};
 	cutText["Bienvenue sur LifeCity ALPHA (Altis)\n\nChargement de votre session de jeu, merci de patienter.", "BLACK", 0, false];
-	sleep 2;
+	sleep 1;
 	[] execVM "client\core\init.sqf";
 	waitUntil {is_client_loaded};
 };
@@ -41,11 +41,14 @@ if(X_Client) then {
 [] execVM "common\KRON_Strings.sqf";
 
 if(X_Client) then {
+	if(lc_is_updated) then {
+		cutText["Bienvenue sur la version 1.5 de LifeCity.\nNous avons fait beaucoup de changement dans cette nouvelle version. La sauvegarde des donnees joueurs, le systeme de garage, le systeme des licenses ont ete revues et malheuresement ne nous pouvons pas convertire l'equipement de l'ancienne version vers la nouvelle. Pour ce fait, vous avez reçu 100 000$ sur votre compte en banque.\n\nL'argent, les licenses, les véhicules ont bien ete transferes.\n\nOn vous laisse découvrir les autres changements! Bon jeu sur LifeCity =)\n\n(20 secondes avant disparition du message)", "BLACK", 0, false];
+		sleep 20;
+	};
+	cutText["Notice: Aucun RESET de prevu dans les jours a venir.", "BLACK", 0, false];
+	sleep 5;
 	cutText["Fin du chargement de votre session.\n\nBon jeu sur LifeCity!", "BLACK", 0, false];
 	sleep 1;
-	if(loub_admin_mode) then {
-		[] call life_fnc_copDefault;
-	};
 	if(loub_admin_mode) then {
 		[] execVM "addons\proving_ground\init.sqf";
 		[] execVM "addons\R3F_ARTY_AND_LOG\init.sqf";

@@ -13,10 +13,10 @@ if(isNull _unit OR isNull _shooter) exitWith {player allowDamage true; life_ista
 if(_shooter isKindOf "Man" && alive player) then {
 	if(!life_istazed) then {
 		player allowDamage false;
-		life_istazed = true;
-		_curWep = currentWeapon player;
-		_curMags = magazines player;
-		_attach = if(primaryWeapon player != "") then {primaryWeaponItems _unit} else {[]};
+		life_istazed 	= true;
+		_curWep 		= currentWeapon player;
+		_curMags 		= magazines player;
+		_attach 		= if(primaryWeapon player != "") then {primaryWeaponItems _unit} else {[]};
 		{player removeMagazine _x} foreach _curMags;
 		player removeWeapon _curWep;
 		player addWeapon _curWep;
@@ -25,8 +25,7 @@ if(_shooter isKindOf "Man" && alive player) then {
 				_unit addPrimaryWeaponItem _x;
 			} foreach _attach;
 		};
-		if(count _curMags != 0) then
-		{
+		if(count _curMags != 0) then {
 			{player addMagazine _x;} foreach _curMags;
 		};
 		
@@ -44,10 +43,10 @@ if(_shooter isKindOf "Man" && alive player) then {
 		player allowDamage true;
 		player lock 0;
 		player forceWalk true;
-		sleep 20;
+		sleep 10;
 		player forceWalk false;
 	};
 }else{
 	_unit allowDamage true;
-	life_iztazed = false;
+	life_iztazed 	= false;
 };

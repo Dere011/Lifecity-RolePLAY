@@ -6,7 +6,7 @@
 	Pays the ticket.
 */
 if(isnil {life_ticket_val} OR isNil {life_ticket_cop}) exitWith {};
-if(lc_c < life_ticket_val) exitWith
+if(lc_ac < life_ticket_val) exitWith
 {
 	if(lc_ac < life_ticket_val) exitWith 
 	{
@@ -21,7 +21,7 @@ if(lc_c < life_ticket_val) exitWith
 	closeDialog 0;
 };
 
-lc_c = lc_c - life_ticket_val;
+lc_ac = lc_ac - life_ticket_val;
 life_ticket_paid = true;
 
 [[(getPlayerUID player),life_ticket_val],"life_fnc_wantedTicket",false,false] spawn life_fnc_MP;

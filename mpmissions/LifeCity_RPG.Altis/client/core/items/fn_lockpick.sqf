@@ -36,5 +36,6 @@ if(_dice < 10) then
 	serv_killed = [player,"215"];
 	publicVariableServer "serv_killed";
 	[[0,format["%1 was seen trying to lockpick at car.",name player]],"life_fnc_broadcast",west,false] spawn life_fnc_MP;
+	[[_car,"AlarmVeh"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
 	titleText["The lockpick broke.","PLAIN"];
 };

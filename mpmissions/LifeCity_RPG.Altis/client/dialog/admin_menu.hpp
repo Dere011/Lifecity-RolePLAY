@@ -101,7 +101,7 @@ class life_admin_menu {
 			idc = -1;
 			text = "Prison";
 			onButtonClick = "[] call life_fnc_adminJail;";
-			x = 0.62 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+			x = 0.58 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.88 - (1 / 25);
 			w = (6.25 / 40);
 			h = (1 / 25);

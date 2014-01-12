@@ -17,14 +17,18 @@ cutText["Tu es mort.\n\nChargement de la nouvelle vie...","PLAIN"];
 if(loub_admin_mode) then {
 	removeAllContainers _unit;
 	removeAllItemsWithMagazines _unit;
+	removeAllPrimaryWeaponItems _unit;
+	removeAllHandgunItems _unit;
 	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeBackpack _unit;
 };
 
 if(playerSide == civilian) then {
 	removeAllContainers _unit;
 };
 
-sleep 10;
+sleep 5;
 
 0 cutFadeOut 9999999;
 
@@ -71,12 +75,19 @@ if(side _source == west && vehicle _source == _source && playerSide == civilian)
 };
 { _unit removeAction _x; } foreach life_actions;
 
-_handle = [_unit] spawn life_fnc_dropItems;
+_handle 			= [_unit] spawn life_fnc_dropItems;
 waitUntil {scriptDone _handle};
 
 life_carryWeight 	= 0;
 life_thirst 		= 100;
 life_hunger 		= 100;
 life_use_atm 		= true;
+lc_has_insurance	= false;
+
+if(playerSide == civilian) then {
+	lc_cvg			= [];
+}else{
+	lc_cg			= [];
+};
 
 [1, true] call life_fnc_sessionHandle;

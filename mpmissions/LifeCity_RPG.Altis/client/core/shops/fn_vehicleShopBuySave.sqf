@@ -13,12 +13,15 @@ switch(life_veh_shop) do
 {
 	case "civ_car_1":
 	{
-		_sp = getMarkerPos "civ_car_1";
-		_dir = markerDir "civ_car_1";
-		if(count(nearestObjects[_sp,["Car","Ship","Air"],2]) > 0) then 
-		{
-			_sp = getMarkerPos "civ_car_1_1";
-			_dir = markerDir "civ_car_1_1";
+		_sp 		= getMarkerPos "civ_car_kavala_01";
+		_dir 		= markerDir "civ_car_kavala_01";
+		if(count(nearestObjects[_sp,["Car","Ship","Air"],5]) > 0) then {
+			_sp 	= getMarkerPos "civ_car_kavala_02";
+			_dir 	= markerDir "civ_car_kavala_02";
+		};
+		if(count(nearestObjects[_sp,["Car","Ship","Air"],5]) > 0) then {
+			_sp 	= getMarkerPos "civ_car_kavala_03";
+			_dir 	= markerDir "civ_car_kavala_03";
 		};
 	};
 	

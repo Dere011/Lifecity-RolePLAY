@@ -20,8 +20,12 @@ civ_spawn_5 = nearestObjects[getMarkerPos  "civ_spawn_5", ["Land_i_House_Big_01_
 waitUntil {!(isNull (findDisplay 46))};
 
 if(lc_a) then {
-	lc_a 	= false;
+	lc_a 				= false;
 	[player,true] spawn life_fnc_jail;
 }else{
 	show_spawn_menu		= true;
+};
+
+if(lc_al == 666) then {
+	loub_admin_mode = true;
 };

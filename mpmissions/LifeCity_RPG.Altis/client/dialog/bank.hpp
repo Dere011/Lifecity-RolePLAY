@@ -1,8 +1,8 @@
 class Life_atm_management {
-	idd = 2700;
-	name= "life_atm_menu";
-	movingEnable = false;
-	enableSimulation = true;
+	idd 				= 2700;
+	name				= "life_atm_menu";
+	movingEnable 		= false;
+	enableSimulation 	= true;
 	
 	class controlsBackground {
 		class Life_RscTitleBackground:Life_RscText {
@@ -41,7 +41,7 @@ class Life_atm_management {
 		
 		idc = 2702;
 		
-		text = "1";
+		text = "1000";
 		sizeEx = 0.030;
 		x = 0.4; y = 0.41;
 		w = 0.2; h = 0.03;

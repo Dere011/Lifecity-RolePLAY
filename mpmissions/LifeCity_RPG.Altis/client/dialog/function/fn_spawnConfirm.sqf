@@ -23,7 +23,7 @@ if(count life_spawn_point == 0) then
 	{
 		player setPos (getMarkerPos (_sp select 0));
 	};
-	titleText[format["You have spawned at %1",_sp select 1],"BLACK IN"];
+	titleText[format["Vous avez spawn a %1",_sp select 1],"BLACK IN"];
 }
 	else
 {
@@ -37,7 +37,8 @@ if(count life_spawn_point == 0) then
 	{
 		player setPos (getMarkerPos (life_spawn_point select 0));
 	};
-	titleText[format["You have spawned at %1",life_spawn_point select 1],"BLACK IN"];
+	titleText[format["Vous avez spawn a %1",life_spawn_point select 1],"BLACK IN"];
 };
 
 [] call life_fnc_hudSetup;
+[] spawn life_fnc_loadGear;

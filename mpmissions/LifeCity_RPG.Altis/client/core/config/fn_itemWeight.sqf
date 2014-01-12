@@ -11,12 +11,12 @@ if(_item == "") exitWith {};
 
 switch (_item) do
 {
-	case "oilu": {5};
+	case "oilu": {6};
 	case "oilp": {3};
-	case "heroinu": {4};
+	case "heroinu": {5};
 	case "heroinp": {2};
-	case "cannabis": {3};
-	case "marijuana": {1};
+	case "cannabis": {4};
+	case "marijuana": {2};
 	case "apple": {1};
 	case "water": {1};
 	case "rabbit": {1};
@@ -35,20 +35,20 @@ switch (_item) do
 	case "fuelF": {5};
 	case "money": {0};
 	case "pickaxe": {2};
-	case "copperore": {4};
-	case "ironore": {5};
+	case "copperore": {5};
+	case "ironore": {6};
 	case "copper_r": {2};
 	case "iron_r": {2};
-	case "sand": {3};
-	case "salt": {4};
+	case "sand": {4};
+	case "salt": {5};
 	case "salt_r": {2};
 	case "glass": {1};
-	case "diamond": {3};
+	case "diamond": {4};
 	case "diamondc": {1};
-	case "cocaine": {5};
+	case "cocaine": {6};
 	case "cocainep": {2};
 	case "spikeStrip": {15};
-	case "rock": {5};
-	case "cement": {4};
+	case "rock": {6};
+	case "cement": {5};
 	default {1};
 };

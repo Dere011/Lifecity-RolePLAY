@@ -26,10 +26,6 @@ _unit setVariable["restrained",false,true];
 _unit setVariable["Escorting",false,true];
 _unit setVariable["transporting",false,true];
 
-if(playerSide == west) then {
-	[] spawn life_fnc_loadGear;
-};
-
 if(lc_a) then {
 	hint "Vous avez essaye de vous suicider en prison, vous serez emprisonne a nouveau avec un temps plus long.";
 	lc_a = false;
@@ -41,23 +37,10 @@ if(lc_a) then {
 	waitUntil{isNull (findDisplay 38500)};
 };
 
-//[_unit] call life_fnc_setRating;
-[[_unit,life_sidechat,playerSide],"STS_fnc_managesc",false,false] spawn life_fnc_MP;
 [] call life_fnc_hudUpdate;
 
 cutText ["","BLACK IN"];
+player addRating 99999999;
 
-if(playerSide == civilian) then {
-	[] call life_fnc_civFetchGear;
-};
-
-switch (playerSide) do {
-	case west: {
-		player addRating 99999999;
-	};
-	case civilian: {
-		player addRating -20000;
-	};
-};
-
+[] spawn life_fnc_loadGear;
 [1,true] call life_fnc_sessionHandle;

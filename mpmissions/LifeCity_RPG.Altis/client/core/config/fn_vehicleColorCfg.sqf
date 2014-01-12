@@ -32,8 +32,7 @@ switch (_vehicle) do
 			[_path + "hatchback_01_ext_sport03_co.paa","civ"],
 			[_path + "hatchback_01_ext_sport04_co.paa","civ"],
 			[_path + "hatchback_01_ext_sport05_co.paa","civ"],
-			[_path + "hatchback_01_ext_sport06_co.paa","civ"],
-			["#(ai,64,64,1)Fresnel(1.3,7)","cop"]
+			[_path + "hatchback_01_ext_sport06_co.paa","civ"]
 		];
 	};
 		
@@ -76,7 +75,9 @@ switch (_vehicle) do
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_02_co.paa","cop"],
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_03_co.paa","civ"],
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_04_co.paa","civ"],
+			["client\texture\cop_suv.paa","cop"],
 			["#(ai,64,64,1)Fresnel(1.3,7)","cop"]
+			
 		];
 	};
 	

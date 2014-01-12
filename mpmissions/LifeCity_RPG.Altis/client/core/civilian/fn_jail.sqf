@@ -20,20 +20,18 @@ titleText["You have been arrested, wait your time out. If you attempt to respawn
 hint "For being arrested you have lost the following licenses if you own them\n\nFirearms License\nRebel License";
 player setPos (getMarkerPos "jail_marker");
 
-if(_bad) then
-{
+if(_bad) then {
 	waitUntil {alive player};
 	sleep 1;
 };
 
 //Check to make sure they goto check
-if(player distance (getMarkerPos "jail_marker") > 40) then
-{
+if(player distance (getMarkerPos "jail_marker") > 40) then {
 	player setPos (getMarkerPos "jail_marker");
 };
 
-license_civ_gun = false;
-license_civ_rebel = false;
+license_civ_gun 		= false;
+license_civ_rebel 		= false;
 if(life_inv_heroinu > 0) then {[false,"heroinu",life_inv_heroinu] call life_fnc_handleInv;};
 if(life_inv_heroinp > 0) then {[false,"heroinp",life_inv_heroinp] call life_fnc_handleInv;};
 if(life_inv_coke > 0) then {[false,"cocaine",life_inv_coke] call life_fnc_handleInv;};
@@ -41,10 +39,10 @@ if(life_inv_cokep > 0) then {[false,"cocainep",life_inv_cokep] call life_fnc_han
 if(life_inv_turtle > 0) then {[false,"turtle",life_inv_turtle] call life_fnc_handleInv;};
 if(life_inv_cannabis > 0) then {[false,"cannabis",life_inv_cannabis] call life_fnc_handleInv;};
 if(life_inv_marijuana > 0) then {[false,"marijuana",life_inv_marijuana] call life_fnc_handleInv;};
-lc_a = true;
+lc_a 					= true;
 
 removeAllWeapons player;
 {player removeMagazine _x} foreach (magazines player);
 
-[[player,_bad],"life_fnc_jailSys",false,false] spawn life_fnc_MP;
-[1,false] call life_fnc_sessionHandle;
+[[player,_bad], "life_fnc_jailSys",false,false] spawn life_fnc_MP;
+[1, true] call life_fnc_sessionHandle;

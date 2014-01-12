@@ -1,25 +1,33 @@
 /*
 	File: fn_unimpound.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Yeah... Gets the vehicle from the garage.
 */
 private["_vehicle","_vid","_pid","_unit","_price"];
 disableSerialization;
-if(lbCurSel 2801 == -1) exitWith {hint "You did not select a vehicle..."};
-_vehicle = lbData[2801,(lbCurSel 2801)];
-_vid = lbValue[2801,(lbCurSel 2801)];
-_pid = getPlayerUID player;
-_unit = player;
+if(lbCurSel 2801 == -1) exitWith {hint "Selectionner un véhicule."};
 
-if(isNil "_vehicle") exitWith {hint "The selection had a error..."};
+_vehicle 	= lbData[2801,(lbCurSel 2801)];
+_vid 		= lbValue[2801,(lbCurSel 2801)];
+_pid 		= getPlayerUID player;
+_unit 		= player;
+_sync		= time;
 
-_price = [_vehicle,life_garage_prices] call fnc_index;
-if(_price == -1) then {_price = 1000;} else {_price = (life_garage_prices select _price) select 1;};
-if(lc_ac < _price) exitWith {hint format["You don't have $%1 in your bank account!",[_price] call life_fnc_numberText];};
+if(isNil "_vehicle") exitWith {
+	hint "Impossible, une erreur est survenue."
+};
+_price 		= [_vehicle, life_garage_prices] call fnc_index;
+if(_price == -1) then {
+	_price 	= 1000; 
+}else{ 
+	_price 	= (life_garage_prices select _price) select 1; 
+};
+if(lc_ac < _price) exitWith {
+	hint format["Impossible, vous n'avez pas $%1 sur votre compte en banque.", [_price] call life_fnc_numberText];
+};
 
-[[_vid,_pid,(getMarkerPos life_garage_sp),_unit],"STS_fnc_spawnVehicle",false,false] spawn life_fnc_MP;
-hint "Spawning vehicle please wait...";
+[[_vid, _pid,(getMarkerPos life_garage_sp), _unit], "STS_fnc_spawnVehicle", false, false] spawn life_fnc_MP;
 
-lc_ac = lc_ac - _price;
+hint "Le véhicule va sortir du garage...";
+
+lc_ac 		= lc_ac - _price;

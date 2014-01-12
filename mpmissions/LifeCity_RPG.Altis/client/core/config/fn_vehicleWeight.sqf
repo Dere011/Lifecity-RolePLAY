@@ -28,13 +28,13 @@ switch ((typeOf _vehicle)) do
 	case "C_Boat_Civil_01_F": {_weight = 85;};
 	case "C_Boat_Civil_01_police_F": {_weight = 85;};
 	case "C_Boat_Civil_01_rescue_F": {_weight = 85;};
-	case "B_Truck_01_box_F": {_weight = 500;};
+	case "B_Truck_01_box_F": {_weight = 450;};
 	case "B_Truck_01_transport_F": {_weight = 350;};
 	case "B_MRAP_01_F": {_weight = 65;};
 	case "O_MRAP_02_F": {_weight = 60;};
 	case "I_MRAP_03_F": {_weight = 58;};
-	case "B_Heli_Light_01_F": {_weight = 90;};
-	case "O_Heli_Light_02_unarmed_F": {_weight = 100;};
+	case "B_Heli_Light_01_F": {_weight = 25;};
+	case "O_Heli_Light_02_unarmed_F": {_weight = 50;};
 	case "I_Heli_Transport_02_F": {_weight = 300;};
 	case "C_Rubberboat": {_weight = 45;};
 	case "O_Boat_Armed_01_hmg_F": {_weight = 175;};

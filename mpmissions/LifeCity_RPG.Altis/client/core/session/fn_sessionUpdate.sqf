@@ -11,6 +11,8 @@ private["_packet"];
 
 _packet 	= [player, playerSide, lc_c, lc_ac, getPlayerUID player];
 
+[] call life_fnc_saveGear;
+
 switch (playerSide) do
 {
 	case west:
@@ -23,8 +25,7 @@ switch (playerSide) do
 			};
 		} foreach life_licenses;
 		_packet set[count _packet,_array];
-		_gear = lc_cg;
-		_packet set[count _packet,_gear];
+		_packet set[count _packet, lc_cg];
 	};
 	
 	case civilian:
@@ -36,11 +37,12 @@ switch (playerSide) do
 				_array set[count _array,[_x select 0,(missionNamespace getVariable (_x select 0))]];
 			};
 		} foreach life_licenses;
-		[] call life_fnc_civFetchGear;
 		_packet set[count _packet,_array];
-		_packet set[count _packet, lc_a];
 		_packet set[count _packet, lc_cvg];
 	};
 };
+
+_packet set[count _packet, lc_has_insurance];
+_packet set[count _packet, lc_a];
 
 [_packet, "STS_fnc_update", false, false] spawn life_fnc_MP;

@@ -26,8 +26,9 @@ case 0: {//fill sound list
 	};
 case 1: {//play
 	deleteVehicle PG_get(SOUNDSOURCE);
-	PG_set(SOUNDSOURCE,"camera" createVehicle getPosATL player);
-	PG_get(SOUNDSOURCE) say GET_SELECTED_DATA(balca_soundlist_IDC);
+	[[player,SOUNDSOURCE],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
+	//PG_set(SOUNDSOURCE,"camera" createVehicle getPosATL player);
+	//PG_get(SOUNDSOURCE) say GET_SELECTED_DATA(balca_soundlist_IDC);
 	};
 
 case 2: {//clipboard

@@ -18,9 +18,7 @@ if(life_action_inUse) exitWith {_handled};
 
 switch (_code) do
 {
-	//T Key (Trunk)
-	case 20:
-	{
+	case 20: {
 		if(!_alt && !_ctrlKey) then
 		{
 			if(vehicle player != player && alive vehicle player) then
@@ -42,24 +40,17 @@ switch (_code) do
 			};
 		};
 	};
-	//L Key?
 	case 38: { if(!_alt && !_ctrlKey) then { [] call life_fnc_radar; };};
-	//Y Player Menu
-	case 21:
-	{
+	case 21: {
 		if(!_alt && !_ctrlKey && !dialog) then
 		{
 			[] call life_fnc_p_openMenu;
 		};
 	};
-	//V Key
-	case 47:
-	{
+	case 47: {
 		if(playerSide != west && (player getVariable "restrained") OR (player getVariable "transporting")) then {_handled = true;};
 	};
-	//F Key
-	case 33:
-	{
+	case 33: {
 		if(playerSide == west && vehicle player != player && !life_siren_active && ((driver vehicle player) == player)) then
 		{
 			[] spawn
@@ -84,8 +75,7 @@ switch (_code) do
 			};
 		};
 	};
-	case 34:
-	{
+	case 34: {
 		if(playerSide == west && vehicle player != player && !life_siren_active && ((driver vehicle player) == player)) then
 		{
 			[] spawn
@@ -95,17 +85,13 @@ switch (_code) do
 				life_siren_active = false;
 			};
 			[[vehicle player,"klaxoncop"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
-			titleText ["Klaxon COP ON","PLAIN DOWN"];
 		};
 	};
-	//U Key
-	case 22:
-	{
+	case 22: {
 		if(!_alt && !_ctrlKey && !life_lock_active) then {
-			[] spawn
-			{
+			[] spawn {
 				life_lock_active = true;
-				sleep 3;
+				sleep 1;
 				life_lock_active = false;
 			};
 			if(vehicle player == player) then {
@@ -114,20 +100,16 @@ switch (_code) do
 				_veh = vehicle player;
 			};
 			_locked  = locked _veh;
-			if(_veh in life_vehicles && player distance _veh < 6.5) then {
+			if(_veh in life_vehicles && player distance _veh < 10) then {
 				if(_locked != 0) then {
 					_veh lock 0;
-					//if(!(local _veh)) then {
-						[[_veh, 0], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
-					//};
-					_veh say3D "LockVeh";
+					[[_veh, 0], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
+					[[_veh,"UnLockVeh"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
 					titleText["Vous avez deverrouille votre vehicule.", "PLAIN DOWN"];
 				}else{
 					_veh lock 2;
-					//if(!(local _veh)) then {
-						[[_veh, 2], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
-					//};
-					_veh say3D "UnLockVeh";
+					[[_veh, 2], "life_fnc_lockVehicle", _veh, false] spawn life_fnc_MP;
+					[[_veh,"LockVeh"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
 					titleText["Vous avez verrouille votre vehicule.", "PLAIN DOWN"];
 				};
 			};
