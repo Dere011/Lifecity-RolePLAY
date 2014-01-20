@@ -1,7 +1,6 @@
 /*
 	File: fn_add.sqf
 	Author:
-	
 	Description:
 */
 private["_unit","_side","_uid","_money","_bank","_uid","_ownerID","_misc","_handle"];
@@ -26,5 +25,5 @@ _handle 	= [_uid, name _unit, _side, _money, _bank, _misc] spawn DB_fnc_insert;
 
 waitUntil {scriptDone _handle};
 
-_ret 		= [_uid,_side] call DB_fnc_query;
-[_ret,"life_fnc_sessionReceive",_ownerID,false] spawn life_fnc_MP;
+_ret 		= [_unit, _uid] call DB_fnc_query;
+[_ret, "life_fnc_sessionReceive", _ownerID, false] spawn life_fnc_MP;

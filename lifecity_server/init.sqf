@@ -19,7 +19,7 @@ AntiCheat				= true;
 fed_bank setVariable["fed_rob_ip",false,true];
 fed_bank setVariable["fed_locked",false,true];
 
-_sql 					= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", "CALL resetLifeVehicles();"];
+//_sql 					= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", "CALL resetLifeVehicles();"];
 
 publicVariable "life_fnc_vehStoreItem";
 publicVariable "life_fnc_vehTakeItem";
@@ -28,6 +28,43 @@ publicVariable "life_fnc_vehInventory";
 [] execVM "lifecity_server\vars.sqf";
 [] execVM "lifecity_server\functions.sqf";
 [] execVM "lifecity_server\eventhandlers.sqf";
+[] execVM "lifecity_server\core\protection\init.sqf";
+
+life_fnc_MPexec 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\network\fn_MPexec.sqf";
+life_fnc_MP 			= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\network\fn_MP.sqf";
+life_fnc_loadGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\gear\fn_loadGear.sqf";
+life_fnc_saveGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\gear\fn_saveGear.sqf";
+life_fnc_playSound 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fonctions\fn_playSound.sqf";
+life_fnc_copLights 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\cop\fn_copLights.sqf";
+life_fnc_restrain 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\cop\fn_restrain.sqf";
+life_fnc_adminMarkers 	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\admin\fn_adminMarkers.sqf";
+life_fnc_initCop		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_initCop.sqf";
+life_fnc_initCiv		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_initCiv.sqf";
+life_fnc_setupEVH		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_setupEVH.sqf";
+fn_filterString			= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fonctions\fn_filterString.sqf";
+fn_findString			= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fonctions\fn_findString.sqf";
+life_fnc_setupSession	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_setupSession.sqf";
+life_fnc_keyRsync		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\vehicle\fn_keyRsync.sqf";
+life_fnc_sessionSetup	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\session\fn_sessionSetup.sqf";
+life_fnc_init_syncro	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_init_syncro.sqf";
+
+publicVariable "life_fnc_init_syncro";
+publicVariable "life_fnc_MPexec";
+publicVariable "life_fnc_MP";
+publicVariable "life_fnc_setupEVH";
+publicVariable "life_fnc_playSound";
+publicVariable "life_fnc_loadGear";	
+publicVariable "life_fnc_saveGear";	
+publicVariable "life_fnc_copLights";	
+publicVariable "life_fnc_restrain";
+publicVariable "life_fnc_adminMarkers";
+publicVariable "life_fnc_initCop";
+publicVariable "life_fnc_initCiv";
+publicVariable "fn_filterString";
+publicVariable "fn_findString";
+publicVariable "life_fnc_setupSession";
+publicVariable "life_fnc_keyRsync";
+publicVariable "life_fnc_sessionSetup";
 
 if(AntiCheat) then {
 
@@ -36,6 +73,7 @@ if(AntiCheat) then {
 
 life_fnc_wantedAdd 		= compileFinal PreprocessFileLineNumbers "lifecity_server\core\wantedsys\wanted_add.sqf";
 life_fnc_wantedRemove 	= compileFinal PreprocessFileLineNumbers "lifecity_server\core\wantedsys\wanted_remove.sqf";
+generateKey 			= compileFinal PreprocessFileLineNumbers "lifecity_server\core\protection\generateKey.sqf";
 
 life_gang_list 			= [];
 publicVariable "life_gang_list";

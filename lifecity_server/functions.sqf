@@ -6,17 +6,6 @@ compileFinal "
 ";
 publicVariable "life_fnc_sidechat";
 
-life_fnc_playSound =
-compileFinal "
-	private[""_source""];
-	_source 		= [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
-	_soundname 		= [_this,1,"""",[""""]] call BIS_fnc_param;
-	if(isNull _source) exitWith {};
-	if(isNil ""_soundname"")  exitWith {};
-	_source say3D _soundname;
-";
-publicVariable "life_fnc_playSound";
-
 life_fnc_youarebanned =
 compileFinal "
 	cutText[""You are banned.\n\nVisit our forum for more information."", ""BLACK"", 0, false];
@@ -407,8 +396,3 @@ compileFinal "
 	};
 ";
 publicVariable "clientMessage";
-
-life_fnc_loadGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_loadGear.sqf";
-life_fnc_saveGear 		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_saveGear.sqf";
-publicVariable "life_fnc_loadGear";	
-publicVariable "life_fnc_saveGear";	

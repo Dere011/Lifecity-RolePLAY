@@ -9,7 +9,14 @@
 
 if(!isServer) exitWith {};
 
-"life_fnc_MP_packet" addPublicVariableEventHandler {[_this select 0,_this select 1] call life_fnc_MPexec;};
+"lifecity_fnc_MP_packet_30120" addPublicVariableEventHandler {
+	[_this select 0,_this select 1] call life_fnc_MPexec;
+	
+	_varValue 		= _this select 1;
+	_functionName 	=	[_varValue,2,"",[""]] call bis_fnc_param;
+	diag_log format["MPExec: %1", _functionName];
+};
+
 "TAW_PVAR_cheater" addPublicVariableEventHandler 
 {
 	diag_log format["%1", (_this select 1) select 0];

@@ -39,7 +39,7 @@ if(count _nearVehicles > 0) exitWith {
 };
 
 _query 		= format["UPDATE vehicles SET active='1' WHERE pid='%1' AND id='%2'",_pid,_vid];
-_sql 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma3life_vehicles', '%1']", _query];
+_sql 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
 _vehicle 	= _vInfo select 2 createVehicle (_sp);
 
 _vehicle setVariable["vehicle_info_owners",[[_pid,_name]],true];

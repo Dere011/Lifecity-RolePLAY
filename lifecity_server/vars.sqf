@@ -2,7 +2,7 @@
 	@file name: vars.sqf
 */
 
-//lc_federal_funds 	= (count playableUnits) * 750;
+//lc_federal_funds 		= (count playableUnits) * 750;
 lc_federal_funds 		= ["servers", "fed", "federal_funds", "NUMBER"] call iniDB_read;
 publicVariable "lc_federal_funds";
 
@@ -17,9 +17,9 @@ life_sell_mullet = 270; //15
 life_sell_catShark = 330;//100
 life_sell_rabbit = 75;//50
 life_sell_apple = 55;//20
-life_sell_oil = 1800;//200
-life_sell_heroin = 2980;//560
-life_sell_marijuana = 2000;//450
+life_sell_oil = 2900;//200
+life_sell_heroin = 6300;//560
+life_sell_marijuana = 5200;//450
 life_sell_turtle = 2000;//2000
 life_sell_fishing = 3;//3
 life_sell_water = 5;//5
@@ -69,12 +69,12 @@ sell_array = [
 ["redgull",200],
 ["peach",55],
 ["cocaine",3000],
-["cocainep",4050],
+["cocainep",9500],
 ["diamond",750],
-["diamondc",1900],
-["iron_r",3200],
-["copper_r",1200],
-["salt_r",2300],
+["diamondc",2800],
+["iron_r",5300],
+["copper_r",3300],
+["salt_r",3350],
 ["glass",2000],
 ["fuelF",500],
 ["spikeStrip",1200],

@@ -76,6 +76,7 @@ class CfgFunctions
 		class System
 		{
 			file = "lifecity_server\core\system";
+			class resynckey {};
 			class query {};
 			class add {};
 			class update {};
