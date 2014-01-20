@@ -10,9 +10,6 @@ debriefing 			= 0;
 showMap 			= 1;
 enableDebugConsole 	= 1;
 loadScreen 			= "Loading.jpg";
-overviewText 		= "Bienvenue dans la simulation Atlisienne.";
-overviewTextLocked 	= "Bienvenue dans la simulation Atlisienne .";
-overviewPicture 	= "Loading.jpg";
 enableItemsDropping = 0;
 
 class Header
@@ -52,6 +49,16 @@ class RscTitles
 class CfgFunctions
 {
 	#include "common\Functions.hpp"
+};
+
+class CfgMusic
+{
+	tracks[]={};
+	class nuke
+	{
+		name = "";
+		sound[] = {"nuke\nuke.ogg", db+0, 1.0};
+	};	
 };
 
 class CfgSounds

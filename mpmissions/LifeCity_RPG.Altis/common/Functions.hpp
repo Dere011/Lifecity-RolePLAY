@@ -6,9 +6,6 @@ class Life_Client_Core
 	{
 		file = "client\core";
 		class setupActions {};
-		class setupEVH {};
-		class initCiv {};
-		class initCop {};
 	};
 	
 	class Admin
@@ -101,7 +98,6 @@ class Life_Client_Core
 	class session
 	{
 		file = "client\core\session";
-		class sessionSetup {};
 		class sessionReceive {};
 		class sessionUpdate {};
 		class sessionCreate {};
@@ -158,8 +154,6 @@ class Life_Client_Core
 		class playerTags {};
 		class clearVehicleAmmo {};
 		class pulloutVeh {};
-		class MP{};
-		class MPexec{};
 	};
 	
 	class Civilian
@@ -184,12 +178,10 @@ class Life_Client_Core
 	{
 		file = "client\core\cop";
 		class copMarkers {};
-		class copLights {};
 		class vehInvSearch {};
 		class copSearch {};
 		class bountyReceive {};
 		class searchClient {};
-		class restrain {};
 		class ticketGive {};
 		class ticketPay {};
 		class ticketPrompt {};

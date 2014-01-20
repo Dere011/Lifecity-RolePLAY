@@ -87,5 +87,16 @@ class Life_key_management {
 			w = (6.25 / 40);
 			h = (1 / 25);
 		};
+		
+		class ResyncKey : Life_RscButtonMenu {
+			idc = -1;
+			text = "Resync";
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+			onButtonClick = "[] call life_fnc_keyRsync";
+			x = 0.50;
+			y = 0.69;
+			w = (6.25 / 40);
+			h = (1 / 25);
+		};
 	};
 };

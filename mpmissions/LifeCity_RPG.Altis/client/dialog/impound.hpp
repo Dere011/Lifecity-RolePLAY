@@ -3,7 +3,6 @@ class Life_impound_menu {
 	name= "life_impound_menu";
 	movingEnable = false;
 	enableSimulation = true;
-	//onLoad = "[] execVM 'core\client\keychain\init.sqf'";
 	
 	class controlsBackground {
 		class Life_RscTitleBackground:Life_RscText {
@@ -31,7 +30,7 @@ class Life_impound_menu {
 		class Title : Life_RscTitle {
 			colorBackground[] = {0, 0, 0, 0};
 			idc = -1;
-			text = "Garage de véhicules";
+			text = "Votre garage";
 			x = 0.1;
 			y = 0.2;
 			w = 0.6;
@@ -66,7 +65,7 @@ class Life_impound_menu {
 		
 		class GetCar : life_RscButtonMenu {
 			idc = -1;
-			text = "Sortir véhicule";
+			text = "Sortir le véhicule";
 			onButtonClick = "[] call life_fnc_unimpound";
 			x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.8 - (1 / 25);
@@ -76,7 +75,7 @@ class Life_impound_menu {
 		
 		class SellCar : life_RscButtonMenu {
 			idc = -1;
-			text = "Vendre véhicule";
+			text = "Vendre le véhicule";
 			onButtonClick = "[] call life_fnc_sellGarage";
 			x = 0.265 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.8 - (1 / 25);

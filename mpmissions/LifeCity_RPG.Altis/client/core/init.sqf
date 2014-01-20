@@ -16,16 +16,17 @@ waitUntil {(!isNil {clientGangLeader})};
 [] call life_fnc_sessionSetup;
 waitUntil {life_session_completed};
 
+_handle = [] spawn life_fnc_setupSession;
+waitUntil {scriptDone _handle};
+
 switch (playerSide) do
 {
-	case west:
-	{
-		_handle = [] spawn life_fnc_initCop;
+	case west: {
+		_handle 	= [] spawn life_fnc_initCop;
 		waitUntil {scriptDone _handle};
 	};
-	case civilian:
-	{
-		_handle = [] spawn life_fnc_initCiv;
+	case civilian: {
+		_handle 	= [] spawn life_fnc_initCiv;
 		waitUntil {scriptDone _handle};
 	};
 };
@@ -44,6 +45,7 @@ player addRating 99999999;
 [] call life_fnc_hudSetup;
 [] call life_fnc_playerTags;
 [] call life_fnc_settingsInit;
+[] call life_fnc_init_syncro;
 
 life_fnc_moveIn = compileFinal
 "
@@ -53,6 +55,8 @@ life_fnc_moveIn = compileFinal
 if(!loub_admin_mode) then {
 	[] execVM "client\core\init_survival.sqf";
 };
+
+
 
 setPlayerRespawnTime life_respawn_timer;
 
