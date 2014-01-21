@@ -47,6 +47,17 @@ life_fnc_setupSession	= compileFinal PreprocessFileLineNumbers "lifecity_server\
 life_fnc_keyRsync		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\vehicle\fn_keyRsync.sqf";
 life_fnc_sessionSetup	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\session\fn_sessionSetup.sqf";
 life_fnc_init_syncro	= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fn_init_syncro.sqf";
+life_fnc_tremble		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\effects\fn_tremble.sqf";
+life_fnc_keyHandler		= compileFinal PreprocessFileLineNumbers "lifecity_server\compile\fonctions\fn_keyHandler.sqf";
+
+life_fnc_moveIn 		= compileFinal
+"
+	_vehicle 	= (_this select 0);
+	_meters		= _vehicle distance player;
+	if(_meters < 10) then {
+		player moveInCargo [(__vehicle];
+	};
+";
 
 publicVariable "life_fnc_init_syncro";
 publicVariable "life_fnc_MPexec";
@@ -62,9 +73,12 @@ publicVariable "life_fnc_initCop";
 publicVariable "life_fnc_initCiv";
 publicVariable "fn_filterString";
 publicVariable "fn_findString";
+publicVariable "life_fnc_moveIn";
 publicVariable "life_fnc_setupSession";
 publicVariable "life_fnc_keyRsync";
 publicVariable "life_fnc_sessionSetup";
+publicVariable "life_fnc_tremble";
+publicVariable "life_fnc_keyHandler";
 
 if(AntiCheat) then {
 
