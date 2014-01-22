@@ -20,18 +20,15 @@ _type 		= [_this,0,0,[0]] call BIS_fnc_param;
 _void 		= [_this,1,false,[false]] call BIS_fnc_param;
 if(_type == 0) exitWith {};
 
-switch(_type) do
-{
-	case 1: 
-	{
-		if(_void) then
-		{
+switch(_type) do {
+	case 1: {
+		if(_void) then {
+			if((time - life_forced_query_time) < 5) exitWith {};
+			life_forced_query_time 		= time;
 			[] call life_fnc_sessionUpdate;
-		}
-			else
-		{
+		}else{
 			if((time - life_query_time) < 300) exitWith {};
-			life_query_time = time;
+			life_query_time 			= time;
 			[] call life_fnc_sessionUpdate;
 		};
 	};

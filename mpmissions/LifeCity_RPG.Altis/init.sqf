@@ -45,8 +45,6 @@ if(X_Client) then {
 		cutText["Bienvenue sur la version 1.5 de LifeCity.\nNous avons fait beaucoup de changement dans cette nouvelle version. La sauvegarde des donnees joueurs, le systeme de garage, le systeme des licenses ont ete revues et malheuresement ne nous pouvons pas convertire l'equipement de l'ancienne version vers la nouvelle. Pour ce fait, vous avez reçu 100 000$ sur votre compte en banque.\n\nL'argent, les licenses, les véhicules ont bien ete transferes.\n\nOn vous laisse découvrir les autres changements! Bon jeu sur LifeCity =)\n\n(20 secondes avant disparition du message)", "BLACK", 0, false];
 		sleep 20;
 	};
-	cutText["Notice: Aucun RESET de prevu dans les jours a venir.", "BLACK", 0, false];
-	sleep 5;
 	cutText["Fin du chargement de votre session.\n\nBon jeu sur LifeCity!", "BLACK", 0, false];
 	sleep 1;
 	if(loub_admin_mode) then {

@@ -40,7 +40,6 @@ if(lc_a) then {
 [] call life_fnc_hudUpdate;
 
 cutText ["","BLACK IN"];
-player addRating 99999999;
 
 [] spawn life_fnc_loadGear;
 [1,true] call life_fnc_sessionHandle;

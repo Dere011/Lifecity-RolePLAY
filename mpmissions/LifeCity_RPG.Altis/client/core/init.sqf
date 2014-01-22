@@ -40,23 +40,14 @@ player setVariable["transporting",false,true];
 waitUntil {!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call life_fnc_keyHandler"];
 
-player addRating 99999999;
-
 [] call life_fnc_hudSetup;
 [] call life_fnc_playerTags;
 [] call life_fnc_settingsInit;
 [] call life_fnc_init_syncro;
 
-life_fnc_moveIn = compileFinal
-"
-	player moveInCargo (_this select 0);
-";
-
 if(!loub_admin_mode) then {
 	[] execVM "client\core\init_survival.sqf";
 };
-
-
 
 setPlayerRespawnTime life_respawn_timer;
 
