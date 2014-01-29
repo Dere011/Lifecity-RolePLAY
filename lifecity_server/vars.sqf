@@ -76,7 +76,7 @@ sell_array = [
 ["copper_r",3300],
 ["salt_r",3350],
 ["glass",2000],
-["fuelF",500],
+["fuelF",3000],
 ["spikeStrip",1200],
 ["cement",2050]
 ];

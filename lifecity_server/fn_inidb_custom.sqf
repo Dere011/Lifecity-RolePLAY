@@ -1,13 +1,3 @@
-//Persistent Scripts by ZA-Gamers. www.za-gamers.co.za
-//Author: {ZAG}Ed!
-//Email: edwin(at)vodamail(dot)co(dot)za
-//Date: 26/03/2013
-//Thanx to iniDB's author SicSemperTyrannis! May you have many wives and children!
-
-// WARNING! This is a modified version for use with the A3W missionfile!
-// This is NOT a default persistantdb script!
-// changes by: JoSchaap & Bewilderbeest @ http://a3wasteland.com/
-
 #define __DEBUG_INIDB_CALLS__ 0
 
 if(!isServer) exitWith {};

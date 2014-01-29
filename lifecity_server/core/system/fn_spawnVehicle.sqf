@@ -1,10 +1,7 @@
 /*
 	File: fn_spawnVehicle.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Sends the query request to the database, if an array is returned then it creates
-	the vehicle if it's not in use or dead.
 */
 private["_vid","_sp","_pid","_query","_sql","_vehicle","_nearVehicles","_name"];
 _vid 	= [_this,0,-1,[0]] call BIS_fnc_param;
@@ -35,8 +32,25 @@ if((_vInfo select 6) == "True") exitWith {
 _nearVehicles = nearestObjects[_sp,["Car","Air","Ship"], 10];
 if(count _nearVehicles > 0) exitWith {
 	serv_sv_use 	= serv_sv_use - [_vid];
-	[[0,"Un vehicule est sur le point de spawn, action impossible."], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;
+	[[2,"Un vehicule est sur le point de spawn, action impossible."], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;
 };
+
+/*
+{
+	_veh 			= _x;
+	_vehicleClass 	= getText(configFile >> "CfgVehicles" >> (typeOf _veh) >> "vehicleClass");
+	if(_vehicleClass in ["Car","Air","Ship","Armored","Submarine"]) then {
+		_dbInfo 	= _veh getVariable["dbInfo", []];
+		if(count _dbInfo > 0) then {
+			_plate = _dbInfo select 1;
+			if(_plate == (_vInfo select 7)) exitWith {
+				serv_sv_use 	= serv_sv_use - [_vid];
+				[[0,"Le véhicule est déjà sur la carte."], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;
+			};
+		};
+	};
+} foreach vehicles;
+*/
 
 _query 		= format["UPDATE vehicles SET active='1' WHERE pid='%1' AND id='%2'",_pid,_vid];
 _sql 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
@@ -62,4 +76,4 @@ if((_vInfo select 1) == "cop" && (_vInfo select 2) == "C_Offroad_01_F") then {
 
 serv_sv_use  = serv_sv_use - [_vid];
 
-[[0,"Le vehicule est maintenant sur le point de spawn."], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;
+[[2,"Le vehicule est maintenant sur le point de spawn."], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;

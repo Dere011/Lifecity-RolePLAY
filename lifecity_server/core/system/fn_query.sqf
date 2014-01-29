@@ -1,9 +1,7 @@
 /*
 	File: fn_query.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	This is a gateway to the SQF->MySQL Query function.
 */
 private["_uid","_unit","_ret","_ownerID"];
 _unit 				= [_this,0, ObjNull, [Objnull]] call BIS_fnc_param;

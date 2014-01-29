@@ -1,5 +1,5 @@
 /*
-	File: fn_copMarkers.sqf
+	File: fn_adminMarkers.sqf
 	Author:
 	Description:
 */
@@ -21,13 +21,6 @@ while {true} do {
 		_marker setMarkerTextLocal format["%1", name _x];
 		_markers set[count _markers,[_marker,_x]];
 	} foreach _players;
-	
-	{
-		_marker = createMarkerLocal [format["%1_marker",_x], getPos _x];
-		_marker setMarkerColorLocal "ColorBlue";
-		_marker setMarkerTypeLocal "Mil_dot";
-		_markers set[count _markers,[_marker,_x]];
-	} foreach _vehicles;
 			
 	while {visibleMap} do {
 		{

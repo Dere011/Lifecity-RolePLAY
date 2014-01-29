@@ -13,5 +13,6 @@ while {true} do {
 			lc_federal_funds 	= 0;
 		};
 		lc_federal_funds 		= lc_federal_funds + _funds;
+		["servers", "fed", "federal_funds", lc_federal_funds] call iniDB_write;
 	};
 };

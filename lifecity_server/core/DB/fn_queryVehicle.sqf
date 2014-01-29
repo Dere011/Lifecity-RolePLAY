@@ -1,9 +1,7 @@
 /*
 	File: fn_queryVehicle.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Queries the database and checks if the selected vehicle is able to be called.
 */
 private["_vid","_pid","_query","_result","_ret"];
 _vid 			= [_this,0,-1,[0]] call BIS_fnc_param;

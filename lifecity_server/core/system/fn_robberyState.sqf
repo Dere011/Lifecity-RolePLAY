@@ -1,9 +1,7 @@
 /*
 	File: fn_robberyState.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Determines the robbery state?
 */
 private["_vault","_state","_funds"];
 _vault = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
@@ -19,14 +17,14 @@ switch(_state) do
 	{
 		[[2,"The robbery has failed due to unknown reasons"],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		_vault setVariable["fed_locked",true,true];
-		sleep (10 * 60); //Wait 10 minutes
+		sleep (10 * 60);
 		_vault setVariable["fed_locked",false,true];
 		_vault setVariable["fed_rob_ip",false,true];
 	};
 	
 	case 1:
 	{
-		[[1,format["$%1 was stolen from the robbery on the federal reserve.",[_funds] call life_fnc_numberText]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
+		[[1,format["$%1 was stolen from the robbery on the federal reserve.", [_funds] call life_fnc_numberText]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		_vault setVariable["fed_locked",true,true];
 		sleep (30 * 60);
 		_vault setVariable["fed_locked",false,true];

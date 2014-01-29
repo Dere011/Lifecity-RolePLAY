@@ -1,10 +1,7 @@
 /*
 	File: fn_copLights.sqf
-	Author: mindstorm, modified by Adanteh
-	Link: http://forums.bistudio.com/showthread.php?157474-Offroad-Police-sirens-lights-and-underglow
-	
+	Author:
 	Description:
-	Adds the light effect to cop vehicles, specifically the offroad.
 */
 Private ["_vehicle","_lightRed","_lightBlue","_lightleft","_lightright","_leftRed"];
 _vehicle = _this select 0;

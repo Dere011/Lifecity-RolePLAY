@@ -1,9 +1,7 @@
 /*
 	File: fn_restrain.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Retrains the client.
 */
 private["_cop"];
 _cop = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;

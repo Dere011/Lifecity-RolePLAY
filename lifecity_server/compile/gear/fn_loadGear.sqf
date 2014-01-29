@@ -76,6 +76,7 @@ removeVest player;
 removeBackpack player;
 removeGoggles player;
 removeHeadGear player;
+
 {
 	player unassignItem _x;
 	player removeItem _x;
@@ -93,6 +94,8 @@ if(_backpack != "") then {_handle = [_backpack,true,false,false,false] spawn lif
 if(_primary != "") then {[_primary,true,false,false,false] spawn life_fnc_handleItem;};
 if(_launcher != "") then {[_launcher,true,false,false,false] spawn life_fnc_handleItem;};
 if(_handgun != "") then {[_handgun,true,false,false,false] spawn life_fnc_handleItem;};
+if(_goggles != "") then {[_goggles,true,false,false,false] spawn life_fnc_handleItem;};
+if(_headgear != "") then {[_headgear,true,false,false,false] spawn life_fnc_handleItem;};
 
 {_handle = [_x,true,false,false,false] spawn life_fnc_handleItem; waitUntil {scriptDone _handle};} foreach _items;
 {[_x,true,false,false,true] call life_fnc_handleItem;} foreach (_uitems);

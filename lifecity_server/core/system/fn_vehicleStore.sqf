@@ -1,9 +1,7 @@
 /*
 	File: fn_vehicleStore.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Stores the vehicle in the 'Garage'
 */
 private["_vehicle","_impound","_vInfo","_vInfo","_plate","_uid","_query","_sql","_unit"];
 _vehicle 	= [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
@@ -20,7 +18,6 @@ if(count _vInfo > 0) then {
 
 if(_impound) then {
 	if(count _vInfo == 0) then {
-		//@TODO: A voir si bonne idée de détruire
 		life_impound_inuse = false;
 		(owner _unit) publicVariableClient "life_impound_inuse";
 		deleteVehicle _vehicle;
@@ -31,7 +28,6 @@ if(_impound) then {
 		deleteVehicle _vehicle;
 		life_impound_inuse 	= false;
 		(owner _unit) publicVariableClient "life_impound_inuse";
-		//@TODO: Send sound
 	};
 }else{
 	if(count _vInfo == 0) exitWith {
@@ -54,5 +50,4 @@ if(_impound) then {
 	(owner _unit) publicVariableClient "life_garage_store";
 	
 	[[1,"Le vehicule est maintenant dans votre garage."], "life_fnc_broadcast", (owner _unit),false] spawn life_fnc_MP;
-	//@TODO: Send sound
 };

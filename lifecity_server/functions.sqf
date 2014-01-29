@@ -114,7 +114,7 @@ compileFinal "
 	
 	hint format[""Vous avez déposé $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
 	
-	[] 			call life_fnc_atmMenu;
+	[] 			call lifc_fnc_atmMenu;
 	[1, true] 	call life_fnc_sessionHandle;
 ";
 
@@ -135,7 +135,7 @@ compileFinal "
 	
 	hint format [""Vous avez retiré $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
 	
-	[] 			call life_fnc_atmMenu;
+	[] 			call lifc_fnc_atmMenu;
 	[1, true] 	call life_fnc_sessionHandle;
 ";
 
@@ -159,7 +159,7 @@ compileFinal "
 	bank_addfunds 	= _tax;
 	publicVariableServer ""bank_addfunds"";
 	[[_val,name player],""clientWireTransfer"",_unit,false] spawn life_fnc_MP;
-	[] call life_fnc_atmMenu;
+	[] call lifc_fnc_atmMenu;
 	
 	hint format[""You have transfered $%1 to %2.\n\nA tax fee of $%3 was taken for the wire transfer."",[_val] call life_fnc_numberText,name _unit,[_tax] call life_fnc_numberText];
 	
@@ -373,13 +373,11 @@ compileFinal "
 		case 3 :
 		{
 			private[""_message""];
-			_message = format[""!!!MESSAGE ADMIN: %1"",_msg];
-			_admin = format[""Sent by admin: %1"", _from];
-			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Vous<br/><t color='#33CC33'>De: <t color='#ffffff'>Un admin<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%1"",_msg];
-			
+			_message 	= format[""!!!MESSAGE ADMIN: %1"",_msg];
+			_admin 		= format[""Sent by admin: %1"", _from];
+			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Vous<br/><t color='#33CC33'>De l'admin: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from, _msg];
 			[""AdminMessage"",[""You Have Received A Message From An Admin!""]] call bis_fnc_showNotification;
 			systemChat _message;
-			if(lc_al > 0) then {systemChat _admin;};
 		};
 		
 		case 4 :

@@ -1,10 +1,7 @@
 /*
 	File: fn_vehicleDelete.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Doesn't actually delete since we don't give our DB user that type of
-	access so instead we set it to alive=0 so it never shows again.
 */
 private["_vid","_sp","_pid","_query","_sql","_type"];
 

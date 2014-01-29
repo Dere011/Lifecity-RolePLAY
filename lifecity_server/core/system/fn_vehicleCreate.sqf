@@ -1,9 +1,7 @@
 /*
 	File: fn_vehicleCreate.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Answers the query request to create the vehicle in the database.
 */
 private["_uid","_side","_type","_classname","_color","_plate"];
 _uid 		= [_this,0,"",[""]] call BIS_fnc_param;

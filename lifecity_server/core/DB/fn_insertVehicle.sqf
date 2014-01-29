@@ -1,9 +1,7 @@
 /*
 	File: fn_insertVehicle.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Inserts the vehicle into the database
 */
 private["_uid","_side","_type","_className","_color","_plate","_query","_sql"];
 _uid 			= [_this,0,"",[""]] call BIS_fnc_param;

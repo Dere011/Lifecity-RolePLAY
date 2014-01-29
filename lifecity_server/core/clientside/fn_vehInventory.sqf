@@ -45,7 +45,6 @@ if(count _data == 0) then {_veh setVariable["Trunk",[[],0],true]; _data = [];} e
 	};
 } foreach life_inv_items;
 
-//Trunk Inventory Items
 {
 	if((_x select 0) != "money") then
 	{

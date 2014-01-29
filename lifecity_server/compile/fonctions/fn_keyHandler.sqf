@@ -1,9 +1,7 @@
 /*
 	File: fn_keyHandler.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Main key handler for event 'keyDown'
 */
 private ["_handled","_shift","_alt","_code","_ctrl","_alt","_ctrlKey","_veh","_locked"];
 _ctrl = _this select 0;
@@ -82,14 +80,18 @@ switch (_code) do
 			[[vehicle player,"klaxoncop"],"life_fnc_playSound",nil,true] spawn life_fnc_MP;
 		};
 	};
-	case 35: {
-		if(playerSide == west && !life_restrain_active && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && cursorTarget distance player < 3.5  && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then {
+	case 46: {
+		if(playerSide == west && !life_restrain_active && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && cursorTarget distance player < 2.0  && !(cursorTarget getVariable "Escorting")) then {
 			[] spawn {
 				life_restrain_active = true;
-				sleep 4.7;
+				sleep 5.0;
 				life_restrain_active = false;
 			};
-			[cursorTarget] call life_fnc_restrainAction;
+			if((cursorTarget getVariable "restrained")) then {
+				[cursorTarget] call life_fnc_unrestrain;
+			}else{
+				[cursorTarget] call life_fnc_restrainAction;
+			};
 		};
 	};
 	case 22: {
