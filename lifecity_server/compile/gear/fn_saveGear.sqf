@@ -64,9 +64,17 @@ if(isNil "_handgunItems") then {
 	_handgunItems = ["","",""];
 };
 
-_gear 				= [_primary,_launcher,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems,_headgear,_goggles];
+_invitems = [];
+{
+	_item 		= _x;
+	_value 		= missionNamespace getVariable _item;
+	_invitems   set[count _invitems, [format["%1", _item], _value]];
+} foreach (life_inv_items);
+
+_gear 				= [_primary,_launcher,_handgun,_magazines,_uniform,_vest,_backpack,_items,_primitems,_secitems,_handgunitems,_uitems,_vitems,_bitems,_headgear,_goggles,_invitems];
+
 if(playerSide == west) then {
-	lc_cg			= _gear;
+	dawwpqsag			= _gear;
 }else{
-	lc_cvg			= _gear;
+	dawwpqsavg			= _gear;
 };

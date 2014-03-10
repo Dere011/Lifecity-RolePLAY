@@ -16,8 +16,8 @@ _price = 0;
 	};
 } foreach life_clothing_purchase;
 
-if(_price > lc_c) exitWith {titleText["Sorry sir, you don't have enough money to buy those clothes.","PLAIN"];};
-lc_c = lc_c - _price;
+if(_price > dawwpqsa) exitWith {titleText["Sorry sir, you don't have enough money to buy those clothes.","PLAIN"];};
+dawwpqsa = dawwpqsa - _price;
 
 life_clothesPurchased = true;
 closeDialog 0;

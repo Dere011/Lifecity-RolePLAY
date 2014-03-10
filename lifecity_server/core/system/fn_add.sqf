@@ -25,5 +25,5 @@ _handle 	= [_uid, name _unit, _side, _money, _bank, _misc] spawn DB_fnc_insert;
 
 waitUntil {scriptDone _handle};
 
-_ret 		= [_unit, _uid] call DB_fnc_query;
+_ret 		= [_uid, _unit] call DB_fnc_query;
 [_ret, "life_fnc_sessionReceive", _ownerID, false] spawn life_fnc_MP;

@@ -1,9 +1,7 @@
 /*
-	File: fn_copDefault.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	File: fn_civDefault.sqf
+	Author:
 	Description:
-	Default cop configuration.
 */
 
 RemoveAllWeapons player;

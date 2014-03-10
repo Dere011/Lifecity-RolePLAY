@@ -9,24 +9,14 @@ private["_loadout","_primary","_launcher","_handgun","_magazines","_uniform","_v
 
 switch (playerSide) do {
 	case west: {
-		_loadout = lc_cg;
+		_loadout = dawwpqsag;
 	};
 	case civilian: {
-		_loadout = lc_cvg;
+		_loadout = dawwpqsavg;
 	};
 };
 	
 waitUntil {!(isNull (findDisplay 46))};
-
-if(loub_admin_mode) exitWith {[] call life_fnc_copDefault;};
-
-if(lc_is_updated) exitWith {
-	if(playerSide == west) then {
-		[] call life_fnc_copDefault;
-	}else{
-		[] call life_fnc_civDefault;
-	};
-};
 
 if(isNil "_loadout") exitWith {
 	if(playerSide == west) then {
@@ -60,6 +50,7 @@ _vitems 			= _loadout select 12;
 _bitems 			= _loadout select 13;
 _headgear 			= _loadout select 14;
 _goggles 			= _loadout select 15;
+_liveitems 			= _loadout select 16;
 
 if(_uniform == "" AND _vest == "" AND _backpack == "") exitWith {
 	if(playerSide == west) then {
@@ -108,3 +99,9 @@ if(_headgear != "") then {[_headgear,true,false,false,false] spawn life_fnc_hand
 if(primaryWeapon player != "") then {
 	player selectWeapon (primaryWeapon player);
 };
+
+{
+	_item 		= [(_x select 0), 1] call life_fnc_varHandle;
+	_value 		= (_x select 1);
+	([true, _item, _value] call life_fnc_handleInv)
+} foreach (_liveitems);

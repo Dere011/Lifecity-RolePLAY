@@ -1,5 +1,5 @@
 author 				= "Dere011";
-onLoadName 			= "LifeCity RolePlay";
+onLoadName 			= "LifeCity RolePlay (Altis Life)";
 onLoadMission 		= "Based on Altis Life by TAW_Tonic";
 joinUnassigned 		= 1;
 respawn 			= BASE;
@@ -44,21 +44,12 @@ class RscTitles
 	#include "client\dialog\ui.hpp"
 	#include "client\dialog\progress.hpp"
 	#include "addons\proving_ground\PG_rsctitles.hpp"
+	#include "addons\logistic\=BTC=_Lift\=BTC=_Hud.h"
 };
 
 class CfgFunctions
 {
 	#include "common\Functions.hpp"
-};
-
-class CfgMusic
-{
-	tracks[]={};
-	class nuke
-	{
-		name = "";
-		sound[] = {"nuke\nuke.ogg", db+0, 1.0};
-	};	
 };
 
 class CfgSounds
@@ -67,13 +58,13 @@ class CfgSounds
   class LockVeh
   {
     name = "LockVeh";
-    sound[] = {"client\sounds\lock.ogg", 1.0, 1};
+    sound[] = {"client\sounds\lock.ogg", 0.5, 1};
     titles[] = {};
   };
   class UnLockVeh
   {
     name = "UnLockVeh";
-    sound[] = {"client\sounds\unlock.ogg", 1.0, 1};
+    sound[] = {"client\sounds\unlock.ogg", 0.5, 1};
     titles[] = {};
   };
   class SirenPolice
@@ -106,6 +97,59 @@ class CfgSounds
     sound[] = {"client\sounds\alarm_citizen_loop1.ogg", 1.0, 1};
     titles[] = {};
   };
+  class AlarmCop
+  {
+    name = "AlarmCop";
+    sound[] = {"client\sounds\alarm_citizen_loop1.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class surrender
+  {
+    name = "surrender";
+    sound[] = {"client\sounds\surrender.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class T5zrlTg5DCo0876
+  {
+    name = "T5zrlTg5DCo0876";
+    sound[] = {"client\sounds\T5zrlTg5DCo0876.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class I4jo8wc5419p72L
+  {
+    name = "I4jo8wc5419p72L";
+    sound[] = {"client\sounds\I4jo8wc5419p72L.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class jX2Rn8VXcs8G4Rr
+  {
+    name = "jX2Rn8VXcs8G4Rr";
+    sound[] = {"client\sounds\jX2Rn8VXcs8G4Rr.ogg", 2.0, 1};
+    titles[] = {};
+  };
+  class UnF8SF3O68kJ64S
+  {
+    name = "UnF8SF3O68kJ64S";
+    sound[] = {"client\sounds\UnF8SF3O68kJ64S.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class cKsk1x8t377c53a
+  {
+    name = "cKsk1x8t377c53a";
+    sound[] = {"client\sounds\cKsk1x8t377c53a.ogg", 3.0, 1};
+    titles[] = {};
+  };
+};
+
+class CfgMusic
+{
+	tracks[]={};
+
+	class LifeCityIntro
+	{
+		name = "";
+		sound[] = {"client\sounds\intro.ogg", db-10, 1.0};
+	};
 };
 
 class CfgNotifications
@@ -172,4 +216,16 @@ class CfgNotifications
 		duration = 10;
 		priority = 5;
 	};
+};
+
+class CfgIdentities
+{
+    class Jane_Doe
+    {
+        name = "Jane Doe";
+        face = "ice123_female_bare";
+        glasses = "None";
+        speaker = "Male08ENG";
+        pitch = 1.15;
+    };
 };

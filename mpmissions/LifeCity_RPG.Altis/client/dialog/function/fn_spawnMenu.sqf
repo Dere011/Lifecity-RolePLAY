@@ -1,9 +1,7 @@
 /*
 	File: fn_spawnMenu.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author: 
 	Description:
-	Initializes the spawn point selection menu.
 */
 private["_spCfg","_sp"];
 disableSerialization;
@@ -20,6 +18,7 @@ ctrlShow[38514,false];
 ctrlShow[38515,false];
 ctrlShow[38516,false];
 ctrlShow[38517,false];
+ctrlShow[38518,false];
 
 for "_i" from 0 to (count _spCfg)-1 do {
 	_ctrl = ((findDisplay 38500) displayCtrl ((call compile format["3851%1",_i])));

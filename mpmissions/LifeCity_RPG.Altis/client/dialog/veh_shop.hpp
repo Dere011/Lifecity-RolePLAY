@@ -1,9 +1,8 @@
 class Life_vehicle_shop {
-	idd = 2300;
-	name= "life_impound_menu";
-	movingEnable = false;
-	enableSimulation = true;
-	//onLoad = "[] execVM 'core\client\keychain\init.sqf'";
+	idd 				= 2300;
+	name				=  "life_impound_menu";
+	movingEnable 		= false;
+	enableSimulation 	= true;
 	
 	class controlsBackground {
 		class Life_RscTitleBackground:Life_RscText {
@@ -27,7 +26,6 @@ class Life_vehicle_shop {
 	
 	class controls {
 
-		
 		class Title : Life_RscTitle {
 			colorBackground[] = {0, 0, 0, 0};
 			idc = 2301;
@@ -43,9 +41,8 @@ class Life_vehicle_shop {
 			idc = 2302;
 			text = "";
 			sizeEx = 0.035;
-			colorBackground[] = {0,0,0,0};
-			onLBSelChanged = "[_this] call life_fnc_vehicleColorList";
-			
+			colorBackground[] 	= {0,0,0,0};
+			onLBSelChanged 		= "[_this] call life_fnc_vehicleColorList";
 			x = 0.12; y = 0.26;
 			w = 0.56; h = 0.4;
 		};
@@ -70,7 +67,7 @@ class Life_vehicle_shop {
 		class GetCar : life_RscButtonMenu {
 			idc = -1;
 			text = "Louer";
-			onButtonClick = "[] spawn life_fnc_vehicleShopBuy";
+			onButtonClick = "[false] call life_fnc_vehicleShopBuy";
 			x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.8 - (1 / 25);
 			w = (6.25 / 40);
@@ -80,7 +77,7 @@ class Life_vehicle_shop {
 		class GetCarGarage : life_RscButtonMenu {
 			idc = -1;
 			text = "Acheter";
-			onButtonClick = "[] spawn life_fnc_vehicleShopBuySave";
+			onButtonClick = "[true] call life_fnc_vehicleShopBuy";
 			x = 0.26 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.8 - (1 / 25);
 			w = (10 / 40);

@@ -2,12 +2,6 @@ class Life_Client_Core
 {
 	tag = "life";
 	
-	class Master_Directory
-	{
-		file = "client\core";
-		class setupActions {};
-	};
-	
 	class Admin
 	{
 		file = "client\core\admin";
@@ -46,16 +40,13 @@ class Life_Client_Core
 		class robBankAction {};
 		class sellOil {};
 		class suicideBomb {};
-		class arrestAction {};
 		class escortAction {};
 		class impoundAction {};
 		class pulloutAction {};
 		class putInCar {};
 		class stopEscorting {};
-		class restrainAction {};
 		class searchAction {};
 		class searchVehAction {};
-		class unrestrain {};
 		class pickupItem {};
 		class pickupMoney {};
 		class ticketAction {};
@@ -70,9 +61,6 @@ class Life_Client_Core
 	{
 		file = "client\core\config";
 		class licensePrice {};
-		class vehicleColorCfg {};
-		class vehicleColorStr {};
-		class vehicleListCfg {};
 		class vehicleWeight {};
 		class licenseType {};
 		class eatFood {};
@@ -84,25 +72,11 @@ class Life_Client_Core
 		class itemWeight {};
 		class taxRate {};
 		class virt_shops {};
-		class vehShopLicenses {};
 		class vehicleAnimate {};
 		class weaponShopCfg {};
-		
-		//Clothing Store Configs
 		class clothing_cop {};
 		class clothing_bruce {};
-		class clothing_reb {};
 		class clothing_dive {};
-	};
-	
-	class session
-	{
-		file = "client\core\session";
-		class sessionReceive {};
-		class sessionUpdate {};
-		class sessionCreate {};
-		class sessionHandle {};
-		class syncData {};
 	};
 
 	class Player_Menu
@@ -140,7 +114,6 @@ class Life_Client_Core
 		class tazeSound {};
 		class animSync {};
 		class simDisable {};
-		class keyHandler {};
 		class dropItems {};
 		class handleDamage {};
 		class numberText {};
@@ -151,7 +124,6 @@ class Life_Client_Core
 		class receiveItem {};
 		class giveDiff {};
 		class receiveMoney {};
-		class playerTags {};
 		class clearVehicleAmmo {};
 		class pulloutVeh {};
 	};
@@ -208,15 +180,13 @@ class Life_Client_Core
 	class Shops
 	{
 		file = "client\core\shops";
-		class atmMenu {};
 		class buyClothes {};
 		class changeClothes {};
 		class clothingMenu {};
+		class atmMenuLife {};
 		class clothingFilter {};
 		class vehicleShop {};
 		class vehicleColorList {};
-		class vehicleShopBuy {};
-		class vehicleShopBuySave {};
 		class weaponShopFilter {};
 		class weaponShopMenu {};
 		class weaponShopSelection {};
@@ -246,7 +216,6 @@ class Life_Client_Core
 		class spawnPointCfg {};
 		class spawnPointSelected {};
 		class progressBar {};
-		class impoundMenu {};
 		class unimpound {};
 		class sellGarage {};
 	};

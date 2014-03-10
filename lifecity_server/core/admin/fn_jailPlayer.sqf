@@ -1,7 +1,6 @@
-private["_id","_ret","_admin"];
-_player 	= _this select 0;
-_admin 		= _this select 1;
-_id 		= owner _player;
+private["_ret","_admin","_player"];
+_admin 	= _this select 0;
+_player = _this select 1;
 
-_ret 		= [_player] call life_fnc_wantedPerson;
-[[_ret, _player], "life_fnc_jailMe", _id, false] spawn life_fnc_MP;
+[[_player, _admin, false], "life_fnc_wantedBounty", false, false] spawn life_fnc_MP;
+[[_player, false, 60], "life_fnc_jail", _player, false] spawn life_fnc_MP;

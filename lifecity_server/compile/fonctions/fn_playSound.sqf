@@ -1,4 +1,4 @@
-private["_source"];
+private["_source", "_soundname"];
 
 _source 		= [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 _soundname 		= [_this,1,"",[""]] call BIS_fnc_param;

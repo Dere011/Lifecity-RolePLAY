@@ -8,7 +8,7 @@
 private["_display","_list","_uid"];
 disableSerialization;
 
-if(lc_al < 1 AND lc_cl < 3) exitWith {};
+if(zhaypitt < 1 AND texceuve < 3) exitWith {};
 
 _display 	= findDisplay 2400;
 _list 		= _display displayCtrl 2402;

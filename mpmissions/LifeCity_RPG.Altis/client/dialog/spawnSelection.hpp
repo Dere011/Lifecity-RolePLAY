@@ -44,9 +44,9 @@ class life_spawn_selection
 			x = 0.328; y = 0.26;
 			w = 0.56;
 			h = 0.56 - (22 / 250);
-			maxSatelliteAlpha = 0.75;//0.75;
-			alphaFadeStartScale = 1.15;//0.15;
-			alphaFadeEndScale = 1.29;//0.29;
+			maxSatelliteAlpha = 0.75;
+			alphaFadeStartScale = 0.15;
+			alphaFadeEndScale = 0.29;
 		};
 	};
 	
@@ -114,6 +114,17 @@ class life_spawn_selection
 			text = "";
 			onButtonClick = "[5] call life_fnc_spawnPointSelected";
 			x = 0.11; y = 0.51;
+			w = (8 / 40);
+			h = (1 / 25);
+		};
+		
+		class spawnPoint7 : Life_RscButtonMenu
+		{
+			idc = 38516;
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
+			text = "";
+			onButtonClick = "[6] call life_fnc_spawnPointSelected";
+			x = 0.11; y = 0.56;
 			w = (8 / 40);
 			h = (1 / 25);
 		};

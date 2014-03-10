@@ -22,24 +22,24 @@ switch(playerSide) do
 	};
 };
 
-if(lc_al < 1) then
+if(zhaypitt < 1) then
 {
 	ctrlShow[2021,false];
 };
 
-if(lc_al != 666) then
+if(zhaypitt != 666) then
 {
 	ctrlShow[2020,false];
 };
 
 [] call life_fnc_p_updateMenu;
 
-if(lc_al < 1) then
+if(zhaypitt < 1) then
 {
 	ctrlShow[2021,false];
 };
 
-if(lc_al != 666) then
+if(zhaypitt != 666) then
 {
 	ctrlShow[2020,false];
 };

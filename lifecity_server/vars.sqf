@@ -2,7 +2,6 @@
 	@file name: vars.sqf
 */
 
-//lc_federal_funds 		= (count playableUnits) * 750;
 lc_federal_funds 		= ["servers", "fed", "federal_funds", "NUMBER"] call iniDB_read;
 publicVariable "lc_federal_funds";
 
@@ -17,9 +16,9 @@ life_sell_mullet = 270; //15
 life_sell_catShark = 330;//100
 life_sell_rabbit = 75;//50
 life_sell_apple = 55;//20
-life_sell_oil = 2900;//200
-life_sell_heroin = 6300;//560
-life_sell_marijuana = 5200;//450
+life_sell_oil = 3400;//200
+life_sell_heroin = 5400;//560
+life_sell_marijuana = 3500;//450
 life_sell_turtle = 2000;//2000
 life_sell_fishing = 3;//3
 life_sell_water = 5;//5
@@ -47,7 +46,7 @@ life_buy_donuts = 120;
 
 sell_array = [
 ["apple",life_sell_apple],
-["heroinu",1850],
+["heroinu",1500],
 ["heroinp",life_sell_heroin],
 ["salema",life_sell_Salema],
 ["ornate",life_sell_ornate],
@@ -68,17 +67,17 @@ sell_array = [
 ["pickaxe",750],
 ["redgull",200],
 ["peach",55],
-["cocaine",3000],
-["cocainep",9500],
+["cocaine",2000],
+["cocainep",7500],
 ["diamond",750],
-["diamondc",2800],
-["iron_r",5300],
-["copper_r",3300],
-["salt_r",3350],
+["diamondc",3300],
+["iron_r",4500],
+["copper_r",2600],
+["salt_r",2500],
 ["glass",2000],
-["fuelF",3000],
+["fuelF",500],
 ["spikeStrip",1200],
-["cement",2050]
+["cement",3200]
 ];
 
 buy_array = [
@@ -96,7 +95,7 @@ buy_array = [
 ["donuts",life_buy_donuts],
 ["coffee",life_buy_coffee],
 ["tbacon",75],
-["lockpick",150],
+["lockpick",1500],
 ["pickaxe",1200],
 ["redgull",1500],
 ["fuelF",850],
@@ -106,6 +105,11 @@ buy_array = [
 
 publicVariable "sell_array";
 publicVariable "buy_array";
+
+lc_items = [
+	["pomme", ["Pomme", "Kilo(s) de Pomme"], 1, false, 5, 3, 55, 65]
+];
+publicVariable "lc_items";
 
 life_weapon_shop_array =
 [

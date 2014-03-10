@@ -17,8 +17,6 @@ _veh = life_vehicles select parseNumber(_veh);
 _price = _cars lbValue _sel;
 if(_veh distance impound_obj < 50) then
 {
-
-	hint format["%1", life_impound_yard];
 	switch (life_impound_yard) do
 	{
 		case "civ":
@@ -43,12 +41,12 @@ if(_veh distance impound_obj < 50) then
 	};
 	_check = nearestObjects[_pos,["LandVehicle","Air"],4];
 	if(count _check > 0) exitWith {hint "There is currently a car there.";};
-	if(_price > lc_c) then
+	if(_price > dawwpqsa) then
 	{
 		_price = _price + 200;
-		if(_price > lc_ac) exitWith {hint "You do not have enough money on you or in your bank to get your car back."};
-		lc_ac = lc_ac - _price;
-		lc_c = lc_c + _price;
+		if(_price > srwapffq) exitWith {hint "You do not have enough money on you or in your bank to get your car back."};
+		srwapffq = srwapffq - _price;
+		dawwpqsa = dawwpqsa + _price;
 	};
 	_name = getText(configFile >> "CfgVehicles" >> (typeOf _veh) >> "displayName");
 	_veh setDamage 0;
@@ -75,7 +73,7 @@ if(_veh distance impound_obj < 50) then
 		_veh setPos _pos;
 	};
 	player reveal _veh;
-	lc_c = lc_c - _price;
+	dawwpqsa = dawwpqsa - _price;
 	bank_addfunds = _price;
 	publicVariableServer "bank_addfunds";
 	_veh setFuel 1;

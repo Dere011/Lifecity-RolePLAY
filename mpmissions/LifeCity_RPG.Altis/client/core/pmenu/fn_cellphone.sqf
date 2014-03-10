@@ -1,9 +1,7 @@
 /*
 	File: fn_cellphone.sqf
-	Author: Alan
-	
+	Author:
 	Description:
-	Opens the cellphone menu?
 */
 private["_display","_units","_type"];
 
@@ -15,7 +13,7 @@ _units = _display displayCtrl 3004;
 ctrlSetText [3003, ""];
 lbClear _units;
 
-if((lc_al < 1)) then
+if((zhaypitt < 1)) then
 {
 	ctrlShow[3020,false];
 	ctrlShow[3021,false];

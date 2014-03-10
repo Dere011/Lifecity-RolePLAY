@@ -25,4 +25,4 @@ _unit = owner _unit;
 _ret = [_pid,_side,_type] call DB_fnc_queryVehicles;
 if(isNil "_ret") then {_ret = [];};
 systemChat "Returning info..";
-[[_ret],"life_fnc_impoundMenu",_unit,false] spawn life_fnc_MP;
+[[_ret],"life_fnc_impoundMenu", _unit, false, false, "lifecity_fnc_MP_packet_30123"] spawn life_fnc_MP;

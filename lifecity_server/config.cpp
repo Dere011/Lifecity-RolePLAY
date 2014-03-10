@@ -80,7 +80,6 @@ class CfgFunctions
 			class query {};
 			class add {};
 			class update {};
-			class managesc {};
 			class cleanup {};
 			class timeStamp {};
 			class huntingZone {};
@@ -104,6 +103,21 @@ class CfgFunctions
 class CfgVehicles
 {
 	class Car_F;
+	class CAManBase;
+	class Civilian;
+	class Civilian_F : Civilian
+	{
+		class EventHandlers;
+	};
+	
+	class C_man_1 : Civilian_F
+	{
+		class EventHandlers: EventHandlers
+		{
+			init = "(_this select 0) execVM ""\lifecity_server\fix_headgear.sqf""";
+		};
+	};
+	
 	class Offroad_01_base_F: Car_F
 	{
 		class EventHandlers;
@@ -130,7 +144,7 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT01_CO.paa"};
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""lifecity_server\cars\hatchback\color.sqf""";
+			init = "(_this select 0) execVM ""\lifecity_server\cars\hatchback\color.sqf""";
 		};
 	};
 	
@@ -147,7 +161,7 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\A3\Soft_F_Gamma\SUV_01\Data\SUV_01_ext_CO.paa"};
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""lifecity_server\cars\SUV\color.sqf""";
+			init = "(_this select 0) execVM ""\lifecity_server\cars\SUV\color.sqf""";
 		};
 	};
 	class C_Hatchback_01_F: Hatchback_01_base_F
@@ -161,7 +175,7 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_CO.paa"};
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""lifecity_server\cars\hatchback\color.sqf""";
+			init = "(_this select 0) execVM ""\lifecity_server\cars\hatchback\color.sqf""";
 		};
 	};
 	
@@ -177,7 +191,7 @@ class CfgVehicles
 		class Turrets{};
 		class EventHandlers: EventHandlers
 		{
-			init = "(_this select 0) execVM ""lifecity_server\cars\offroad\color.sqf""";
+			init = "(_this select 0) execVM ""\lifecity_server\cars\offroad\color.sqf""";
 		};
 	};
 };

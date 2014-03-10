@@ -17,7 +17,7 @@ _plist = _display displayCtrl 2702;
 lbClear _plist;
 _near_units = [];
 
-if(lc_al != 666) then {
+if(zhaypitt != 666) then {
 	{ if(player distance _x < 20) then {_near_units set [count _near_units,_x];};} foreach playableUnits;
 }else{
 	{ _near_units set [count _near_units,_x]; } foreach playableUnits;

@@ -1,11 +1,11 @@
 [] spawn  {
 	while{true} do
 	{
-		sleep 9;
+		sleep 160;
 		if(life_hunger < 1) then {
 			player setDamage 1; hint "You have starved to death.";
 		}else{
-			life_hunger = life_hunger - 0.1;
+			life_hunger = life_hunger - 1;
 			[] call life_fnc_hudUpdate;
 			if(life_hunger < 1) then {player setDamage 1; hint "You have starved to death.";};
 			switch(life_hunger) do {
@@ -20,11 +20,11 @@
 [] spawn  {
 while{true} do
 {
-	sleep 6;
+	sleep 120;
 	if(life_thirst < 1) then {
 		player setDamage 1; hint "You have died from dehydration.";
 	}else{
-		life_thirst = life_thirst - 0.1;
+		life_thirst = life_thirst - 1;
 		[] call life_fnc_hudUpdate;
 		if(life_thirst < 1) then {
 			player setDamage 1; hint "You have died from dehydration.";
@@ -47,28 +47,28 @@ while{true} do
 		waitUntil {backpack player != ""};
 		_bp = backpack player;
 		_cfg = getNumber(configFile >> "CfgVehicles" >> (backpack player) >> "maximumload");
-		_load = round(_cfg / 10);
-		life_maxWeight = 64 + _load;
+		_load = round(_cfg / 8);
+		life_maxWeight = life_maxWeightT + _load;
 		waitUntil {backpack player != _bp};
 		if(backpack player == "") then 
 		{
-			life_maxWeight = 64;
+			life_maxWeight = life_maxWeightT;
 		};
 	};
 };
 
-[] spawn
+fn_Weight =
 {
-	while {true} do
-	{
-		waitUntil {life_carryWeight > life_maxWeight};
+	if(life_carryWeight > life_maxWeight) then {
 		player forceWalk true;
 		player setFatigue 1;
-		hint "You are over carrying your max weight! You will not be able to run or move fast till you drop some items!";
-		waitUntil {life_carryWeight <= life_maxWeight};
+	}
+		else
+	{
 		player forceWalk false;
 	};
 };
+LIFE_ID_MonitorWeight = ["LIFE_WeightMonitor","onEachFrame","fn_Weight"] call BIS_fnc_addStackedEventHandler;
 
 [] spawn  {
 private["_walkDis","_myLastPos","_MaxWalk","_runHunger","_runDehydrate"];

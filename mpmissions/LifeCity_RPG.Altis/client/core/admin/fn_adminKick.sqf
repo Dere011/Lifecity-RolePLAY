@@ -4,4 +4,4 @@ _unit 	= lbData[2902, lbCurSel(2902)];
 _unit 	= format["%1", _unit];
 if(isNil "_unit") exitwith {};
 
-[[_unit, player], "life_fnc_kickPlayer", nil, false] spawn life_fnc_MP;
+[[player, _unit], "life_fnc_kickPlayer", false, false] spawn life_fnc_MP;

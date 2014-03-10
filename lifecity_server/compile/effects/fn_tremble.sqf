@@ -9,7 +9,7 @@ player spawn {
 			_vy+(-_coef+random (2*_coef)),
 			_vz+(-_coef+random (2*_coef))
 		];
-		sleep (0.01 + random 0.01);
+		sleep (0.01 + random 0.05);
 	};
 	[player, 0, 0] call BIS_fnc_setPitchBank;
 };

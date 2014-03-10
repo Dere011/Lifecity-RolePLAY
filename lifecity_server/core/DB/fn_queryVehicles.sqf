@@ -9,14 +9,6 @@ _side 			= [_this,1,sideUnknown,[west]] 					call BIS_fnc_param;
 _type 			= [_this,2,"",[""]] 							call BIS_fnc_param;
 if(_pid == "" OR _side == sideUnknown OR _type == "") 			exitWith {[]};
 
-//_dbName 		= ["Player_", _pid] 							call PDB_databaseNameCompiler;
-//_check 			= (_dbName) 									call iniDB_exists;
-//__last_fechVeh	= [_dbName, _pid, "last_fetch_veh", "NUMBER"] 	call iniDB_read;
-//if(__last_fechVeh+10 >= time) exitWith { 
-//	[];
-//};
-//[_dbName, _pid, "last_fetch_veh", time] 						call iniDB_write; 
-
 _side = switch(_side) do {
 	case west: 			{"cop"};
 	case civilian: 		{"civ"};

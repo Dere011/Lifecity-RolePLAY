@@ -1,43 +1,11 @@
-life_fnc_sidechat =
-compileFinal "
-	if(life_sidechat) then {life_sidechat = false;} else {life_sidechat = true;};
-	[[player,life_sidechat,playerSide],""STS_fnc_managesc"",false,false] spawn life_fnc_MP;
-	[] call life_fnc_settingsMenu;
-";
-publicVariable "life_fnc_sidechat";
-
-life_fnc_youarebanned =
-compileFinal "
-	cutText[""You are banned.\n\nVisit our forum for more information."", ""BLACK"", 0, false];
-	sleep(30);
-	endMission ""Loser"";
-";
-publicVariable "life_fnc_youarebanned";	
-
-life_fnc_eject =
-compileFinal "
-	cutText[""You are kicked of this session."", ""BLACK"", 0, false];
-	sleep(360);
-	endMission ""Loser"";
-";
-publicVariable "life_fnc_eject";
-
-life_fnc_setVehicules =
-compileFinal "
-	private[""_array""];
-	_array 			= _this select 0;
-	life_vehicles 	= _array;
-";
-publicVariable "life_fnc_setVehicules";
-
 life_fnc_insurance =
 compileFinal "
 	if(lc_has_insurance) then {
 		hint ""Vous avez déjà l'assurance sur cette vie."";
 	}else{
-		if(lc_ac > 50000) then {
+		if(srwapffq > 50000) then {
 			lc_has_insurance 	= true; 
-			lc_ac 				= lc_ac - 50000;
+			srwapffq 				= srwapffq - 50000;
 			hint ""Vous venez de souscrire à l'assurance."";
 		}else{
 			hint ""Vous n'avez pas le montant nécessaire pour l'assurance."";
@@ -73,7 +41,7 @@ compileFinal "
 	if(isNull _ret) exitWith {};
 	if(isNil ""_ret"") exitWith {};
 	
-	[[lc_ac,lc_c,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
+	[[srwapffq,dawwpqsa,owner player,player],""life_fnc_admininfo"",_ret,false] spawn life_fnc_MP;
 ";
 publicVariable "fnc_player_query";
 
@@ -88,15 +56,6 @@ compileFinal "
 	clearWeaponCargoGlobal _veh;
 ";
 
-fnc_req_sync =
-compileFinal "
-	if(lc_is_banned) exitWith {
-		[] call life_fnc_youarebanned;
-	};
-	JipTimeNow = date;
-	publicVariable ""JipTimeNow"";
-";
-
 fnc_bank_deposit =
 compileFinal "
 	private[""_val""];
@@ -104,17 +63,16 @@ compileFinal "
 	if(_val > 999999) exitWith {
 		hint ""Vous ne pouvez pas déposer plus de $999,999"";
 	};
-	if(_val < 0) 	exitwith {};
+	if(_val < 0) 								exitwith {};
+	if(!([str(_val)] call fnc_isnumber)) 		exitWith {hint ""Ce format est invalide.""};
+	if(_val > dawwpqsa) 						exitWith {hint ""Vous ne disposez pas d'autant sur vous!""};
 	
-	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
-	if(_val > lc_c) 						exitWith {hint ""Vous ne disposez pas d'autant sur vous!""};
-	
-	lc_c 		= lc_c - _val;
-	lc_ac 		= lc_ac + _val;
+	dawwpqsa 		= dawwpqsa - _val;
+	srwapffq 		= srwapffq + _val;
 	
 	hint format[""Vous avez déposé $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
 	
-	[] 			call lifc_fnc_atmMenu;
+	[] 			call life_fnc_atmMenuLife;
 	[1, true] 	call life_fnc_sessionHandle;
 ";
 
@@ -128,14 +86,14 @@ compileFinal "
 	if(_val < 0) 							exitwith {};
 	
 	if(!([str(_val)] call fnc_isnumber)) 	exitWith {hint ""Ce format est invalide.""};
-	if(_val > lc_ac) 						exitWith {hint ""Vous ne disposez pas d'autant dans votre compte en banque!""};
+	if(_val > srwapffq) 						exitWith {hint ""Vous ne disposez pas d'autant dans votre compte en banque!""};
 	
-	lc_c 		= lc_c + _val;
-	lc_ac 		= lc_ac - _val;
+	dawwpqsa 		= dawwpqsa + _val;
+	srwapffq 		= srwapffq - _val;
 	
 	hint format [""Vous avez retiré $%1 dans votre compte en banque."", [_val] call life_fnc_numberText];
 	
-	[] 			call lifc_fnc_atmMenu;
+	[] 			call life_fnc_atmMenuLife;
 	[1, true] 	call life_fnc_sessionHandle;
 ";
 
@@ -152,14 +110,14 @@ compileFinal "
 	};
 	if(_val < 0) exitwith {};
 	if(!([str(_val)] call fnc_isnumber)) exitWith {hint ""That isn't in an actual number format.""};
-	if(_val > lc_ac) exitWith {hint ""You don't have that much in your bank account!""};
+	if(_val > srwapffq) exitWith {hint ""You don't have that much in your bank account!""};
 	_tax 			= [_val] call life_fnc_taxRate;
-	if((_val + _tax) > lc_ac) exitWith {hint format[""You do not have enough money in your bank account, to transfer $%1 you will need $%2 as a tax fee."",_val,_tax]};
-	lc_ac 			= lc_ac - (_val + _tax);
+	if((_val + _tax) > srwapffq) exitWith {hint format[""You do not have enough money in your bank account, to transfer $%1 you will need $%2 as a tax fee."",_val,_tax]};
+	srwapffq 			= srwapffq - (_val + _tax);
 	bank_addfunds 	= _tax;
 	publicVariableServer ""bank_addfunds"";
 	[[_val,name player],""clientWireTransfer"",_unit,false] spawn life_fnc_MP;
-	[] call lifc_fnc_atmMenu;
+	[] call life_fnc_atmMenuLife;
 	
 	hint format[""You have transfered $%1 to %2.\n\nA tax fee of $%3 was taken for the wire transfer."",[_val] call life_fnc_numberText,name _unit,[_tax] call life_fnc_numberText];
 	
@@ -178,7 +136,7 @@ compileFinal "
 	_from = _this select 1;
 	if(!([str(_val)] call fnc_isnumber)) exitWith {};
 	if(_from == """") exitWith {};
-	lc_ac = lc_ac + _val;
+	srwapffq = srwapffq + _val;
 	hint format[""%1 has wire transferred $%2 to you."",_from,[_val] call life_fnc_numberText];
 	
 ";
@@ -298,7 +256,7 @@ compileFinal "
 
 fnc_cell_adminmsg =
 compileFinal "
-	if(lc_al < 1) exitWith {hint ""You are not an admin!"";};
+	if(zhaypitt < 1) exitWith {hint ""You are not an admin!"";};
 	private[""_msg"",""_to""];
 	_msg = ctrlText 3003;
 	_to = call compile format[""%1"",(lbData[3004,(lbCurSel 3004)])];
@@ -312,7 +270,7 @@ compileFinal "
 
 fnc_cell_adminmsgall =
 compileFinal "
-	if(lc_al < 1) exitWith {hint ""You are not an admin!"";};
+	if(zhaypitt < 1) exitWith {hint ""You are not an admin!"";};
 	private[""_msg"",""_from""];
 	_msg = ctrlText 3003;
 	if(_msg == """") exitWith {hint ""You must enter a message to send!"";};
@@ -335,7 +293,7 @@ compileFinal "
 	_from = _this select 1;
 	_type = _this select 2;
 	if(_from == """") exitWith {};
-	if(isNil ""lc_al"") then {lc_al = 0;};
+	if(isNil ""zhaypitt"") then {zhaypitt = 0;};
 	switch (_type) do
 	{
 		case 0 :
@@ -361,7 +319,7 @@ compileFinal "
 		
 		case 2 :
 		{
-			if(lc_al < 1) exitWith {};
+			if(zhaypitt < 1) exitWith {};
 			private[""_message""];
 			_message = format["">>> RAPPORT ADMIN %1: %2"",_from,_msg];
 			hint parseText format [""<t color='#ffcefe'><t size='2'><t align='center'>RAPPORT ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Admins<br/><t color='#33CC33'>De: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from,_msg];
@@ -373,23 +331,23 @@ compileFinal "
 		case 3 :
 		{
 			private[""_message""];
-			_message 	= format[""!!!MESSAGE ADMIN: %1"",_msg];
+			_message 	= format[""!!!MESSAGE STAFF: %1"",_msg];
 			_admin 		= format[""Sent by admin: %1"", _from];
-			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Vous<br/><t color='#33CC33'>De l'admin: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from, _msg];
-			[""AdminMessage"",[""You Have Received A Message From An Admin!""]] call bis_fnc_showNotification;
+			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message STAFF<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Vous<br/><t color='#33CC33'>De l'admin / Modérateur: <t color='#ffffff'>%1<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%2"",_from, _msg];
+			[""AdminMessage"",[""You Have Received A Message From An STAFF!""]] call bis_fnc_showNotification;
 			systemChat _message;
 		};
 		
 		case 4 :
 		{
 			private[""_message"",""_admin""];
-			_message = format[""!!!MESSAGE ADMIN: %1"",_msg];
+			_message = format[""!!!MESSAGE STAFF: %1"",_msg];
 			_admin = format[""Sent by admin: %1"", _from];
-			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message ADMIN<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Tous le monde<br/><t color='#33CC33'>De: <t color='#ffffff'>Les admins<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%1"",_msg];
+			hint parseText format [""<t color='#FF0000'><t size='2'><t align='center'>Message STAFF<br/><br/><t color='#33CC33'><t align='left'><t size='1'>Pour: <t color='#ffffff'>Tous le monde<br/><t color='#33CC33'>De: <t color='#ffffff'>Les admins / Modérateurs<br/><br/><t color='#33CC33'>Message:<br/><t color='#ffffff'>%1"",_msg];
 			
-			[""AdminMessage"",[""You Have Received A Message From An Admin!""]] call bis_fnc_showNotification;
+			[""AdminMessage"",[""You Have Received A Message From An STAFF!""]] call bis_fnc_showNotification;
 			systemChat _message;
-			if(lc_al > 0) then {systemChat _admin;};
+			if(zhaypitt > 0) then {systemChat _admin;};
 		};
 	};
 ";

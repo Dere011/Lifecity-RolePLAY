@@ -8,16 +8,17 @@
 private["_ret","_bad","_time","_bail","_esc","_countDown"];
 _ret = [_this,0,[],[[]]] call BIS_fnc_param;
 _bad = [_this,1,false,[false]] call BIS_fnc_param;
+_minutes = [_this,2,8,[]] call BIS_fnc_param;
 if(_bad) then { _time = time + 750; } else { _time = time + (10 * 60); };
 
-if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = 1500; _time = time + (5 * 60); };
+if(count _ret > 0) then { life_bail_amount = (_ret select 3); } else { life_bail_amount = 1500; _time = time + (_minutes * 60); };
 _esc = false;
 _bail = false;
 
 [] spawn
 {
 	life_canpay_bail = false;
-	sleep (3 * 60);
+	sleep ((_minutes/2) * 60);
 	life_canpay_bail = nil;
 };
 
@@ -49,7 +50,7 @@ while {true} do
 
 switch (true) do {
 	case (_bail) : {
-		lc_a 				= false;
+		rvudxsiq 				= false;
 		life_bail_paid 		= false;
 		hint "You have paid your bail and are now free.";
 		serv_wanted_remove 	= [player];
@@ -59,7 +60,7 @@ switch (true) do {
 	};
 	
 	case (_esc) : {
-		lc_a 				= false;
+		rvudxsiq 				= false;
 		hint "You have escaped from jail, you still retain your previous crimes and now have a count of Escapping jail.";
 		[[0,format["%1 has escaped from jail!",name player]],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 		serv_killed = [player,"901"];
@@ -67,7 +68,7 @@ switch (true) do {
 	};
 	
 	case (alive player && !_esc && !_bail) : {
-		lc_a 				= false;
+		rvudxsiq 				= false;
 		hint "You have served your time in jail and have been released.";
 		serv_wanted_remove = [player];
 		publicVariableServer "serv_wanted_remove";

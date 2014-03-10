@@ -1,9 +1,7 @@
 /*
 	File: fn_onDeath.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	Author:
 	Description:
-	Does whatever it needs to when a player dies.
 */
 private["_unit","_killer","_weapons","_handle"];
 
@@ -12,7 +10,9 @@ _source 			= [_this,1,Objnull,[Objnull]] call BIS_fnc_param;
 
 if(isNull _unit) 	exitWith {};
 
-cutText["Tu es mort.\n\nChargement de la nouvelle vie...","PLAIN"];
+cutText["Tu es mort.\n\nChargement de la nouvelle vie...","BLACK"];
+
+sleep 1;
 
 if(loub_admin_mode) then {
 	removeAllContainers _unit;
@@ -31,7 +31,6 @@ if(playerSide == civilian) then {
 sleep 5;
 
 0 cutFadeOut 9999999;
-
 hideBody _unit;
 deleteVehicle _unit;
 
@@ -54,10 +53,10 @@ if(side _source != west && alive _source) then
 
 if(side _source == west && !life_use_atm) then
 {
-	if(lc_c != 0) then
+	if(dawwpqsa != 0) then
 	{
-		[format["$%1 from the Federal Reserve robbery was returned from the robber being killed.",[lc_c] call life_fnc_numberText],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
-		lc_c = 0;
+		[format["$%1 from the Federal Reserve robbery was returned from the robber being killed.",[dawwpqsa] call life_fnc_numberText],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
+		dawwpqsa = 0;
 	};
 };
 
@@ -83,11 +82,12 @@ life_thirst 		= 100;
 life_hunger 		= 100;
 life_use_atm 		= true;
 lc_has_insurance	= false;
+lc_lastposition     = [];
 
 if(playerSide == civilian) then {
-	lc_cvg			= [];
+	dawwpqsavg			= [];
 }else{
-	lc_cg			= [];
+	dawwpqsag			= [];
 };
 
-[1, true] call life_fnc_sessionHandle;
+[1, true, true] call life_fnc_sessionHandle;

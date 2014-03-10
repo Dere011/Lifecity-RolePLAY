@@ -15,10 +15,10 @@ if(_funds == -1) exitWith {};
 if(!life_use_atm) exitWith {};
 sleep 45;
 
-if(_funds > lc_ac) then
+if(_funds > srwapffq) then
 {
 	hint "En raison de ce vol sur la Reserve federale, vous avez perdu un pourcentage de votre argent, mais vous n'avez pas fait faillite. La prochaine fois acheter une assurance bancaire lors de votre prochaine visite à un guichet automatique pour mieux proteger vos biens!";
-	lc_ac = 0;
+	srwapffq = 0;
 }
 	else
 {
@@ -30,6 +30,6 @@ if(_funds > lc_ac) then
 		else
 	{
 		hint format["En raison de la recente vol sur la Reserve federale, vous avez perdu $1% a partir de votre compte bancaire, la prochaine fois acheter une assurance bancaire!\n\nVous pouvez acheter une assurance bancaire dans un guichet!",[_funds] call life_fnc_numberText];
-		lc_ac 			= lc_ac - _funds;
+		srwapffq 			= srwapffq - _funds;
 	};
 };

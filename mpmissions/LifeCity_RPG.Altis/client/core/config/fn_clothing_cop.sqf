@@ -14,24 +14,24 @@ switch (_filter) do
 	case 0:
 	{
 		_ret set[count _ret,["U_Rangemaster","Cop Uniform",25]];
-		if(lc_cl > 1) then
+		if(texceuve > 1) then
 		{
 			_ret set[count _ret,["U_B_CombatUniform_mcam_tshirt",nil,350]];
 		};
-		if(lc_cl > 2) then
+		if(texceuve > 2) then
 		{
 			_ret set[count _ret,["U_B_CombatUniform_mcam_worn",nil,550]];
 		};
 	};
 	case 1:
 	{
-		if(lc_cl > 1) then
+		if(texceuve > 1) then
 		{
 			_ret set[count _ret,["H_HelmetB_plain_mcamo",nil,75]];
 			_ret set[count _ret,["H_Booniehat_mcamo",nil,120]];
 		};
 		
-		if(lc_cl > 2) then
+		if(texceuve > 2) then
 		{
 			_ret set[count _ret,["H_MilCap_mcamo",nil,100]];
 		};
@@ -54,7 +54,7 @@ switch (_filter) do
 	case 3:
 	{
 		_ret set[count _ret,["V_Rangemaster_belt",nil,800]];
-		if(lc_cl > 1) then
+		if(texceuve > 1) then
 		{
 			_ret set[count _ret,["V_PlateCarrier2_rgr",nil,1500]];
 		};

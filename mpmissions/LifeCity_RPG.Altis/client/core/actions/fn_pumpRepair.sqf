@@ -5,9 +5,9 @@
 	Quick simple action that is only temp.
 */
 private["_method"];
-if(lc_c < 500) then
+if(dawwpqsa < 500) then
 {
-	if(lc_ac < 500) exitWith {_method = 0;};
+	if(srwapffq < 500) exitWith {_method = 0;};
 	_method = 2;
 }
 	else
@@ -18,6 +18,6 @@ if(lc_c < 500) then
 switch (_method) do
 {
 	case 0: {hint "You do not have $500 in cash or in your bank accoumt."};
-	case 1: {vehicle player setDamage 0; lc_c = lc_c - 500; hint "You have repaired your vehicle for $500";};
-	case 2: {vehicle player setDamage 0; lc_ac = lc_ac - 500; hint "You have repaired your vehicle for $500";};
+	case 1: {vehicle player setDamage 0; dawwpqsa = dawwpqsa - 500; hint "You have repaired your vehicle for $500";};
+	case 2: {vehicle player setDamage 0; srwapffq = srwapffq - 500; hint "You have repaired your vehicle for $500";};
 };

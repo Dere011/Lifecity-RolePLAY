@@ -14,4 +14,4 @@ if(player != _unit) exitWith {};
 if(!([_val] call fnc_isnumber)) exitWith {};
 
 hint format["%1 has given you $%2",name _from,[(parseNumber (_val))] call life_fnc_numberText];
-lc_c = lc_c + (parseNumber(_val));
+dawwpqsa = dawwpqsa + (parseNumber(_val));

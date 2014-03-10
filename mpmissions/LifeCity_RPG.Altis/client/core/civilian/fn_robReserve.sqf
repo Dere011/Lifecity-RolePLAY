@@ -15,7 +15,8 @@ if(player distance _vault > 10) exitWith {[[_vault,-1],"STS_fnc_robberyState",fa
 
 if(_funds < 50000) exitWith{[[_vault,-1],"STS_fnc_robberyState",false,false] spawn life_fnc_MP; hint "There wasn't enough funds in the reserve...";};
 
-_timer = time + (10 * 60); //Default timer is 10 minutes to rob.
+_timer = time + (30 * 60);
+
 titleText["Cracking the safe...","PLAIN"];
 [[2,"$$$ THE FEDERAL RESERVE IS BEING ROBBED!!! $$$"],"life_fnc_broadcast",nil,false] spawn life_fnc_MP;
 
@@ -61,7 +62,7 @@ switch(true) do
 			sleep 480;
 			life_use_atm = true;
 		};
-		lc_c = lc_c + _funds;
+		dawwpqsa = dawwpqsa + _funds;
 		[[_vault,1,_funds],"STS_fnc_robberyState",false,false] spawn life_fnc_MP;
 	};
 };

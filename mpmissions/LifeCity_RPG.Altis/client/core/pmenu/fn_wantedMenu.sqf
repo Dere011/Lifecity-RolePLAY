@@ -17,7 +17,7 @@ _units = [];
 
 ctrlSetText[2404,"Connexion au central en cours..."];
 
-if(lc_al < 1 AND lc_cl < 2) then {
+if(zhaypitt < 1 AND texceuve < 2) then {
 	ctrlShow[2405,false];
 };
 

@@ -194,6 +194,16 @@ switch (_vehicle) do
 			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","cop"]
 		];
 	};
+	
+	case "B_Truck_01_box_F":
+	{
+		_ret = 
+		[
+			["#(argb,8,8,3)color(0.6,0.3,0.01,1)","civ"],
+			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","civ"]
+		];
+	};
 };
 
 _ret;

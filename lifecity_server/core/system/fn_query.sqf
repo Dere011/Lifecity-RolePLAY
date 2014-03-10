@@ -10,7 +10,7 @@ _uid 				= [_this,1, "",      [""]] 		call BIS_fnc_param;
 if(isNull _unit OR _uid == "") exitWith {
 	if(!isNull _unit) then {
 		_ownerID 	= owner _unit;
-		["(100) Erreur lors de la recuperation des informations de votre compte. Veuillez-vous reconnecter.", "life_fnc_sessionReceive", _ownerID, false] spawn life_fnc_MP;
+		["(100) Erreur lors de la recuperation des informations de votre compte. Veuillez-vous reconnecter.", "life_fnc_sessionReceive", _ownerID, false, false, "lifecity_fnc_MP_packet_30121"] spawn life_fnc_MP;
 	};
 };
 
@@ -22,13 +22,13 @@ waitUntil {typeName _ret == "ARRAY" OR typeName _ret == "STRING" OR isNil "_ret"
 if(!isNil "_ret") then {
 	if(typeName _ret == "STRING") then {
 		if(_ret == "NEW_PLAYER") then {
-			[nil,	"life_fnc_sessionReceive",	_ownerID,	false] spawn life_fnc_MP;
+			[nil,	"life_fnc_sessionReceive",	_ownerID,	false, false, "lifecity_fnc_MP_packet_30121"] spawn life_fnc_MP;
 		}else{
-			[_ret,	"life_fnc_sessionReceive",	_ownerID,	false] spawn life_fnc_MP;
+			[_ret,	"life_fnc_sessionReceive",	_ownerID,	false, false, "lifecity_fnc_MP_packet_30121"] spawn life_fnc_MP;
 		};
 	} else {
-		[_ret,	"life_fnc_sessionReceive",	_ownerID,	false] spawn life_fnc_MP;
+		[_ret,	"life_fnc_sessionReceive",	_ownerID,	false, false, "lifecity_fnc_MP_packet_30121"] spawn life_fnc_MP;
 	};
 }else{
-	["(101) Erreur lors de la recuperation des informations de votre compte. Veuillez-vous reconnecter.", "life_fnc_sessionReceive", _ownerID, false] spawn life_fnc_MP;
+	["(101) Erreur lors de la recuperation des informations de votre compte. Veuillez-vous reconnecter.", "life_fnc_sessionReceive", _ownerID, false, false, "lifecity_fnc_MP_packet_30121"] spawn life_fnc_MP;
 };

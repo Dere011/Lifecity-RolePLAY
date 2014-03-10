@@ -24,7 +24,7 @@ if(count _data == 0) then {_veh setVariable["Trunk",[[],0],true]; _data = [];} e
 //Player Inventory Items
 {
 	//Money Handle
-	if(_x != "lc_a") then
+	if(_x != "rvudxsiq") then
 	{
 		_str = [_x] call life_fnc_varToStr;
 		_shrt = [_x,1] call life_fnc_varHandle;
@@ -37,9 +37,9 @@ if(count _data == 0) then {_veh setVariable["Trunk",[[],0],true]; _data = [];} e
 	}
 		else
 	{
-		if(lc_c > 0) then
+		if(dawwpqsa > 0) then
 		{
-			_pInv lbAdd format["$%1",[lc_a] call life_fnc_numberText];
+			_pInv lbAdd format["$%1",[rvudxsiq] call life_fnc_numberText];
 			_pInv lbSetData [(lbSize _pInv)-1,"money"];
 		};
 	};

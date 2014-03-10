@@ -18,4 +18,4 @@ if(_val == _total) then
 	titleText[format["You have collected a bounty of $%1 for killing a wanted criminal, if you had arrested him you would of received $%2",[_val] call life_fnc_numberText,[_total] call life_fnc_numberText],"PLAIN"];
 };
 
-lc_ac = lc_ac + _val;
+srwapffq = srwapffq + _val;

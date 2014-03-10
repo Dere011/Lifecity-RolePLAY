@@ -33,7 +33,7 @@ if(_licenses == "") then {_licenses = "No licenses<br/>"};
 
 if(!life_use_atm) then 
 {
-	lc_c = 0;
+	dawwpqsa = 0;
 	_robber = true;
 };
 

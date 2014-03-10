@@ -15,4 +15,4 @@ _sp = _spCfg select _selector;
 [((findDisplay 38500) displayCtrl 38502),1,0.1,getMarkerPos (_sp select 0)] call life_fnc_setMapPosition;
 life_spawn_point = _sp;
 
-ctrlSetText[38501,format["Current Spawn Point: %1",_sp select 1]];
+ctrlSetText[38501,format["Choix du spawn: %1",_sp select 1]];

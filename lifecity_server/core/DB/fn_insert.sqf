@@ -1,11 +1,7 @@
 /*
-	Copyright © 2013 Bryan "Tonic" Boardwine, All rights reserved
-	See http://armafiles.info/life/list.txt for servers that are permitted to use this code.
-	File: fn_insert.sqf
-	Author: Bryan "Tonic" Boardwine
-	
+	File:
+	Author:
 	Description:
-	Inserts the player and his/her information into our MySQL Database.
 */
 private["_uid","_name","_side","_money","_bank","_misc","_query","_result","_array"];
 
@@ -26,6 +22,7 @@ if(_check) 							exitWith {};
 [_dbName, _uid, "cash", _money] call iniDB_write;
 [_dbName, _uid, "bankacc", _bank] call iniDB_write;
 [_dbName, _uid, "coplevel", 0] call iniDB_write;
+[_dbName, _uid, "reblevel", 0] call iniDB_write;
 [_dbName, _uid, "cop_licenses", []] call iniDB_write;
 [_dbName, _uid, "adminlevel", 0] call iniDB_write;
 [_dbName, _uid, "blacklist", false] call iniDB_write;
@@ -36,3 +33,4 @@ if(_check) 							exitWith {};
 [_dbName, _uid, "cop_gear", []] call iniDB_write;
 [_dbName, _uid, "has_insurance", false] call iniDB_write;
 [_dbName, _uid, "is_banned", false] call iniDB_write;
+[_dbName, _uid, "last_position", []] call iniDB_write;

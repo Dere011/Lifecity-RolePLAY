@@ -29,9 +29,7 @@ if(count (_texture select _index) > 3) then {_texture3 = (_texture select _index
 _texture = _texture select _index;
 if(typeName _texture == "ARRAY") then { _texture = _texture select 0;};
 
-//Local to us? Set it's color.
-if(local _vehicle) then
-{
+if(local _vehicle) then {
 	_vehicle setVariable["Life_VEH_color",_index,true];
 };
 

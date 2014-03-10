@@ -8,10 +8,10 @@ private["_uid","_side","_sql","_query","_old","_dbName","_check"];
 _uid 		= [_this,0, "", [""]] 			call BIS_fnc_param;
 _unit 		= [_this,1, ObjNull, [Objnull]] call BIS_fnc_param;
 _dbName 	= ["Player_", _uid] 			call PDB_databaseNameCompiler;
-_check 		= (_dbName) call iniDB_exists;
+_check 		= (_dbName) 					call iniDB_exists;
 
-if(_uid == "") exitWith {['Invalide UID']};
-if(!_check)    exitWith {['NEW_PLAYER']};
+if(_uid == "") exitWith {'Invalide UID'};
+if(!_check)    exitWith {[]};
 
 __player_is_banned		= [[_dbName, _uid, "is_banned", "NUMBER"] call iniDB_read, 1] call DB_fnc_bool;
 __player_has_insurance	= [[_dbName, _uid, "has_insurance", "NUMBER"] call iniDB_read, 1] call DB_fnc_bool;
@@ -20,6 +20,7 @@ __player_name			= [_dbName, _uid, "name", "STRING"] call iniDB_read;
 __player_cash			= [_dbName, _uid, "cash", "NUMBER"] call iniDB_read;
 __player_bankacc		= [_dbName, _uid, "bankacc", "NUMBER"] call iniDB_read;
 __player_coplevel		= [_dbName, _uid, "coplevel", "NUMBER"] call iniDB_read;
+__player_reblevel		= [_dbName, _uid, "reblevel", "NUMBER"] call iniDB_read;
 __player_serveruuid		= [_dbName, _uid, "serv_uuid", "NUMBER"] call iniDB_read;
 
 __player_cop_licenses	= [_dbName, _uid, "cop_licenses", "ARRAY"] 		call iniDB_read;
@@ -79,5 +80,7 @@ if(__player_serveruuid == serv_uuid) then {
 	} foreach vehicles;
 };
 
-_result_final			= [__player_uuid, __player_name, __player_cash, __player_bankacc, __player_coplevel, __player_cop_licenses, __player_adminlevel, __player_blacklist, __player_cop_gear, __player_civ_licenses, __player_arrested, __player_donatorlvl, __player_civ_gear, __player_has_insurance, __player_is_banned];
+__player_lastposition   = [_dbName, _uid, "last_position", "ARRAY"]			call iniDB_read;
+
+_result_final			= [__player_uuid, __player_name, __player_cash, __player_bankacc, __player_coplevel, __player_cop_licenses, __player_adminlevel, __player_blacklist, __player_cop_gear, __player_civ_licenses, __player_arrested, __player_donatorlvl, __player_civ_gear, __player_has_insurance, __player_is_banned, __player_lastposition, __player_reblevel];
 _result_final;

@@ -26,6 +26,6 @@ if(!isNil {_val}) then
 	
 	player playmove "AinvPknlMstpSlayWrflDnon";
 	titleText[format["You have picked up $%1",[_val] call life_fnc_numberText],"PLAIN"];
-	lc_c = lc_c + _val;
+	dawwpqsa = dawwpqsa + _val;
 	life_action_delay = time;
 };

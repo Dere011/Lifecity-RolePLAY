@@ -3,7 +3,6 @@ class shops_menu {
 	name= "shops_menu";
 	movingEnable = false;
 	enableSimulation = true;
-	//onLoad = "['guns'] execVM 'gear\switch.sqf'";
 	
 	class controlsBackground {
 		class Life_RscTitleBackground:Life_RscText {
@@ -124,7 +123,6 @@ class shops_menu {
 			text = "Vendre";
 			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", 0.5};
 			onButtonClick = "[] call life_fnc_virt_sell";
-			
 			x = 0.67;
 			y = 0.70;
 			w = (6.25 / 40);
@@ -133,7 +131,6 @@ class shops_menu {
 		
 		class ButtonClose : Life_RscButtonMenu {
 			idc = -1;
-			//shortcuts[] = {0x00050000 + 2};
 			text = "Annuler";
 			onButtonClick = "closeDialog 0;";
 			x = 0.1;
