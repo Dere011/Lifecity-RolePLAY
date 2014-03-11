@@ -9,6 +9,7 @@
 		};
 		if(!isNull (player getVariable "isEscorting")) then {
 			if(lc_res || player distance (player getVariable "isEscorting") > 5) { then
+				detach (player getVariable "isEscorting");
 				player setVariable["isEscorting", objNull, true];
 			};
 		};

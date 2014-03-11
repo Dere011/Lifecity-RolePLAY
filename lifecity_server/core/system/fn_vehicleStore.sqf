@@ -12,8 +12,8 @@ _unit 		= [_this,2,ObjNull,[ObjNull]] call BIS_fnc_param;
 	sleep 15;
 	life_garage_store = false;
 	life_impound_inuse = false;
-	(_this select 0) publicVariableClient "life_garage_store";
-	(_this select 0) publicVariableClient "life_impound_inuse";
+	(owner (_this select 0)) publicVariableClient "life_garage_store";
+	(owner (_this select 0)) publicVariableClient "life_impound_inuse";
 };
 
 if(isNull _vehicle OR isNull _unit) exitWith {

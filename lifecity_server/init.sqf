@@ -201,6 +201,7 @@ if (isDedicated) then {
 			skiptime 0.00333;
 			sleep 0.2;
 		}else{
+			skiptime 0.00333;
 			sleep 1;
 		};
 	};
