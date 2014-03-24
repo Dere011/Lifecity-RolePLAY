@@ -5,14 +5,10 @@
 */
 waitUntil {!(isNull (findDisplay 46))};
 
-if(hnvecjxd) exitWith {
-	endMission "Loser";
-};
-
 if(texceuve <= 0) exitWith { endMission "Loser"; };
 
 switch (true) do {
-	case (str(player) in ["Admin_1","cop_hint"]):
+	case (str(player) in ["Admin_1"]):
 	{
 		if(zhaypitt != 666) exitWith {
 			endMission "Loser"; 
@@ -21,7 +17,7 @@ switch (true) do {
 
 	case (str(player) in ["cop_chef"]):
 	{
-		if(texceuve != 7) exitWith {
+		if(texceuve < 6) exitWith {
 			endMission "Loser"; 
 		};
 	};
@@ -45,6 +41,7 @@ if(texceuve == 6) then {
 if(texceuve == 7) then {
 	player setRank "COLONEL";
 };
+
 if(!loub_admin_mode) then {
 	[] spawn life_fnc_copMarkers;
 };

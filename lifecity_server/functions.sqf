@@ -3,14 +3,15 @@ compileFinal "
 	if(lc_has_insurance) then {
 		hint ""Vous avez déjà l'assurance sur cette vie."";
 	}else{
-		if(srwapffq > 50000) then {
+		if(srwapffq >= 15000) then {
 			lc_has_insurance 	= true; 
-			srwapffq 				= srwapffq - 50000;
+			srwapffq 				= srwapffq - 15000;
 			hint ""Vous venez de souscrire à l'assurance."";
 		}else{
 			hint ""Vous n'avez pas le montant nécessaire pour l'assurance."";
 		};
 	};
+	[1, true] 	call life_fnc_sessionHandle;
 ";
 publicVariable "life_fnc_insurance";
 
@@ -219,11 +220,27 @@ compileFinal "
 	if(isNull _to) exitWith {ctrlShow[3015,true];};
 	if(isNil ""_to"") exitWith {ctrlShow[3015,true];};
 	if(_msg == """") exitWith {hint ""You must enter a message to send!"";ctrlShow[3015,true];};
-	
+	if(_to getVariable [""lc_hasRadio"", false] || _to getVariable [""lc_RebSac"", 0] == 1) exitWith {
+		hint ""Cette personne ne possède pas de téléphone sur lui."";
+	};
 	[[_msg,name player,0],""clientMessage"",_to,false] spawn life_fnc_MP;
 	[] call life_fnc_cellphone;
 	hint format[""You sent %1 a message: %2"",name _to,_msg];
 	ctrlShow[3015,true];
+";
+
+fnc_cell_textcopBM =
+compileFinal "
+	private[""_msg"",""_to""];
+	ctrlShow[3016,false];
+	_msg 	= ""Unknown citizen"";
+	_to 	= ""The Police"";
+	if(_msg == """") exitWith {hint ""You must enter a message to send!""; ctrlShow[3016,true];};
+		
+	[[_msg,name player,1],""clientMessage"",true,false] spawn life_fnc_MP;
+	[] call life_fnc_cellphone;
+	hint format[""You sent %1 a message: %2"",_to,_msg];
+	ctrlShow[3016,true];
 ";
 
 fnc_cell_textcop =
@@ -281,6 +298,7 @@ compileFinal "
 ";
 
 publicVariable "fnc_cell_textmsg";
+publicVariable "fnc_cell_textcopBM";
 publicVariable "fnc_cell_textcop";
 publicVariable "fnc_cell_textadmin";
 publicVariable "fnc_cell_adminmsg";

@@ -43,27 +43,32 @@ if(count _nearVehicles > 0) exitWith {
 
 _query 		= format["UPDATE vehicles SET active='1' WHERE pid='%1' AND id='%2'",_pid,_vid];
 _sql 		= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
-_vehicle 	= _vInfo select 2 createVehicle (_sp);
-_vehicle allowDamage false;
+_vehicle 	= createVehicle [(_vInfo select 2), _sp, [], _dir, "CAN_COLLIDE"];
 _vehicle setPos _sp;
 _vehicle setDir _dir;
 
-[[_vehicle, false] ,"life_fnc_damageS", true, true] spawn BIS_fnc_MP;
-[_vehicle] spawn {
-	sleep 30;
-	[[_this select 0,true], "life_fnc_damageS", true, true] spawn BIS_fnc_MP;
-	(_this select 0) allowDamage false;
-};
+[[_vehicle, {
+	_vehicle = _this select 0;
+	_vehicle allowDamage false;
+	_vehicle addEventHandler["handleDamage",{false}];
+	[_vehicle] spawn
+	{
+		private["_v"];
+		_v = _this select 0;
+		sleep 30;
+		_v allowDamage true;
+		_v removeallEventHandlers "handleDamage";
+		_v addEventHandler["handleDamage",{_damage = ((_this select 2)/5); 0;}];
+	};
+}], "BIS_fnc_spawn", _unit, false] spawn life_fnc_MP;
 
 _vehicle setVariable["vehicle_info_owners",[[_pid,_name]],true];
 _vehicle setVariable["dbInfo",[(_vInfo select 4),(call compile format["%1", _vInfo select 7])]];
 _vehicle addEventHandler["Killed","_this spawn STS_fnc_vehicleDead"];
-_vehicle addMPEventHandler["mpkilled","_this spawn STS_fnc_vehicleDead"];
 
 [_vehicle] call life_fnc_clearVehicleAmmo;
 _vehicle lock 2;
-
-[[_vehicle],"STS_fnc_addVehicle2Chain",_unit,false] spawn life_fnc_MP;
+[[_vehicle], "STS_fnc_addVehicle2Chain", _unit, false] spawn life_fnc_MP;
 [[_vehicle,(call compile format["%1",_vInfo select 8])], "life_fnc_colorVehicle", true, false] spawn life_fnc_MP;
 
 if((_vInfo select 1) == "civ" && (_vInfo select 2) == "B_Heli_Light_01_F") then {

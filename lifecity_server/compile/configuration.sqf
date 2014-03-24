@@ -68,11 +68,11 @@ lc_res						= false;
 
 switch (playerSide) do {
 	case west: {
-		srwapffq 				= 10000;
-		life_paycheck 		= 5000;
+		srwapffq 			= 10000;
+		life_paycheck 		= 10000;
 	};
 	case civilian: {
-		srwapffq 				= 10000;
+		srwapffq 			= 10000;
 		life_paycheck 		= 1500;
 	};
 };

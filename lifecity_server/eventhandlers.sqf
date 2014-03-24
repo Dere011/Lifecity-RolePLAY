@@ -35,19 +35,19 @@ if(!isServer) exitWith {};
 	_type = (_this select 1) select 1;
 	switch(_type) do
 	{
-		case "187V": {_type = ["Vehicular Manslaughtter",6500]};
-		case "187": {_type = ["Manslaughter",8500]};
-		case "901": {_type = ["Escapping Jail",4500]};
-		case "261": {_type = ["Rape",5000]};
-		case "261A": {_type = ["Attempted Rape",3000]};
-		case "215": {_type = ["Attempted Auto Theft",2000]};
-		case "213": {_type = ["Use of illegal explosives",10000]};
-		case "211": {_type = ["Robbery",1000]};
-		case "207": {_type = ["Kidnapping",3500]};
-		case "207A": {_type = ["Attempted Kidnapping",2000]};
-		case "487": {_type = ["Grand Theft",1500]};
-		case "488": {_type = ["Petty Theft",700]};
-		case "480": {_type = ["Hit and run",1300]};
+		case "187V": {_type = ["Homicide involontaire",12000]};
+		case "187": {_type = ["Homicide", 20000]};
+		case "901": {_type = ["Evasion",10000]};
+		case "261": {_type = ["Viol",10000]};
+		case "261A": {_type = ["Tentative de viol",6000]};
+		case "215": {_type = ["Tentative de vol automobile",4000]};
+		case "213": {_type = ["Utilisation d'explosifs illégaux",20000]};
+		case "211": {_type = ["Vol",4000]};
+		case "207": {_type = ["Enlèvement",7000]};
+		case "207A": {_type = ["Tentative d'enlèvement",800]};
+		case "487": {_type = ["Grand Theft",2000]};
+		case "488": {_type = ["Petty Theft",1400]};
+		case "480": {_type = ["Hit and run",2600]};
 	};
 	
 	[_unit,_type] call life_fnc_wantedAdd;

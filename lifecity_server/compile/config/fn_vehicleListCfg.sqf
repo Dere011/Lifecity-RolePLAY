@@ -46,25 +46,24 @@ _reb_veh =
 [
     ["B_Quadbike_01_F",2500],
     ["B_G_Offroad_01_F",15000],
-    ["I_Truck_02_covered_F",80000],
-    ["I_Truck_02_transport_F",70000],
-    ["B_G_Offroad_01_armed_F",300000],
     ["C_SUV_01_F",35000]
 ];
 
 if(license_civ_rebel) then {
-    _reb_veh set[count _reb_veh, ["O_MRAP_02_F", 150000]];
+	_reb_veh set[count _reb_veh, ["I_Truck_02_covered_F", 80000]];
+	_reb_veh set[count _reb_veh, ["I_Truck_02_transport_F", 70000]];
+	if(tcywxnhh >= 2) then {
+		_reb_veh set[count _reb_veh, ["O_MRAP_02_F", 150000]];
+	};
+	if(tcywxnhh >= 3) then {
+		_reb_veh set[count _reb_veh, ["B_G_Offroad_01_armed_F", 250000]];
+	};
 };
 
-_reb_air =
-[
-    ["B_Heli_Light_01_F",600000]
-];
-
+_reb_veh set[count _reb_veh, ["B_Heli_Light_01_F", 600000]];
 if(license_civ_rebel) then {
-    _reb_air set[count _reb_veh, ["O_Heli_Light_02_unarmed_F", 1000000]];
-    _reb_air set[count _reb_veh, ["I_heli_light_03_unarmed_F", 1000000]];
-    _reb_air set[count _reb_veh, ["B_Heli_Transport_01_F", 1000000]];
+    _reb_veh set[count _reb_veh, ["O_Heli_Light_02_unarmed_F", 1000000]];
+    _reb_veh set[count _reb_veh, ["I_heli_light_03_unarmed_F", 1000000]];
 };
 
 _cop_veh =

@@ -12,37 +12,38 @@ while {true} do
 		_veh 			= _x;
 		_vehicleClass 	= getText(configFile >> "CfgVehicles" >> (typeOf _veh) >> "vehicleClass");
 		
-		if(_vehicleClass in ["Car","Air","Ship","Armored","Submarine"]) then
-		{
-			_dbInfo = _veh getVariable["dbInfo",[]];
-			_units = {(_x distance _veh < 500)} count playableUnits;
-			if(count crew _x == 0) then
-			{
-				switch (true) do
+		if(_vehicleClass in ["Car","Air","Ship","Armored","Submarine"]) then {
+			if(!(player getVariable ["isDestroyed", false]) && !(player getVariable ["blackmesa", false])) then {
+				_dbInfo = _veh getVariable["dbInfo",[]];
+				_units = {(_x distance _veh < 500)} count playableUnits;
+				if(count crew _x == 0) then
 				{
-					case ((_x getHitPointDamage "HitEngine") > 0.7 && _units == 0) : {deleteVehicle _x; _deleted = true;};
-					case ((_x getHitPointDamage "HitLFWheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
-					case ((_x getHitPointDamage "HitLF2Wheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
-					case ((_x getHitPointDamage "HitRFWheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
-					case ((_x getHitPointDamage "HitRF2Wheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
-					case (_units == 0): {deleteVehicle _x; _deleted = true;};
+					switch (true) do
+					{
+						case ((_x getHitPointDamage "HitEngine") > 0.7 && _units == 0) : {deleteVehicle _x; _deleted = true;};
+						case ((_x getHitPointDamage "HitLFWheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
+						case ((_x getHitPointDamage "HitLF2Wheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
+						case ((_x getHitPointDamage "HitRFWheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
+						case ((_x getHitPointDamage "HitRF2Wheel") > 0.98 && _units == 0) : {deleteVehicle _x; _deleted = true;};
+						case (_units == 0): {deleteVehicle _x; _deleted = true;};
+					};
 				};
-			};
-			
-			if(_deleted) then {
-				waitUntil {isNull _veh};
-				_deleted = false;
-			};
-			
-			if(isNull _veh) then {
-				if(count _dbInfo > 0) then
-				{
-					_uid 	= _dbInfo select 0;
-					_plate 	= _dbInfo select 1;
-					_query 	= format["UPDATE vehicles SET active='0' WHERE pid='%1' AND plate='%2'",_uid,_plate];
-					_sql 	= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
+				
+				if(_deleted) then {
+					waitUntil {isNull _veh};
+					_deleted = false;
 				};
-			};
+				
+				if(isNull _veh) then {
+					if(count _dbInfo > 0) then
+					{
+						_uid 	= _dbInfo select 0;
+						_plate 	= _dbInfo select 1;
+						_query 	= format["UPDATE vehicles SET active='0' WHERE pid='%1' AND plate='%2'",_uid,_plate];
+						_sql 	= "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommand ['arma3life_vehicles', '%1']", _query];
+					};
+				};
+			};	
 		};
 	} foreach vehicles;
 

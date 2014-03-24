@@ -12,14 +12,21 @@ if(!life_session_completed) exitWith {
 	endMission "loser";
 };
 
+life_session_completed = false;
+removeAllContainers _unit;
+removeAllItemsWithMagazines _unit;
+removeAllPrimaryWeaponItems _unit;
+removeAllHandgunItems _unit;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeBackpack _unit;
+
+sleep 1;
+
 if(!isNull _corpse) then {
 	hideBody _corpse;
 	deleteVehicle _corpse;
 };
-
-removeAllContainers _unit;
-removeAllItemsWithMagazines _unit;
-removeAllWeapons _unit;
 
 _handle = [] spawn life_fnc_setupActions;
 waitUntil {scriptDone _handle};
@@ -46,4 +53,5 @@ if(rvudxsiq) then {
 cutText ["","BLACK IN"];
 
 [] spawn life_fnc_loadGear;
+life_session_completed = true;
 [1, true, true] call life_fnc_sessionHandle;

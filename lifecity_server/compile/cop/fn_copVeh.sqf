@@ -7,6 +7,10 @@ if(playerSide != west) exitWith {};
 private ["_position","_veh"];
 _position = _this select 3;
 
+if((cursorTarget getVariable["blackmesa", false])) exitWith {
+	hint "Arg, celà ne fonctionne pas. Mais pourquoi ?";
+};
+
 switch (_position) do {
 	case 1: {
 			cursorTarget lock 0;

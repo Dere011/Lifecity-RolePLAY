@@ -2,7 +2,7 @@ switch (playerSide) do
 {
 	case west:
 	{
-		life_actions = [player addAction["<t color='#FF0000'>(COP)</t> Menoter",life_fnc_restrainAction,cursorTarget,999999999,false,false,"",' 
+		life_actions = [player addAction["<t color='#FF0000'>(COP)</t> Menotter",life_fnc_restrainAction,cursorTarget,999999999,false,false,"",' 
 		!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && !(cursorTarget getVariable "restrainedCiv") && (speed cursorTarget < 1 || (speed cursorTarget > 2 && speed player > 2))']];
 		
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Donner une amende",life_fnc_ticketAction,"",0,false,false,"",'
@@ -22,9 +22,8 @@ switch (playerSide) do
 		' !lc_res && !isNull cursorTarget && (player distance cursorTarget) < 6 && speed cursorTarget < 2 && (cursorTarget isKindOf "Car" || cursorTarget isKindOf "Air" || cursorTarget isKindOf "Ship")']];
 
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Enlever les menotes",life_fnc_unrestrain,cursorTarget,0,false,false,"",
-		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && (side cursorTarget == civilian) && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" || cursorTarget getVariable "restrainedCiv") && !(cursorTarget getVariable "Escorting") ']];
+		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" || cursorTarget getVariable "restrainedCiv") && !(cursorTarget getVariable "Escorting") ']];
 		
-		////////////////
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> En prison! (20 minutes)",life_fnc_arrestAction,20,0,false,false,"",'
 		!lc_res && !isNull cursorTarget && isPlayer cursorTarget && (side cursorTarget == civilian) && (cursorTarget getVariable "restrained") && alive cursorTarget && (player distance cursorTarget < 3.5) && ((player distance (getMarkerPos "police_hq_1") < 30) OR  (player distance (getMarkerPos "police_hq_2") < 30) OR (player distance (getMarkerPos "cop_spawn_3") < 30) OR  (player distance (getMarkerPos "cop_spawn_5") < 30)) && !(cursorTarget getVariable "Escorting") ']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> En prison! (10 minutes)",life_fnc_arrestAction,10,0,false,false,"",'
@@ -33,18 +32,13 @@ switch (playerSide) do
 		!lc_res && !isNull cursorTarget && isPlayer cursorTarget && (side cursorTarget == civilian) && (cursorTarget getVariable "restrained") && alive cursorTarget && (player distance cursorTarget < 3.5) && ((player distance (getMarkerPos "police_hq_1") < 30) OR  (player distance (getMarkerPos "police_hq_2") < 30) OR (player distance (getMarkerPos "cop_spawn_3") < 30) OR  (player distance (getMarkerPos "cop_spawn_5") < 30)) && !(cursorTarget getVariable "Escorting") ']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> En prison! (1 minutes)",life_fnc_arrestAction,1,0,false,false,"",'
 		!lc_res && !isNull cursorTarget && isPlayer cursorTarget && (side cursorTarget == civilian) && (cursorTarget getVariable "restrained") && alive cursorTarget && (player distance cursorTarget < 3.5) && ((player distance (getMarkerPos "police_hq_1") < 30) OR  (player distance (getMarkerPos "police_hq_2") < 30) OR (player distance (getMarkerPos "cop_spawn_3") < 30) OR  (player distance (getMarkerPos "cop_spawn_5") < 30)) && !(cursorTarget getVariable "Escorting") ']];
-		////////////////
-		
-		////////////////
+
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Entrer en conducteur",life_fnc_copVeh,1,0,false,false,"",'!lc_res && !isNull cursorTarget && ((cursorTarget isKindOf "Car") || (cursorTarget isKindOf "Air") ||(cursorTarget isKindOf "Ship")) && (locked cursorTarget) != 0 && cursorTarget distance player < 4.0']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Entrer en Passager", life_fnc_copVeh,2,0,false,false,"",'!lc_res && !isNull cursorTarget && ((cursorTarget isKindOf "Car")||(cursorTarget isKindOf "Air")||(cursorTarget isKindOf "Ship")) && (locked cursorTarget) != 0 && cursorTarget distance player < 4.0']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Sortir du vehicule", life_fnc_copVeh,3,0,false,false,"",'!lc_res && (vehicle player != player) && (locked(vehicle player)==2)']];
-		////////////////
 		
-		//Search Action
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Recherche",life_fnc_searchAction,cursorTarget,0,false,false,"",
 		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && (side cursorTarget == civilian) && player distance cursorTarget < 3.5 && !(cursorTarget getVariable "Escorting") ']];
-		//Pull out of car
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Pull out of vehicle",life_fnc_pulloutAction,cursorTarget,0,false,false,"",
 		'!lc_res && !isNull cursorTarget && (player distance cursorTarget) < 4 && (count crew cursorTarget) > 0 && speed cursorTarget < 2 && (cursorTarget isKindOf "Car" || cursorTarget isKindOf "Air" || cursorTarget isKindOf "Ship")']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(COP)</t> Recherche sur le vehicule",life_fnc_searchVehAction,cursorTarget,0,false,false,"",
@@ -73,107 +67,70 @@ switch (playerSide) do
 		!life_action_in_use && ((player distance (getMarkerPos "apple_1") < 50) OR (player distance (getMarkerPos "apple_2") < 50) OR (player distance (getMarkerPos "apple_3") < 50) OR (player distance (getMarkerPos "apple_4") < 50) OR (player distance (getMarkerPos "apple_RI5Qgi3u") < 50)) && (vehicle player == player) ']];
 		life_actions = life_actions + [player addAction["Ramasser des Pêches",life_fnc_gatherPeaches,"",0,false,false,"",'
 		!life_action_in_use && ((player distance (getMarkerPos "peaches_1") < 50) OR (player distance (getMarkerPos "peaches_2") < 50) OR (player distance (getMarkerPos "peaches_3") < 50) OR (player distance (getMarkerPos "peaches_2JGsVeis") < 50)) && (vehicle player == player) ']];
-
-		life_actions = life_actions + [player addAction["Grab Turtle",life_fnc_catchTurtle,"",0,false,false,"",'
+		life_actions = life_actions + [player addAction["Prendre une tortue",life_fnc_catchTurtle,"",0,false,false,"",'
 		!isNull cursorTarget && (typeOf cursorTarget) == "Turtle_F" && ((player distance (getMarkerPos "turtle_1") < 200) OR (player distance (getMarkerPos "turtle_2") < 200) OR (player distance (getMarkerPos "turtle_3") < 200)) && !alive cursorTarget && (life_carryWeight + (["turtle"] call life_fnc_itemWeight)) <= life_maxWeight']];
-		
 		life_actions = life_actions + [player addAction["Extraction du pétrole", life_fnc_gatherOil, "", 0, false, false, "",'!life_action_in_use && ((player distance (getMarkerPos "oil_field_1") < 20) OR (player distance (getMarkerPos "oil_field_2") < 20) OR (player distance (getMarkerPos "oil_field_3") < 20)) && (vehicle player == player)']];
-		
 		life_actions = life_actions + [player addAction["Récolter de l'héroin",life_fnc_gatherHeroin,"",0,false,false,"",'
 		!life_action_in_use && (player distance (getMarkerPos "heroin_1") < 60) && (vehicle player == player) && (life_carryWeight + (["heroinu"] call life_fnc_itemWeight)) <= life_maxWeight']];
 		life_actions = life_actions + [player addAction["Récolter du cannabis",life_fnc_gatherCannabis,"",0,false,false,"",'
 		!life_action_in_use && (player distance (getMarkerPos "weed_1") < 60) && (vehicle player == player) && (life_carryWeight + (["cannabis"] call life_fnc_itemWeight)) <= life_maxWeight']];
 		life_actions = life_actions + [player addAction["Récolter de la cocaine",life_fnc_gatherCocaine,"",0,false,false,"",'
 		!life_action_in_use && (player distance (getMarkerPos "cocaine_1") < 60) && (vehicle player == player) && (life_carryWeight + (["cocaine"] call life_fnc_itemWeight)) <= life_maxWeight']];
-		
-		//Suicide alahsnackbar
-		//life_actions = life_actions + [player addAction["Activate Suicide Vest",life_fnc_suicideBomb,"",0,false,false,"",' vest player == "V_HarnessOGL_brn" && alive //player && playerSide == civilian && !life_istazed && !(player getVariable "restrained") && !(player getVariable "Escorting") && !(player getVariable //"transporting")']];
-		
+
 		// REB
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(REB)</t> Escorter",life_fnc_escortAction,[cursorTarget], 0,false,false,"",
-		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 && (cursorTarget getVariable "restrainedCiv") && !(cursorTarget getVariable "Escorting") ']]; 
+		'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 && (cursorTarget getVariable "restrainedCiv") && !(cursorTarget getVariable "Escorting") ']]; 
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(REB)</t> Arrêtez l'escorte",life_fnc_stopEscorting,_unit, 0,false,false,"",
-		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "Escorting")']];
+		'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "Escorting")']];
 		life_actions = [player addAction["<t color='#FF0000'>(REB)</t> Ligotter", life_fnc_restrainActionCiv, cursorTarget, 0, false, false,"",' 
-		!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && cursorTarget getVariable "playerSurrender" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && !(cursorTarget getVariable "restrainedCiv") && (speed cursorTarget < 1 || (speed cursorTarget > 2 && speed player > 2))']];
+		!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && cursorTarget getVariable "playerSurrender" && (isPlayer cursorTarget) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") 	&& !(cursorTarget getVariable "restrainedCiv") && (speed cursorTarget < 1 || (speed cursorTarget > 2 && speed player > 2))']];
 		life_actions = life_actions + [player addAction["<t color='#FF0000'>(REB)</t> Enlever les liens", life_fnc_unrestrainCiv,cursorTarget,0,false,false,"",
-		'!lc_res && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" && cursorTarget getVariable "restrainedCiv") && !(cursorTarget getVariable "Escorting") && isNull (player getVariable "isEscorting")']];
+		'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" && cursorTarget getVariable "restrainedCiv") 	&& !(cursorTarget getVariable "Escorting") && isNull (player getVariable "isEscorting")']];
+		
+		life_actions = life_actions + [player addAction["<t color='#FF0000'>(REB)</t> Sac sur la tête", life_fnc_rebActions, [cursorTarget, "sa"], 0, false, false, "",
+		'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" && cursorTarget getVariable "restrainedCiv") && (cursorTarget getVariable ["lc_RebSac", 0] == 0)']];
+		life_actions = life_actions + [player addAction["<t color='#FF0000'>(REB)</t> Enlever le sac sur la tête", life_fnc_rebActions, [cursorTarget, "sr"], 0, false, false, "",
+		'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" && cursorTarget getVariable "restrainedCiv") && (cursorTarget getVariable ["lc_RebSac", 0] == 1)']];
+		
+		//life_actions = life_actions + [player addAction["Activate Suicide Vest",life_fnc_suicideBomb,"",0,false,false,"",' vest player == "V_HarnessOGL_brn" && alive //player && playerSide == civilian && !life_istazed && !(player getVariable "restrained") && !(player getVariable "Escorting") && !(player getVariable //"transporting")']];
 		// REB
 		
+		life_actions = life_actions + [player addAction["Utiliser la pioche",life_fnc_pickAxeUse,"",0,false,false,"",'!life_action_inUse && (vehicle player == player) && life_inv_pickaxe >= 1']];
 	};
 };
 
-life_actions = [player addAction["<img image='client\icons\atm.paa' /> <t color='#ADFF2F'>Guichet Automatique Bancaire (ATM)</t>", life_fnc_atmMenuLife, cursorTarget, 0, false, false, "",'count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 2]) > 0']];
+life_actions = [player addAction["<img image='client\icons\atm.paa' /> <t color='#ADFF2F'>Guichet Automatique Bancaire (ATM)</t>", life_fnc_atmMenuLife, nil, 0, false, false, "",'life_use_atm && count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 5]) > 0']];
+life_actions = [player addAction["<img image='client\icons\atm.paa' /> <t color='#ADFF2F'>Assurance Bancaire ($15000)</t>", life_fnc_insurance, nil, 0, false, false, "",'!lc_has_insurance && life_use_atm && count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 5]) > 0']];
 
-life_actions = life_actions + [player addAction["Repair Vehicle ($500)",life_fnc_pumpRepair,"",999,false,false,"",
-' vehicle player != player && (typeOf cursorTarget == "Land_fs_feed_F") && (vehicle player) distance cursorTarget < 6 ']];
+life_actions = [player addAction["Ouvrir la porte du bunker", { [] spawn { cutText["Rien ne se passe, c'est peut-être électrique?\nC'est bizarre, pas de poussière sur cette porte...\n\nJ'ai un mauvais présentiment...\nJe repars hors de cette ile!","BLACK"]; sleep 10; cutText["Je me sens beaucoup mieux...","BLACK OUT"]; sleep 2; player setPos [10755.3,10987.9,0.00149536]; cutText["","BLACK IN"]; }; }, nil, 0, false, false, "",'count(nearestObjects[getPos player, ["bunker_f"], 2]) > 0 && (player getVariable["isBM", false])']];
+life_actions = [player addAction["J'ai peur", {hint "Inutile de crier, personne ne vous entends... A part peut-être les morts...";}, nil, 0, false, false, "",'(["zoneNV", player] call bis_fnc_intrigger)']];
+
+life_actions = life_actions + [player addAction["Réparation du véhicule ($500)",life_fnc_pumpRepair,"",999,false,false,"",' vehicle player != player && (typeOf cursorTarget == "Land_fs_feed_F") && (vehicle player) distance cursorTarget < 6 ']];
 life_actions = life_actions + [player addAction["Place Spike Strip",{if(!isNull life_spikestrip) then {detach life_spikeStrip; life_spikeStrip = ObjNull;};},"",999,false,false,"",'!isNull life_spikestrip']];
-//Use Chemlights in hand
-life_actions = life_actions + [player addAction["Chemlight (RED) in Hand",life_fnc_chemlightUse,"red",-1,false,false,"",
-' isNil "life_chemlight" && "Chemlight_red" in (magazines player) && vehicle player == player ']];
-life_actions = life_actions + [player addAction["Chemlight (YELLOW) in Hand",life_fnc_chemlightUse,"yellow",-1,false,false,"",
-' isNil "life_chemlight" && "Chemlight_yellow" in (magazines player) && vehicle player == player ']];
-life_actions = life_actions + [player addAction["Chemlight (GREEN) in Hand",life_fnc_chemlightUse,"green",-1,false,false,"",
-' isNil "life_chemlight" && "Chemlight_green" in (magazines player) && vehicle player == player ']];
-life_actions = life_actions + [player addAction["Chemlight (BLUE) in Hand",life_fnc_chemlightUse,"blue",-1,false,false,"",
-' isNil "life_chemlight" && "Chemlight_blue" in (magazines player) && vehicle player == player ']];
-//Drop Chemlight
-life_actions = life_actions + [player addAction["Drop Chemlight",{if(isNil "life_chemlight") exitWith {};if(isNull life_chemlight) exitWith {};detach life_chemlight; life_chemlight = nil;},"",-1,false,false,"",'!isNil "life_chemlight" && !isNull life_chemlight && vehicle player == player ']];
-//Custom Heal
-life_actions = life_actions + [player addAction["<t color='#FF0000'>Heal Self</t>",life_fnc_heal,"",99,false,false,"",' vehicle player == player && (damage player) > 0.25 && ("FirstAidKit" in (items player)) && (currentWeapon player == "")']];
-//Custom Repair
-life_actions = life_actions + [player addAction["<t color='#FF0000'>Repair Vehicle</t>",life_fnc_repairTruck,"",99,false,false,"", ' vehicle player == player && !isNull cursorTarget && ((cursorTarget isKindOf "Car") OR (cursorTarget isKindOf "Air") OR (cursorTarget isKindOf "Ship")) && !((damage cursorTarget) == 0) && ("ToolKit" in (backpackitems player)) && (player distance cursorTarget < 4.5) ']];
-//Service Truck Stuff
-life_actions = life_actions + [player addAction["<t color='#0000FF'>Service Nearest Car</t>",life_fnc_serviceTruck,"",99,false,false,"",' (typeOf (vehicle player) == "C_Offroad_01_F") && ((vehicle player animationPhase "HideServices") == 0) && ((vehicle player) in life_vehicles) && (speed vehicle player) < 1 ']];
-life_actions = life_actions +
-[player addAction["Push",life_fnc_pushVehicle,"",0,false,false,"",
-'!isNull cursorTarget && player distance cursorTarget < 4.5 && cursorTarget isKindOf "Ship"']];
-//Pickup Water
-life_actions = life_actions + 
-[player addAction["Pickup Water",life_fnc_pickupItem,"",0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_BottlePlastic_V1_F" && ((cursorTarget getVariable "item") select 0) == "water" && (player distance cursorTarget) < 3 && (life_carryWeight + (["water"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Coffee
-life_actions = life_actions + 
-[player addAction["Pickup Coffee",life_fnc_pickupItem,"",0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Can_V3_F" && ((cursorTarget getVariable "item") select 0) == "coffee" && (player distance cursorTarget) < 3 && (life_carryWeight + (["coffee"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Money
-life_actions = life_actions +
-[player addAction["Pickup Money",life_fnc_pickupMoney,"",0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Money_F" && ((cursorTarget getVariable "item") select 0) == "money" && (player distance cursorTarget) < 5 ']];
 
-//Pickup Unprocessed Oil
-life_actions = life_actions +
-[player addAction["Pickup Unprocessed Oil",life_fnc_pickupItem,false,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "oilu" && (player distance cursorTarget) < 3 && (life_carryWeight + (["oilu"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Processed Oil
-life_actions = life_actions +
-[player addAction["Pickup Processed Oil",life_fnc_pickupItem,true,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "oilp" && (player distance cursorTarget) < 3 && (life_carryWeight + (["oilp"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Unprocessed Heroin
-life_actions = life_actions +
-[player addAction["Pickup Unprocessed Heroin",life_fnc_pickupItem,false,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "heroinu" && (player distance cursorTarget) < 3 && (life_carryWeight + (["heroinu"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Processed Heroin
-life_actions = life_actions +
-[player addAction["Pickup Processed Heroin",life_fnc_pickupItem,true,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "heroinp" && (player distance cursorTarget) < 3 && (life_carryWeight + (["heroinp"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Cannabis
-life_actions = life_actions +
-[player addAction["Pickup Cannabis",life_fnc_pickupItem,true,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "cannabis" && (player distance cursorTarget) < 3 && (life_carryWeight + (["cannabis"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Marijjuana
-life_actions = life_actions +
-[player addAction["Pickup Marijuana",life_fnc_pickupItem,true,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "marijuana" && (player distance cursorTarget) < 3 && (life_carryWeight + (["marijuana"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Apple
-life_actions = life_actions +
-[player addAction["Pickup Apple",life_fnc_pickupItem,false,0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "apple" && (player distance cursorTarget) < 3 && (life_carryWeight + (["apple"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup Rabbit MEat
-life_actions = life_actions +
-[player addAction["Pickup Rabbit Meat",life_fnc_pickupItem,"rabbit",0,false,false,"",
-' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "rabbit" && (player distance cursorTarget) < 3 && (life_carryWeight + (["rabbit"] call life_fnc_itemWeight)) <= life_maxWeight ']];
-//Pickup salema
+life_actions = life_actions + [player addAction["Chemlight (RED) in Hand",life_fnc_chemlightUse,"red",-1,false,false,"",' isNil "life_chemlight" && "Chemlight_red" in (magazines player) && vehicle player == player ']];
+life_actions = life_actions + [player addAction["Chemlight (YELLOW) in Hand",life_fnc_chemlightUse,"yellow",-1,false,false,"",' isNil "life_chemlight" && "Chemlight_yellow" in (magazines player) && vehicle player == player ']];
+life_actions = life_actions + [player addAction["Chemlight (GREEN) in Hand",life_fnc_chemlightUse,"green",-1,false,false,"",' isNil "life_chemlight" && "Chemlight_green" in (magazines player) && vehicle player == player ']];
+life_actions = life_actions + [player addAction["Chemlight (BLUE) in Hand",life_fnc_chemlightUse,"blue",-1,false,false,"",' isNil "life_chemlight" && "Chemlight_blue" in (magazines player) && vehicle player == player ']];
+life_actions = life_actions + [player addAction["Drop Chemlight",{if(isNil "life_chemlight") exitWith {};if(isNull life_chemlight) exitWith {};detach life_chemlight; life_chemlight = nil;},"",-1,false,false,"",'!isNil "life_chemlight" && !isNull life_chemlight && vehicle player == player ']];
+
+life_actions = life_actions + [player addAction["<t color='#FF0000'>Heal Self</t>",life_fnc_heal,"",99,false,false,"",' vehicle player == player && (damage player) > 0.25 && ("FirstAidKit" in (items player)) && (currentWeapon player == "")']];
+life_actions = life_actions + [player addAction["<t color='#FF0000'>Repair Vehicle</t>",life_fnc_repairTruck,"",99,false,false,"", ' vehicle player == player && !isNull cursorTarget && ((cursorTarget isKindOf "Car") OR (cursorTarget isKindOf "Air") OR (cursorTarget isKindOf "Ship")) && !((damage cursorTarget) == 0) && ("ToolKit" in (backpackitems player)) && (player distance cursorTarget < 4.5) ']];
+
+life_actions = life_actions + [player addAction["<t color='#0000FF'>Service Nearest Car</t>",life_fnc_serviceTruck,"",99,false,false,"",' (typeOf (vehicle player) == "C_Offroad_01_F") && ((vehicle player animationPhase "HideServices") == 0) && ((vehicle player) in life_vehicles) && (speed vehicle player) < 1 ']];
+life_actions = life_actions + [player addAction["Push",life_fnc_pushVehicle,"",0,false,false,"",'!isNull cursorTarget && player distance cursorTarget < 4.5 && cursorTarget isKindOf "Ship"']];
+
+life_actions = life_actions + [player addAction["Pickup Water",life_fnc_pickupItem,"",0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_BottlePlastic_V1_F" && ((cursorTarget getVariable "item") select 0) == "water" && (player distance cursorTarget) < 3 && (life_carryWeight + (["water"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Coffee",life_fnc_pickupItem,"",0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Can_V3_F" && ((cursorTarget getVariable "item") select 0) == "coffee" && (player distance cursorTarget) < 3 && (life_carryWeight + (["coffee"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Money",life_fnc_pickupMoney,"",0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Money_F" && ((cursorTarget getVariable "item") select 0) == "money" && (player distance cursorTarget) < 5 ']];
+life_actions = life_actions + [player addAction["Pickup Unprocessed Oil",life_fnc_pickupItem,false,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "oilu" && (player distance cursorTarget) < 3 && (life_carryWeight + (["oilu"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Processed Oil",life_fnc_pickupItem,true,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "oilp" && (player distance cursorTarget) < 3 && (life_carryWeight + (["oilp"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Unprocessed Heroin",life_fnc_pickupItem,false,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "heroinu" && (player distance cursorTarget) < 3 && (life_carryWeight + (["heroinu"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Processed Heroin",life_fnc_pickupItem,true,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "heroinp" && (player distance cursorTarget) < 3 && (life_carryWeight + (["heroinp"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Cannabis",life_fnc_pickupItem,true,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "cannabis" && (player distance cursorTarget) < 3 && (life_carryWeight + (["cannabis"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Marijuana",life_fnc_pickupItem,true,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "marijuana" && (player distance cursorTarget) < 3 && (life_carryWeight + (["marijuana"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Apple",life_fnc_pickupItem,false,0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "apple" && (player distance cursorTarget) < 3 && (life_carryWeight + (["apple"] call life_fnc_itemWeight)) <= life_maxWeight ']];
+life_actions = life_actions + [player addAction["Pickup Rabbit Meat",life_fnc_pickupItem,"rabbit",0,false,false,"",' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "rabbit" && (player distance cursorTarget) < 3 && (life_carryWeight + (["rabbit"] call life_fnc_itemWeight)) <= life_maxWeight ']];
 life_actions = life_actions +
 [player addAction["Pickup Salema Meat",life_fnc_pickupItem,"salema",0,false,false,"",
 ' !isNull cursorTarget && (typeOf cursorTarget) == "Land_Suitcase_F" && ((cursorTarget getVariable "item") select 0) == "salema" && (player distance cursorTarget) < 3 && (life_carryWeight + (["salema"] call life_fnc_itemWeight)) <= life_maxWeight ']];

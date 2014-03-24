@@ -4,13 +4,13 @@
 	Description:
 */
 private ["_handled","_shift","_alt","_code","_ctrl","_alt","_ctrlKey","_veh","_locked"];
-_ctrl = _this select 0;
-_code = _this select 1;
-_shift = _this select 2;
-_ctrlKey = _this select 3;
-_alt = _this select 4;
-_speed = speed cursorTarget;
-_handled = false;
+_ctrl 		= _this select 0;
+_code 		= _this select 1;
+_shift 		= _this select 2;
+_ctrlKey 	= _this select 3;
+_alt 		= _this select 4;
+_speed 		= speed cursorTarget;
+_handled 	= false;
 
 if(life_action_inUse) 	exitWith {_handled};
 if(!(alive player)) 	exitWith {_handled};
@@ -39,10 +39,11 @@ switch (_code) do
 			};
 		};
 	};
-	case 38: { 
+	case 38: {
 		if(!lc_res && !_alt && !_ctrlKey) then { 
-			[] call life_fnc_radar; };
+			[] call life_fnc_radar; 
 		};
+	};
 	case 21: {
 		if(!lc_res && !_alt && !_ctrlKey && !dialog) then
 		{
@@ -97,7 +98,7 @@ switch (_code) do
 					player setVariable ["playerSurrender", false, true];
 				} else {
 					[] spawn life_fnc_surrender;
-					titleText["Tu te rend", "PLAIN DOWN"];
+					titleText["Tu te rends", "PLAIN DOWN"];
 				};
 			};
 			_handled = true;

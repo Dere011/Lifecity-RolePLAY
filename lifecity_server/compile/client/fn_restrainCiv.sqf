@@ -24,8 +24,6 @@ if(isNull _civ) exitWith {};
 	};
 };
 
-player forceSpeed 0;
-
 titleText[format["Vous avez ete ligotte par %1" ,name _civ], "PLAIN"];
 				
 while {player getVariable "restrained"} do {
@@ -39,5 +37,4 @@ while {player getVariable "restrained"} do {
 		
 if(alive player) then {
 	player playMoveNow "AmovPercMstpSnonWnonDnon_EaseOut";
-	player forceSpeed -1;
 };

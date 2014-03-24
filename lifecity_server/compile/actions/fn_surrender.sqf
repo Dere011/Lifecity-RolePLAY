@@ -8,6 +8,7 @@ while { player getVariable ["playerSurrender", false] }  do {
 	if (!alive player) then {
 		player setVariable ["playerSurrender", false, true];
 	};
+	sleep 0.1; // @VOIR
 };
 
 player playMoveNow "AmovPercMstpSnonWnonDnon_EaseOut";

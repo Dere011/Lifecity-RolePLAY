@@ -30,7 +30,7 @@ if(_found != -1) then {
 	_ret = license_civ_truck;
 };
 
-_found = [["reb_v"], life_veh_shop, true] call fn_findString;
+_found = [["reb_car"], life_veh_shop, true] call fn_findString;
 if(_found != -1) then {
 	_ret = license_civ_rebel;
 };

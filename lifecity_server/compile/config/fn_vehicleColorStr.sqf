@@ -67,6 +67,7 @@ switch (_vehicle) do
 			case 4: {_color = "Police";};
 			case 5: {_color = "Police (HRF)";};
 			case 5: {_color = "Police (Noir)";};
+			case 6: {_color = "Rose Bonbon"};
 		};
 	};
 	
@@ -214,6 +215,7 @@ switch (_vehicle) do
 			case 0: {_color = "Jaune Pikachu"};
 			case 1: {_color = "Noir"};
 			case 2: {_color = "Camo"};
+			case 3: {_color = "Rose Bonbon"};
 		};
 	};
 	

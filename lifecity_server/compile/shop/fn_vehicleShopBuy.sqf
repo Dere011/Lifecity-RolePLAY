@@ -109,11 +109,16 @@ _vehicle 		= _veh createVehicle _sp;
 _vehicle setVectorUp (surfaceNormal _sp);
 _vehicle setPos _sp;
 _vehicle setDir _dir;
-
-[[_vehicle, false] ,"life_fnc_damageS", true, true] spawn BIS_fnc_MP;
-[_vehicle] spawn {
+_vehicle allowDamage false;
+_vehicle addEventHandler["handleDamage",{false}];
+[_vehicle] spawn
+{
+	private["_v"];
+	_v = _this select 0;
 	sleep 30;
-	[[_this select 0,true], "life_fnc_damageS", true, true] spawn BIS_fnc_MP;
+	_v allowDamage true;
+	_v removeallEventHandlers "handleDamage";
+	_v addEventHandler["handleDamage",{_damage = ((_this select 2)/5); _damage;}];
 };
 
 _vehicle setVariable["trunk_in_use",false,true];

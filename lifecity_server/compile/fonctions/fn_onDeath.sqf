@@ -20,19 +20,17 @@ if(!life_session_completed) exitWith {
 	_obj 	= "Sign_Pointer_F" createVehicle _pos;
 	_obj setPos _pos;
 	[[_obj, "I4jo8wc5419p72L"], "life_fnc_playSound", nil, false] spawn life_fnc_MP;
-	[[_obj, "jX2Rn8VXcs8G4Rr"], "life_fnc_playSound", nil, false] spawn life_fnc_MP;
+	[{playSound "jX2Rn8VXcs8G4Rr";}, "BIS_fnc_spawn", nil, false] spawn life_fnc_MP;
 	sleep 2;
 	deleteVehicle _obj;
 };
-
-if(isNull _unit) 	exitWith {};
 
 0 fadeMusic 1;
 playMusic "KP261hc8yY8a21k";
 5 fadeMusic 0;
 cutText["Tu es mort.\n\nChargement de la nouvelle vie...","BLACK"];
 
-sleep 1;
+sleep 0.5;
 
 if(loub_admin_mode) then {
 	removeAllContainers _unit;
@@ -48,7 +46,7 @@ if(playerSide == civilian) then {
 	removeAllContainers _unit;
 };
 
-sleep 5;
+sleep 0.5;
 
 0 cutFadeOut 9999999;
 hideBody _unit;
@@ -96,9 +94,13 @@ life_carryWeight 	= 0;
 life_thirst 		= 100;
 life_hunger 		= 100;
 life_use_atm 		= true;
-lc_has_insurance	= false;
-lc_lastposition     = [];
 
+if(lc_has_insurance) then {
+	hint "Vous avez perdu votre assurance bancaire site à votre mort.";
+};
+lc_has_insurance	= false;
+
+lc_lastposition     = [];
 if(playerSide == civilian) then {
 	dawwpqsavg		= [];
 }else{

@@ -11,9 +11,8 @@ while {true} do {
 	waitUntil {visibleMap};
 	
 	{_players 	set[count _players,_x];} 	foreach playableUnits;
-	
 	{
-		if(group player == group _x) then {
+		if(group player == group _x && !(_x getVariable "lc_res")) then {
 			_marker = createMarkerLocal [format["%1_marker",_x],getPos _x];
 			_marker setMarkerColorLocal "ColorRed";
 			_marker setMarkerTypeLocal "Mil_dot";

@@ -4,7 +4,6 @@
 	@file Author: Alan
 	@file edit: 6/17/2013
 	Copyright © 2013 STS Alan, All rights reserved
-	Only Seal Team Sloth servers are allowed to use this code.
 */
 
 private["_outcome","_robber"];
@@ -47,6 +46,7 @@ switch (_outcome) do
 		publicVariable "robbery_success";
 		while {robbery_success == 0} do {
 			_counter 	= _counter + 1;
+			[{[] spawn {["<t align='center'><t shadow='0'shadowColor='#000000''color='#01D00D'size='0.5'>BRAQUAGE DE LA BANQUE FEDERAL EN COURS!</t></t>", 0, 0, 10, 0] call bis_fnc_dynamictext;};}, "BIS_fnc_spawn", nil, false] spawn life_fnc_MP;
 			sleep 1;
 			if(_counter > 191 && robbery_success == 0) then {
 				hint "The bank robbery has failed!";

@@ -45,7 +45,6 @@ if(_impound) then {
 	if(count _vInfo == 0) exitWith {
 		life_garage_store = false;
 		(owner _unit) publicVariableClient "life_garage_store";
-	
 		[[2,"Le véhicule est une location."], "life_fnc_broadcast", (owner _unit), false] spawn life_fnc_MP;
 		playSound "dy3k89kScIoPx63";
 	};

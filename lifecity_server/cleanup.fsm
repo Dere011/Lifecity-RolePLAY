@@ -90,7 +90,7 @@ class FSM
     {
       name = "Delete_Dead_Cars";
       init = /*%FSM<STATEINIT""">*/"{" \n
-       "	if(!alive _x) then" \n
+       "	if(!alive _x && !(_x getVariable [""isDestroyed"", false])) then" \n
        "	{" \n
        "		_dbInfo = _x getVariable[""dbInfo"",[]];" \n
        "		if(count _dbInfo > 0) then" \n
@@ -106,7 +106,7 @@ class FSM
        "} foreach allMissionObjects ""LandVehicle"";" \n
        "" \n
        "{" \n
-       "	if(!alive _x) then" \n
+       "	if(!alive _x && !(_x getVariable [""isDestroyed"", false])) then" \n
        "	{" \n
        "		_dbInfo = _x getVariable[""dbInfo"",[]];" \n
        "		if(count _dbInfo > 0) then" \n

@@ -23,6 +23,10 @@ switch (typeName life_fnc_MP_packet) do
 };
 if(!isNil "_exit") exitWith {hint "Because of some cheater corrupting the BIS MP Framework they have stopped you from enjoying our mission.\n\nYou can try this again in a minute if you feel it is a mistake.";};
 
+if(alive player) then {
+	lc_lastposition = (getPos player);
+};
+
 [] call life_fnc_sessionUpdate;
 hint "Syncronisation des informations avec le serveur.";
 

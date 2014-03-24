@@ -52,7 +52,7 @@ _headgear 			= _loadout select 14;
 _goggles 			= _loadout select 15;
 _liveitems 			= _loadout select 16;
 
-if(_uniform == "" AND _vest == "" AND _backpack == "") exitWith {
+if(_primary == "" AND _uniform == "" AND _vest == "" AND _backpack == "") exitWith {
 	if(playerSide == west) then {
 		[] call life_fnc_copDefault;
 	}else{

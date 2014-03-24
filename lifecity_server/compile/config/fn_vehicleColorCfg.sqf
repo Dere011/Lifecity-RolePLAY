@@ -79,8 +79,8 @@ switch (_vehicle) do
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_04_co.paa","civ"],
 			["client\texture\cop_suv.paa","cop"],
 			["client\texture\police_suv.paa","cop"],
-			["#(ai,64,64,1)Fresnel(1.3,7)","cop"]
-			
+			["#(ai,64,64,1)Fresnel(1.3,7)","cop"],
+			["#(argb,8,8,3)color(1,0,0.05,1)","civ"]
 		];
 	};
 	
@@ -201,7 +201,8 @@ switch (_vehicle) do
 		[
 			["#(argb,8,8,3)color(0.6,0.3,0.01,1)","civ"],
 			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","civ"],
-			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","civ"]
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","civ"],
+			["#(argb,8,8,3)color(1,0,0.05,1)","civ"]
 		];
 	};
 };
