@@ -15,6 +15,23 @@ compileFinal "
 ";
 publicVariable "life_fnc_insurance";
 
+life_fnc_Lifeinsurance =
+compileFinal "
+	if(lc_has_lifeinsurance) then {
+		hint ""Vous avez déjà l'assurance vie."";
+	}else{
+		if(srwapffq >= 20000) then {
+			lc_has_lifeinsurance 	= true; 
+			srwapffq 				= srwapffq - 20000;
+			hint ""Vous venez de souscrire à l'assurance vie."";
+		}else{
+			hint ""Vous n'avez pas le montant nécessaire pour l'assurance vie."";
+		};
+	};
+	[1, true] 	call life_fnc_sessionHandle;
+";
+publicVariable "life_fnc_Lifeinsurance";
+
 fnc_index =
 compileFinal "
 	private[""_find"",""_limit"",""_select"",""_array"",""_return""];

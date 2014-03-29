@@ -90,7 +90,6 @@ if(dawwpqsa < _price) exitWith {
 	playSound "dy3k89kScIoPx63";
 };
 
-
 if(count(nearestObjects[_sp,["Car","Ship","Air"], 5]) > 0) 	exitWith {
 	hint "Il ya est un véhicule sur le point de spawn."; 
 	playSound "dy3k89kScIoPx63";

@@ -1,4 +1,4 @@
-private["_uid","_name","_side","_money","_bank","_licenses","_gear","_array","_unit","_dbName","_check","_time","_arrested","_assurance","_last_position"];
+private["_uid","_name","_side","_money","_bank","_licenses","_gear","_array","_unit","_dbName","_check","_time","_arrested","_assurance","_last_position","_lifeassurance"];
 
 _uid 			= [_this,0,"",[""]] call BIS_fnc_param;
 _name 			= [_this,1,"",[""]] call BIS_fnc_param;
@@ -11,6 +11,7 @@ _unit 			= [_this,7,Objnull,[Objnull]] call BIS_fnc_param;
 _assurance 		= [_this,8,false,[false]] call BIS_fnc_param;
 _arrested 		= [_this,9,false,[false]] call BIS_fnc_param;
 _last_position  = [_this,10,[],[[]]] call BIS_fnc_param;
+_lifeassurance  = [_this,11,false,[false]] call BIS_fnc_param;
 _time			= time;
 _dbName 		= ["Player_", _uid] call PDB_databaseNameCompiler;
 _check 			= (_dbName) call iniDB_exists;
@@ -64,5 +65,6 @@ switch (_side) do {
 [_dbName, _uid, "has_insurance", _assurance] call iniDB_write;
 [_dbName, _uid, "serv_uuid", serv_uuid] call iniDB_write;
 [_dbName, _uid, "last_position", _last_position] call iniDB_write;
+[_dbName, _uid, "has_lifeinsurance", _lifeassurance] call iniDB_write;
 
 [[0, format["[SYNC DATA] La synchronisation est OK (%1).", _uuid]], "life_fnc_broadcast", _unit, false] spawn life_fnc_MP;

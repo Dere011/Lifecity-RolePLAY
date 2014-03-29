@@ -13,7 +13,7 @@ if(isNull _civ) exitWith {};
 	while {true} do
 	{
 		_time = time;
-		waitUntil {(time - _time) > (20 * 60)};	
+		waitUntil {(time - _time) > (30 * 60)};	
 		if((player getVariable "restrained") && !(player getVariable "Escorting") && !(player getVariable "transporting")) exitWith {
 			player setVariable["restrained", false, true];
 			player setVariable["restrainedCiv", false, true];

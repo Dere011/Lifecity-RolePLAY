@@ -26,6 +26,7 @@
 		} forEach (assigneditems player);
 		player setVariable["lc_hasRadio", _hasRadio, true];
 		sleep 2;
+		[] call life_fnc_hudUpdate;
 	};
 };
 
@@ -34,7 +35,7 @@
 	lc_blackmesanoise = false;
 	while {true} do {
 		if(lc_blackmesanoise) then {
-			_nearestTargets 		= nearestObjects [getPos player, ["Man", "Land_powerpolewooden_l_F","Land_lampdecor_f","Land_LampHalogen_F","Land_LampStreet_Small_F","Land_LampHarbour_F","Land_LampStreet_F","Land_LampShabby_F"], 300];
+			_nearestTargets 		= nearestObjects [getPos player, ["Man", "Land_LampAirport_F", "Land_powerpolewooden_l_F","Land_lampdecor_f","Land_LampHalogen_F","Land_LampStreet_Small_F","Land_LampHarbour_F","Land_LampStreet_F","Land_LampShabby_F"], 300];
 			{
 				if (alive _x && isPlayer _x && _x != player && player == vehicle player) then {
 					[{[] spawn {playSound "D5yVW65K4gz1ZW1"; "chromAberration" ppEffectEnable true; "chromAberration" ppEffectAdjust [random 0.25, random 0.25, true]; "chromAberration" ppEffectCommit 1; sleep 5; "chromAberration" ppEffectEnable false;};}, "BIS_fnc_spawn", _x, false] spawn life_fnc_MP;
@@ -107,8 +108,6 @@
 	while {true} do {
 		private ["_date", "_minsDiff"];
 		if(["zoneNV", player] call bis_fnc_intrigger) then {
-			0 setFog [1, 0.01, 0];
-			5 setRain 1;
 			"colorCorrections" ppEffectEnable true;
 			"colorCorrections" ppEffectAdjust [1, 1, 0, [1, 0, 0, 0], [0.3, 0.3, 0.3, 0.3], [1, 1, 1, 0]];
 			"colorCorrections" ppEffectCommit 0;
@@ -126,8 +125,6 @@
 					player forceWalk true;
 					player setVariable["isBM", true, true];
 					playSound "viu871u2q78W113";
-					0 setFog [1, 0.01, 0];
-					5 setRain 1;
 					"colorCorrections" ppEffectEnable true;
 					"colorCorrections" ppEffectAdjust [1, 1, 0, [1, 0, 0, 0], [0.3, 0.3, 0.3, 0.3], [1, 1, 1, 0]]; 
 					"colorCorrections" ppEffectCommit 0;

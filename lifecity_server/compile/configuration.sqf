@@ -43,6 +43,7 @@ texceuve					= 0;
 dawwpqsa 					= 0;
 rvudxsiq 					= false;
 lc_has_insurance			= false;
+lc_has_lifeinsurance		= false;
 lc_is_banned				= false;
 life_net_dropped 			= false;
 life_hit_explosive 			= false;
@@ -65,6 +66,7 @@ loub_admin_mode				= false;
 is_ingame					= false;
 tcywxnhh					= 0;
 lc_res						= false;
+lc_dontremoveitems			= false;
 
 switch (playerSide) do {
 	case west: {

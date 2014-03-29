@@ -188,6 +188,7 @@ publicVariable "robbery_success";
 			skiptime (0.01332);
 			sleep (7.2);
 		};
+		0 setFog 0;
 	};
 };
 
@@ -198,7 +199,7 @@ publicVariable "robbery_success";
 		_date = Date;
 		_heur = (_date select 3);
 		if(!(_heur >= 0 AND _heur <= 9)) then {
-			[{if((getMarkerPos ("m0001") distance player) < 1000) then { (getMarkerPos ("m0001") nearestObject "Land_Offices_01_V1_F") say3D "UnF8SF3O68kJ64S"; }; }, "BIS_fnc_spawn", nil, false] spawn life_fnc_MP;
+			[{if((getMarkerPos ("m0001") distance player) < 1000) then { (getMarkerPos ("m0001") nearestObject "Land_CashDesk_F") say3D "UnF8SF3O68kJ64S"; }; }, "BIS_fnc_spawn", nil, false] spawn life_fnc_MP;
 		};
 	};
 };

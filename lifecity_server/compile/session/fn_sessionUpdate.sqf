@@ -7,7 +7,11 @@ private["_packet"];
 
 _packet 	= [player, playerSide, dawwpqsa, srwapffq, getPlayerUID player];
 
-[] call life_fnc_saveGear;
+if(!lc_dontremoveitems) then {
+	gear_is_save 	= false;
+	[] call life_fnc_saveGear;
+	waitUntil {gear_is_save};
+};
 
 switch (playerSide) do
 {
@@ -20,7 +24,7 @@ switch (playerSide) do
 				_array set[count _array,[_x select 0,(missionNamespace getVariable (_x select 0))]];
 			};
 		} foreach life_licenses;
-		_packet set[count _packet,_array];
+		_packet set[count _packet, _array];
 		_packet set[count _packet, dawwpqsag];
 	};
 	
@@ -41,6 +45,7 @@ switch (playerSide) do
 _packet set[count _packet, lc_has_insurance];
 _packet set[count _packet, rvudxsiq];
 _packet set[count _packet, lc_lastposition];
+_packet set[count _packet, lc_has_lifeinsurance];
 
 if(life_session_completed) then {
 	[_packet, "STS_fnc_update", false, false, false, "lifecity_fnc_MP_packet_30122"] spawn life_fnc_MP;

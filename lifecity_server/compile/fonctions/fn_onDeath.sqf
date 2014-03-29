@@ -28,23 +28,24 @@ if(!life_session_completed) exitWith {
 0 fadeMusic 1;
 playMusic "KP261hc8yY8a21k";
 5 fadeMusic 0;
-cutText["Tu es mort.\n\nChargement de la nouvelle vie...","BLACK"];
 
-sleep 0.5;
+gear_is_save 			= false;
+[] call life_fnc_saveGear;
+waitUntil {gear_is_save};
 
-if(loub_admin_mode) then {
-	removeAllContainers _unit;
-	removeAllItemsWithMagazines _unit;
-	removeAllPrimaryWeaponItems _unit;
-	removeAllHandgunItems _unit;
-	removeAllWeapons _unit;
-	removeAllItems _unit;
-	removeBackpack _unit;
+if(!lc_has_lifeinsurance) then {
+	["<t align='center'><t shadow='0'shadowColor='#000000''color='#01D00D'size='1.8'>TU ES MORT</t><br />Vous n'avez pas d'assurance vie.<br />vous avez perdu vos affaires.</t>", nil, nil, 30] call bis_fnc_dynamictext;
+	if(playerSide == civilian) then {
+		dawwpqsavg		= [];
+	}else{
+		dawwpqsag		= [];
+	};
+	lc_dontremoveitems	= false;
+}else{
+	["<t align='center'><t shadow='0'shadowColor='#000000''color='#01D00D'size='1.8'>TU ES MORT</t><br />Vous avez une assurance vie.<br />Vous n'avez rien perdu (Sauf l'assurance).</t>", nil, nil, 30] call bis_fnc_dynamictext;
+	lc_dontremoveitems	= true;
 };
-
-if(playerSide == civilian) then {
-	removeAllContainers _unit;
-};
+lc_has_lifeinsurance	= false;
 
 sleep 0.5;
 
@@ -96,15 +97,10 @@ life_hunger 		= 100;
 life_use_atm 		= true;
 
 if(lc_has_insurance) then {
-	hint "Vous avez perdu votre assurance bancaire site à votre mort.";
+	hint "Vous avez perdu votre assurance bancaire suite à votre mort.";
 };
-lc_has_insurance	= false;
 
+lc_has_insurance	= false;
 lc_lastposition     = [];
-if(playerSide == civilian) then {
-	dawwpqsavg		= [];
-}else{
-	dawwpqsag		= [];
-};
 
 [1, true, true] call life_fnc_sessionHandle;

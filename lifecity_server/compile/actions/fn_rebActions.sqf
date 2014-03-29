@@ -12,4 +12,7 @@ if(_unit getVariable "lc_res") then {
 	if(_action == "sr") then {
 		_unit setVariable["lc_RebSac", 3, true];
 	};
+	if(_action == "ra") then {
+		_handle 	= [_unit] spawn life_fnc_dropItems;
+	};
 };

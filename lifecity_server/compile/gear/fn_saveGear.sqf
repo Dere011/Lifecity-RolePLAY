@@ -78,3 +78,5 @@ if(playerSide == west) then {
 }else{
 	dawwpqsavg			= _gear;
 };
+
+gear_is_save			= true;

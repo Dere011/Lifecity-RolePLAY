@@ -99,8 +99,12 @@ switch (playerSide) do
 	};
 };
 
+life_actions = life_actions + [player addAction["Retirer les armes restantes", life_fnc_rebActions, [cursorTarget, "ra"], 0, false, false, "",
+'!lc_res && (currentWeapon player) != """" && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && animationState cursorTarget == "AmovPercMstpSnonWnonDnon_Ease" && player distance cursorTarget < 3.5 && (cursorTarget getVariable "restrained" || cursorTarget getVariable "restrainedCiv")']];
+
 life_actions = [player addAction["<img image='client\icons\atm.paa' /> <t color='#ADFF2F'>Guichet Automatique Bancaire (ATM)</t>", life_fnc_atmMenuLife, nil, 0, false, false, "",'life_use_atm && count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 5]) > 0']];
 life_actions = [player addAction["<img image='client\icons\atm.paa' /> <t color='#ADFF2F'>Assurance Bancaire ($15000)</t>", life_fnc_insurance, nil, 0, false, false, "",'!lc_has_insurance && life_use_atm && count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 5]) > 0']];
+life_actions = [player addAction["<img image='client\icons\store.paa' /> <t color='#ADFF2F'>Assurance Vie ($20000)</t>", life_fnc_Lifeinsurance, nil, 0, false, false, "",'!lc_has_lifeinsurance && life_use_atm && count(nearestObjects[getPos player, ["Land_InfoStand_V2_F"], 5]) > 0']];
 
 life_actions = [player addAction["Ouvrir la porte du bunker", { [] spawn { cutText["Rien ne se passe, c'est peut-être électrique?\nC'est bizarre, pas de poussière sur cette porte...\n\nJ'ai un mauvais présentiment...\nJe repars hors de cette ile!","BLACK"]; sleep 10; cutText["Je me sens beaucoup mieux...","BLACK OUT"]; sleep 2; player setPos [10755.3,10987.9,0.00149536]; cutText["","BLACK IN"]; }; }, nil, 0, false, false, "",'count(nearestObjects[getPos player, ["bunker_f"], 2]) > 0 && (player getVariable["isBM", false])']];
 life_actions = [player addAction["J'ai peur", {hint "Inutile de crier, personne ne vous entends... A part peut-être les morts...";}, nil, 0, false, false, "",'(["zoneNV", player] call bis_fnc_intrigger)']];

@@ -26,6 +26,7 @@ lc_has_insurance			= (_session select 13);
 lc_is_banned				= (_session select 14);
 lc_lastposition				= (_session select 15);
 tcywxnhh					= (_session select 16);
+lc_has_lifeinsurance		= (_session select 17);
 
 switch (playerSide) do {
 	case west:
