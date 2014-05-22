@@ -1,0 +1,287 @@
+author 				= "Dere011";
+onLoadName 			= "LifeCity RolePlay (Altis Life)";
+onLoadMission 		= "Based on Altis Life by TAW_Tonic";
+joinUnassigned 		= 1;
+respawn 			= BASE;
+respawndelay 		= 10;
+disabledAI 			= true;
+disableChannels[]	= {0,2};
+debriefing 			= 0;
+showMap 			= 1;
+enableDebugConsole 	= 2;
+loadScreen 			= "Loading.jpg";
+enableItemsDropping = 0;
+respawndialog 		= 0;
+deathmessages		= 0;
+
+class Header
+{
+	gameType 	= RPG;
+	minPlayers 	= 1;
+	maxPlayers 	= 96;
+};
+
+#include "client\dialog\common.hpp"
+#include "client\dialog\shop_items.hpp"
+#include "client\dialog\player_inv.hpp"
+#include "client\dialog\settings.hpp"
+#include "client\dialog\gang.hpp"
+#include "client\dialog\key_chain.hpp"
+#include "client\dialog\impound.hpp"
+#include "client\dialog\bank.hpp"
+#include "client\dialog\veh_shop.hpp"
+#include "client\dialog\shops.hpp"
+#include "client\dialog\ui.hpp"
+#include "client\dialog\admin_menu.hpp"
+#include "client\dialog\cell_phone.hpp"
+#include "client\dialog\wanted_list.hpp"
+#include "client\dialog\ticket.hpp"
+#include "client\dialog\clothing.hpp"
+#include "client\dialog\trunk.hpp"
+#include "client\dialog\spawnSelection.hpp"
+#include "addons\proving_ground\PG_config.hpp"
+
+class RscTitles
+{
+	#include "client\dialog\ui.hpp"
+	#include "client\dialog\progress.hpp"
+	#include "addons\proving_ground\PG_rsctitles.hpp"
+	#include "addons\logistic\=BTC=_Lift\=BTC=_Hud.h"
+};
+
+class CfgFunctions
+{
+	#include "common\Functions.hpp"
+};
+
+class CfgSounds
+{
+  sounds[] = {};
+  class LockVeh
+  {
+    name = "LockVeh";
+    sound[] = {"client\sounds\lock.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class UnLockVeh
+  {
+    name = "UnLockVeh";
+    sound[] = {"client\sounds\unlock.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class SirenPolice
+  {
+    name = "SirenPolice";
+    sound[] = {"client\sounds\siren.ogg", 1.5, 1};
+    titles[] = {};
+  };
+  class Tazersound
+  {
+    name = "Tazersound";
+    sound[] = {"client\sounds\tazer.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class klaxoncop
+  {
+    name = "klaxoncop";
+    sound[] = {"client\sounds\klaxoncop.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class Menote
+  {
+    name = "Menote";
+    sound[] = {"client\sounds\menote.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class AlarmVeh
+  {
+    name = "AlarmVeh";
+    sound[] = {"client\sounds\alarm_citizen_loop1.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class AlarmCop
+  {
+    name = "AlarmCop";
+    sound[] = {"client\sounds\alarm_citizen_loop1.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class surrender
+  {
+    name = "surrender";
+    sound[] = {"client\sounds\surrender.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class T5zrlTg5DCo0876
+  {
+    name = "T5zrlTg5DCo0876";
+    sound[] = {"client\sounds\T5zrlTg5DCo0876.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class I4jo8wc5419p72L
+  {
+    name = "I4jo8wc5419p72L";
+    sound[] = {"client\sounds\I4jo8wc5419p72L.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class jX2Rn8VXcs8G4Rr
+  {
+    name = "jX2Rn8VXcs8G4Rr";
+    sound[] = {"client\sounds\jX2Rn8VXcs8G4Rr.ogg", 0.3, 1};
+    titles[] = {};
+  };
+  class UnF8SF3O68kJ64S
+  {
+    name = "UnF8SF3O68kJ64S";
+    sound[] = {"client\sounds\UnF8SF3O68kJ64S.ogg", 0.3, 1};
+    titles[] = {};
+  };
+  class cKsk1x8t377c53a
+  {
+    name = "cKsk1x8t377c53a";
+    sound[] = {"client\sounds\cKsk1x8t377c53a.ogg", 3.0, 1};
+    titles[] = {};
+  };
+  class dy3k89kScIoPx63
+  {
+    name = "dy3k89kScIoPx63";
+    sound[] = {"client\sounds\dy3k89kScIoPx63.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class 854Jsx97969StRz
+  {
+    name = "854Jsx97969StRz";
+    sound[] = {"client\sounds\854Jsx97969StRz.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class Tm52zbi39115768
+  {
+    name = "Tm52zbi39115768";
+    sound[] = {"client\sounds\Tm52zbi39115768.ogg", 0.3, 1};
+    titles[] = {};
+  };
+  class WB8TaB34hLRCUPZ
+  {
+    name = "WB8TaB34hLRCUPZ";
+    sound[] = {"client\sounds\WB8TaB34hLRCUPZ.ogg", 0.3, 1};
+    titles[] = {};
+  };
+  class XKC5E3GsJU344bP
+  {
+    name = "XKC5E3GsJU344bP";
+    sound[] = {"client\sounds\XKC5E3GsJU344bP.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class viu871u2q78W113
+  {
+    name = "viu871u2q78W113";
+    sound[] = {"client\sounds\viu871u2q78W113.ogg", 1.0, 1};
+    titles[] = {};
+  };
+  class D5yVW65K4gz1ZW1
+  {
+    name = "D5yVW65K4gz1ZW1";
+    sound[] = {"client\sounds\D5yVW65K4gz1ZW1.ogg", 0.5, 1};
+    titles[] = {};
+  };
+  class qYE377yP4kU6p6h
+  {
+    name = "qYE377yP4kU6p6h";
+    sound[] = {"client\sounds\qYE377yP4kU6p6h.ogg", 0.3, 1};
+    titles[] = {};
+  };
+};
+
+class CfgMusic
+{
+	tracks[]={};
+
+	class LifeCityIntro
+	{
+		name = "LifeCityIntro";
+		sound[] = {"client\sounds\intro.ogg", db-10, 1.0};
+	};
+	
+	class KP261hc8yY8a21k
+	{
+		name = "KP261hc8yY8a21k";
+		sound[] = {"client\sounds\KP261hc8yY8a21k.ogg", db-15, 1.0};
+	};
+};
+
+class CfgNotifications
+{
+	class DeliveryAssigned
+	{
+		title = "Delivery Job Accepted";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcon_ca.paa";
+		description = "%1";
+		duration = 10;
+		priority = 7;
+	};
+	
+	class DeliveryFailed
+	{
+		title = "Delivery Job Failed";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskiconfailed_ca.paa";
+		description = "%1";
+		duration = 7;
+		priority = 7;
+	};
+	
+	class DeliverySucceeded
+	{
+		title = "Delivery Job Completed";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcondone_ca.paa";
+		description = "%1";
+		duration = 6;
+		priority = 6;
+	};
+	
+	class TextMessage
+	{
+		title = "Received A Text Message";
+		iconPicture = "client\icons\messagenew.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+	
+	class PoliceDispatch
+	{
+		title = "911 Dispatch Center";
+		iconPicture = "client\icons\messagepolice.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+	
+	class AdminDispatch
+	{
+		title = "Admin Dispatch Center";
+		iconPicture = "client\icons\messageadmin.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+	
+	class AdminMessage
+	{
+		title = "Admin Message";
+		iconPicture = "client\icons\messageadmin.paa";
+		description = "%1";
+		duration = 10;
+		priority = 5;
+	};
+};
+
+class CfgIdentities
+{
+    class Jane_Doe
+    {
+        name = "Jane Doe";
+        face = "ice123_female_bare";
+        glasses = "None";
+        speaker = "Male08ENG";
+        pitch = 1.15;
+    };
+};

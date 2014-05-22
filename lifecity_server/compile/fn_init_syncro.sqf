@@ -112,6 +112,7 @@
 			"colorCorrections" ppEffectAdjust [1, 1, 0, [1, 0, 0, 0], [0.3, 0.3, 0.3, 0.3], [1, 1, 1, 0]];
 			"colorCorrections" ppEffectCommit 0;
 		};
+		0 setFog 0;
 		sleep 1;
 	};
 };
